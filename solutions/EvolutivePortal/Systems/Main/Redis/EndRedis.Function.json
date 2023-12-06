@@ -1,0 +1,14 @@
+{
+  "algorithm": {
+    "parameters": [],
+    "statements": [
+      {
+        "command": "Execute",
+        "expression": "RedisFlushdb(RedisDefault)"
+      }
+    ],
+    "typeReturn": "any",
+    "variables": []
+  },
+  "routing": null
+}

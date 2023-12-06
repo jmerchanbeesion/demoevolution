@@ -1,0 +1,133 @@
+{
+  "algorithm": {
+    "parameters": [],
+    "statements": [
+      {
+        "command": "ReadConfigParameter",
+        "configParameterName": "RealHazelcast",
+        "variableName": "realHazelcast"
+      },
+      {
+        "children": [
+          {
+            "command": "Execute",
+            "expression": "InitHazelcast()"
+          },
+          {
+            "command": "Execute",
+            "expression": "HazelcastMapSet(HazelcastDefault, \"personnelMap\", \"Alice\", \"IT\")"
+          },
+          {
+            "command": "Execute",
+            "expression": "HazelcastMapSet(HazelcastDefault, \"personnelMap\", \"Bob\", \"IT\", 300000)"
+          },
+          {
+            "command": "Execute",
+            "expression": "HazelcastMapSetAll(HazelcastDefault, \"personnelMap\", [ [\"Denise\", \"Sales\"], [\"Erwing\", \"Sales\"] ])"
+          },
+          {
+            "command": "Set",
+            "expression": "HazelcastMapGetEntryView(HazelcastDefault, \"personnelMap\", \"Bob\")",
+            "variableName": "entryView"
+          },
+          {
+            "command": "Assert",
+            "expression1": "^entryView.ttl.low",
+            "expression2": "1",
+            "operator": ">="
+          },
+          {
+            "command": "Assert",
+            "expression1": "HazelcastMapSetTtl(HazelcastDefault, \"personnelMap\", \"Denise\", 300000)",
+            "expression2": "true",
+            "operator": "=="
+          },
+          {
+            "command": "Set",
+            "expression": "HazelcastMapGetEntryView(HazelcastDefault, \"personnelMap\", \"Denise\")",
+            "variableName": "entryView"
+          },
+          {
+            "command": "Assert",
+            "expression1": "^entryView.ttl.low",
+            "expression2": "1",
+            "operator": ">="
+          },
+          {
+            "command": "Assert",
+            "expression1": "HazelcastMapGet(HazelcastDefault, \"personnelMap\", \"Alice\")",
+            "expression2": "\"IT\"",
+            "operator": "=="
+          },
+          {
+            "command": "Assert",
+            "expression1": "Count(HazelcastMapGetAll(HazelcastDefault, \"personnelMap\", [ \"Bob\", \"Erwing\" ]))",
+            "expression2": "2",
+            "operator": "=="
+          },
+          {
+            "command": "Assert",
+            "expression1": "HazelcastMapSize(HazelcastDefault, \"personnelMap\")",
+            "expression2": "4",
+            "operator": "=="
+          },
+          {
+            "command": "Assert",
+            "expression1": "Includes(HazelcastMapKeySet(HazelcastDefault, \"personnelMap\"), \"Alice\")",
+            "expression2": "true",
+            "operator": "=="
+          },
+          {
+            "command": "Assert",
+            "expression1": "Includes(HazelcastMapValues(HazelcastDefault, \"personnelMap\"), \"Sales\")",
+            "expression2": "true",
+            "operator": "=="
+          },
+          {
+            "command": "Execute",
+            "expression": "HazelcastMapDelete(HazelcastDefault, \"personnelMap\", \"Denise\")"
+          },
+          {
+            "command": "Assert",
+            "expression1": "HazelcastMapContainsKey(HazelcastDefault, \"personnelMap\", \"Denise\")",
+            "expression2": "false",
+            "operator": "=="
+          },
+          {
+            "command": "Assert",
+            "expression1": "Count(HazelcastMapEntrySet(HazelcastDefault, \"personnelMap\"))",
+            "expression2": "3",
+            "operator": "=="
+          },
+          {
+            "command": "Execute",
+            "expression": "HazelcastMapClear(HazelcastDefault, \"personnelMap\")"
+          },
+          {
+            "command": "Assert",
+            "expression1": "HazelcastMapSize(HazelcastDefault, \"personnelMap\")",
+            "expression2": "0",
+            "operator": "=="
+          },
+          {
+            "command": "Execute",
+            "expression": "EndHazelcast()"
+          }
+        ],
+        "command": "If",
+        "expression": "^realHazelcast"
+      }
+    ],
+    "typeReturn": "any",
+    "variables": [
+      {
+        "name": "realHazelcast",
+        "type": "boolean"
+      },
+      {
+        "name": "entryView",
+        "type": "any"
+      }
+    ]
+  }
+}

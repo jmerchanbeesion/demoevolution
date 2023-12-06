@@ -1,0 +1,28 @@
+{
+  "algorithm": {
+    "parameters": [],
+    "statements": [
+      {
+        "command": "Return",
+        "expression": "\"Hello World\""
+      }
+    ],
+    "typeReturn": "string",
+    "variables": []
+  },
+  "routing": {
+    "method": "GET",
+    "path": "/hello-world-with-bearer-token",
+    "remarks": "Hello World with Bearer Token",
+    "security": [
+      {
+        "condition": [
+          {
+            "securitySchemeName": "BearerToken"
+          }
+        ],
+        "remarks": ""
+      }
+    ]
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "algorithm": {
+    "parameters": [],
+    "statements": [
+      {
+        "command": "ReadConfigParameter",
+        "configParameterName": "RealRds",
+        "variableName": "realRds"
+      },
+      {
+        "children": [
+          {
+            "command": "Execute",
+            "expression": "InitRds()"
+          },
+          {
+            "command": "Assert",
+            "expression1": "RdsExecuteStoredProcedure(RdsDefault.PrcStudentsInfo, { MaxAverage: 5 })",
+            "expression2": "{ RsStudents: [[\"ST001\"],[\"ST003\"],[\"ST004\"],[\"ST005\"],[\"ST006\"]] }",
+            "operator": "=="
+          },
+          {
+            "command": "Assert",
+            "expression1": "RdsExecuteStoredProcedure(RdsDefault.PrcInscriptionsInfo, { MinAverage: 5, CalcSeed: 7 })",
+            "expression2": "{ CalcSeed: 8, StudentsAvg: 2.5, RsStudents: [[\"ST002\"], [\"ST008\"]], RsInscriptions: [[\"CO001\"]] }",
+            "operator": "=="
+          }
+        ],
+        "command": "If",
+        "expression": "^realRds"
+      }
+    ],
+    "typeReturn": "any",
+    "variables": [
+      {
+        "name": "realRds",
+        "type": "boolean"
+      }
+    ]
+  }
+}

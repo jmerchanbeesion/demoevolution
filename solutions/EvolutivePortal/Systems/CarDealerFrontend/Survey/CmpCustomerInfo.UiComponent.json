@@ -1,0 +1,298 @@
+{
+  "eventsAndFunctions": [
+    {
+      "algorithm": {
+        "parameters": [],
+        "statements": [
+          {
+            "command": "ReadModel",
+            "modelVariableName": "carDealers",
+            "variableName": "carDealers"
+          },
+          {
+            "command": "Set",
+            "expression": "[]",
+            "variableName": "dealershipComboData"
+          },
+          {
+            "children": [
+              {
+                "command": "Push",
+                "expressionItem": "branch.name",
+                "variableNameList": "dealershipComboData"
+              }
+            ],
+            "command": "ForEach",
+            "expressionList": "^carDealers.branches",
+            "variableNameItem": "branch"
+          },
+          {
+            "command": "Load",
+            "expression": "^dealershipComboData",
+            "widgetName": "dealershipCombo"
+          },
+          {
+            "command": "Hide",
+            "widgetName": "associateCombo"
+          }
+        ],
+        "typeReturn": "any",
+        "variables": [
+          {
+            "name": "carDealers",
+            "type": "CarDealers"
+          },
+          {
+            "name": "branch",
+            "type": "CarDealerBranch"
+          },
+          {
+            "name": "dealershipComboData",
+            "type": "any"
+          }
+        ]
+      },
+      "name": "main_init"
+    },
+    {
+      "algorithm": {
+        "parameters": [
+          {
+            "name": "oldValue",
+            "type": "any"
+          },
+          {
+            "name": "newValue",
+            "type": "any"
+          }
+        ],
+        "statements": [
+          {
+            "command": "ReadModel",
+            "modelVariableName": "carDealers",
+            "variableName": "carDealers"
+          },
+          {
+            "command": "Set",
+            "expression": "FindFirst(^carDealers.branches, name == ^newValue)",
+            "variableName": "branch"
+          },
+          {
+            "command": "Set",
+            "expression": "[]",
+            "variableName": "associateComboData"
+          },
+          {
+            "children": [
+              {
+                "command": "Push",
+                "expressionItem": "associate.name",
+                "variableNameList": "associateComboData"
+              }
+            ],
+            "command": "ForEach",
+            "expressionList": "^branch.associates",
+            "variableNameItem": "associate"
+          },
+          {
+            "command": "Load",
+            "expression": "^associateComboData",
+            "widgetName": "associateCombo"
+          },
+          {
+            "command": "Show",
+            "widgetName": "associateCombo"
+          }
+        ],
+        "typeReturn": "any",
+        "variables": [
+          {
+            "name": "carDealers",
+            "type": "CarDealers"
+          },
+          {
+            "name": "branch",
+            "type": "CarDealerBranch"
+          },
+          {
+            "name": "associateComboData",
+            "type": "any"
+          },
+          {
+            "name": "associate",
+            "type": "any"
+          }
+        ]
+      },
+      "name": "dealershipCombo_change"
+    },
+    {
+      "algorithm": {
+        "parameters": [],
+        "statements": [
+          {
+            "command": "GetValue",
+            "variableName": "branch",
+            "widgetName": "dealershipCombo"
+          },
+          {
+            "command": "GetValue",
+            "variableName": "associate",
+            "widgetName": "associateCombo"
+          },
+          {
+            "command": "ReadModel",
+            "modelVariableName": "name",
+            "variableName": "name"
+          },
+          {
+            "command": "ReadModel",
+            "modelVariableName": "surname",
+            "variableName": "surname"
+          },
+          {
+            "command": "ReadModel",
+            "modelVariableName": "email",
+            "variableName": "email"
+          },
+          {
+            "command": "SendDataToParent",
+            "expressionData": "{\n  \tbranch: ^branch, \n  \tassociate: ^associate,\n    userName: ^name,\n\tuserSurname: ^surname,\n    userEmail: ^email\n}"
+          }
+        ],
+        "typeReturn": "any",
+        "variables": [
+          {
+            "name": "branch",
+            "type": "string"
+          },
+          {
+            "name": "associate",
+            "type": "string"
+          },
+          {
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "name": "surname",
+            "type": "string"
+          },
+          {
+            "name": "email",
+            "type": "string"
+          }
+        ]
+      },
+      "name": "startButton_click"
+    }
+  ],
+  "model": [
+    {
+      "name": "carDealers",
+      "required": true,
+      "type": "CarDealers"
+    },
+    {
+      "name": "name",
+      "required": true,
+      "type": "string"
+    },
+    {
+      "name": "surname",
+      "required": true,
+      "type": "string"
+    },
+    {
+      "name": "email",
+      "required": true,
+      "type": "string"
+    }
+  ],
+  "root": {
+    "alignItems": "center",
+    "children": [
+      {
+        "align": "left",
+        "color": "default",
+        "name": "headerLabel",
+        "size": "x-large",
+        "text": "Please tell us about you",
+        "widget": "Label"
+      },
+      {
+        "children": [
+          {
+            "binding": "name",
+            "cssClass": "blz-area-default",
+            "label": "Name *",
+            "mandatory": true,
+            "name": "nameTextBox",
+            "size": "12/12",
+            "widget": "TextBox"
+          },
+          {
+            "binding": "surname",
+            "cssClass": "blz-area-default",
+            "label": "Surname *",
+            "mandatory": true,
+            "name": "surnameTextBox",
+            "size": "12/12",
+            "widget": "TextBox"
+          },
+          {
+            "binding": "email",
+            "cssClass": "blz-area-default",
+            "label": "Email *",
+            "mandatory": true,
+            "name": "emailTextBox",
+            "size": "12/12",
+            "widget": "TextBox"
+          },
+          {
+            "dataFormat": "plain",
+            "label": "Where did you buy your car? *",
+            "mandatory": true,
+            "mode": "single",
+            "name": "dealershipCombo",
+            "widget": "ComboBox"
+          },
+          {
+            "children": [
+              {
+                "dataFormat": "plain",
+                "label": "Who was your sales associate? *",
+                "mandatory": true,
+                "mode": "single",
+                "name": "associateCombo",
+                "widget": "ComboBox"
+              }
+            ],
+            "cssClass": "blz-area-default",
+            "height": 66,
+            "layout": "container",
+            "name": "reservedSpaceContainer"
+          },
+          {
+            "align": "center",
+            "cssClass": "blz-area-default",
+            "name": "startButton",
+            "text": "Start Survey",
+            "widget": "Button"
+          }
+        ],
+        "cssClass": "blz-area-default",
+        "horizontalSeparation": "large",
+        "layout": "container",
+        "name": "mainFormContainer",
+        "size": "half",
+        "verticalSeparation": "large"
+      }
+    ],
+    "cssClass": "blz-padding-top-large blz-padding-right-large blz-padding-left-large blz-padding-bottom-large blz-cast-shadow blz-area-default",
+    "layout": "container",
+    "verticalSeparation": "large"
+  },
+  "routing": null,
+  "unused": []
+}

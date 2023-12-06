@@ -1,0 +1,120 @@
+{
+  "algorithm": {
+    "parameters": [],
+    "statements": [
+      {
+        "command": "ReadConfigParameter",
+        "configParameterName": "RealMongodb",
+        "variableName": "realMongodb"
+      },
+      {
+        "children": [
+          {
+            "command": "Execute",
+            "expression": "InitMongodb()"
+          },
+          {
+            "command": "Execute",
+            "expression": "MongodbInsertMany(MongoDefault, \"lost-pets\", [{ name: \"Brody\", race: \"Fox terrier\", color: \"white\", lostDatetime: Datetime(2020, 1, 1, 12, 0, 0), lostLocation: [1.2, 1.4], reward: 800 }, { name: \"Rex\", race: \"Beagle\", color: \"brown\", lostDatetime: Datetime(2020, 1, 1, 12, 0, 0), lostLocation: [0.5, 1], reward: 800 }])"
+          },
+          {
+            "command": "Assert",
+            "expression1": "Map(MongodbFind(MongoDefault, \"lost-pets\", { reward: { $lt: 1000 } }), name)",
+            "expression2": "[\"Charlie\", \"Max\", \"Buddy\", \"Milo\", \"Archie\", \"Toby\", \"Coco\", \"Thor\", \"Brody\", \"Rex\"]",
+            "operator": "=="
+          },
+          {
+            "command": "Execute",
+            "expression": "MongodbUpdateMany(MongoDefault, \"lost-pets\", { reward: { $eq: 800 } }, { $set: { name: \"New Name\" } })"
+          },
+          {
+            "command": "Assert",
+            "expression1": "Map(MongodbFind(MongoDefault, \"lost-pets\", { reward: { $lt: 1000 } }), name)",
+            "expression2": "[\"Charlie\", \"Max\", \"Buddy\", \"Milo\", \"Archie\", \"Toby\", \"Coco\", \"Thor\", \"New Name\", \"New Name\"]",
+            "operator": "=="
+          },
+          {
+            "command": "Execute",
+            "expression": "MongodbDeleteMany(MongoDefault, \"lost-pets\", { reward: { $eq: 800 } })"
+          },
+          {
+            "command": "Assert",
+            "expression1": "Map(MongodbFind(MongoDefault, \"lost-pets\", { reward: { $lt: 1000 } }), name)",
+            "expression2": "[\"Charlie\", \"Max\", \"Buddy\", \"Milo\", \"Archie\", \"Toby\", \"Coco\", \"Thor\"]",
+            "operator": "=="
+          },
+          {
+            "command": "Execute",
+            "expression": "MongodbInsertOne(MongoDefault, \"lost-pets\", { name: \"Brody\", race: \"Fox terrier\", color: \"white\", lostDatetime: Datetime(2020, 1, 1, 12, 0, 0), lostLocation: [1.2, 1.4], reward: 800 })"
+          },
+          {
+            "command": "Execute",
+            "expression": "MongodbReplaceOne(MongoDefault, \"lost-pets\", { name: { $eq: \"Charlie\" } }, { name: \"Rex\", race: \"Beagle\", color: \"brown\", lostDatetime: Datetime(2020, 1, 1, 12, 0, 0), lostLocation: [0.5, 1], reward: 800 })"
+          },
+          {
+            "command": "Execute",
+            "expression": "MongodbUpdateOne(MongoDefault, \"lost-pets\", { name: { $eq: \"Max\" } }, { $set: { name: \"New Name\" } })"
+          },
+          {
+            "command": "Execute",
+            "expression": "MongodbDeleteOne(MongoDefault, \"lost-pets\", { name: { $eq: \"Buddy\" } })"
+          },
+          {
+            "command": "Assert",
+            "expression1": "Map(MongodbFind(MongoDefault, \"lost-pets\", { reward: { $lt: 1000 } }), name)",
+            "expression2": "[\"Rex\", \"New Name\", \"Milo\", \"Archie\", \"Toby\", \"Coco\", \"Thor\", \"Brody\"]",
+            "operator": "=="
+          },
+          {
+            "command": "Set",
+            "expression": "[]",
+            "variableName": "bulkWriteOperations"
+          },
+          {
+            "command": "Push",
+            "expressionItem": "{ insertOne: { document: { name: \"Buddy\", race: \"Bulldog\", color: \"brown\", lostDatetime: Datetime(2020, 1, 1, 12, 0, 0), lostLocation: [1.2, 1.2], reward: 600 } } }",
+            "variableNameList": "bulkWriteOperations"
+          },
+          {
+            "command": "Push",
+            "expressionItem": "{ replaceOne: { filter: { name: { $eq: \"Rex\" } }, replacement: { name: \"Charlie\", race: \"Bulldog\", color: \"black\", lostDatetime: Datetime(2020, 1, 1, 12, 0, 0), lostLocation: [1, 1], reward: 300 } } }",
+            "variableNameList": "bulkWriteOperations"
+          },
+          {
+            "command": "Push",
+            "expressionItem": "{ updateOne: { filter: { name: { $eq: \"New Name\" } }, update: { $set: { name: \"Max\" } } } }",
+            "variableNameList": "bulkWriteOperations"
+          },
+          {
+            "command": "Push",
+            "expressionItem": "{ deleteOne: { filter: { name: { $eq: \"Brody\" } } } }",
+            "variableNameList": "bulkWriteOperations"
+          },
+          {
+            "command": "Execute",
+            "expression": "MongodbBulkWrite(MongoDefault, \"lost-pets\", ^bulkWriteOperations)"
+          },
+          {
+            "command": "Assert",
+            "expression1": "Map(MongodbFind(MongoDefault, \"lost-pets\", { reward: { $lt: 1000 } }), name)",
+            "expression2": "[\"Charlie\", \"Max\", \"Milo\", \"Archie\", \"Toby\", \"Coco\", \"Thor\", \"Buddy\"]",
+            "operator": "=="
+          }
+        ],
+        "command": "If",
+        "expression": "^realMongodb"
+      }
+    ],
+    "typeReturn": "any",
+    "variables": [
+      {
+        "name": "realMongodb",
+        "type": "boolean"
+      },
+      {
+        "name": "bulkWriteOperations",
+        "type": "list(any)"
+      }
+    ]
+  }
+}

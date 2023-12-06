@@ -1,0 +1,172 @@
+{
+  "betweens": [
+    {
+      "betweenType": "Function",
+      "functionName": "ConvertToString",
+      "outputConnections": [
+        "c7"
+      ],
+      "parameters": [
+        {
+          "inputConnection": "c6"
+        }
+      ],
+      "x": 315,
+      "y": 34
+    },
+    {
+      "betweenType": "Function",
+      "functionName": "PadLeft",
+      "outputConnections": [
+        "c10"
+      ],
+      "parameters": [
+        {
+          "inputConnection": "c7"
+        },
+        {
+          "inputConnection": "c8"
+        },
+        {
+          "inputConnection": "c9"
+        }
+      ],
+      "x": 603,
+      "y": 81
+    },
+    {
+      "betweenType": "Value",
+      "outputConnections": [
+        "c8"
+      ],
+      "type": "decimal",
+      "value": 12,
+      "x": 496,
+      "y": 125
+    },
+    {
+      "betweenType": "Value",
+      "outputConnections": [
+        "c9"
+      ],
+      "type": "string",
+      "value": "0",
+      "x": 434,
+      "y": 185
+    },
+    {
+      "betweenType": "Function",
+      "functionName": "Join",
+      "outputConnections": [
+        "c1"
+      ],
+      "parameters": [
+        {
+          "inputConnection": "c12"
+        },
+        {
+          "inputConnection": "c2"
+        }
+      ],
+      "x": 629,
+      "y": 409
+    },
+    {
+      "betweenType": "Value",
+      "outputConnections": [
+        "c2"
+      ],
+      "type": "string",
+      "value": ",",
+      "x": 512,
+      "y": 516
+    },
+    {
+      "betweenType": "Function",
+      "functionName": "FindAll",
+      "outputConnections": [
+        "c12"
+      ],
+      "parameters": [
+        {
+          "inputConnection": "c11"
+        },
+        {
+          "expression": "This() != \"777-777-7777\"",
+          "inputConnection": null
+        }
+      ],
+      "x": 282,
+      "y": 422
+    },
+    {
+      "betweenType": "Function",
+      "functionName": "GetFullName",
+      "outputConnections": [
+        "c0"
+      ],
+      "parameters": [
+        {
+          "inputConnection": "c4"
+        },
+        {
+          "inputConnection": "c5"
+        }
+      ],
+      "x": 413,
+      "y": 261
+    }
+  ],
+  "source": {
+    "elementType": "Type",
+    "outputs": [
+      {
+        "codePath": "id",
+        "outputConnections": [
+          "c6"
+        ]
+      },
+      {
+        "codePath": "name",
+        "outputConnections": [
+          "c4"
+        ]
+      },
+      {
+        "codePath": "phoneNumbers",
+        "outputConnections": [
+          "c11"
+        ]
+      },
+      {
+        "codePath": "surname",
+        "outputConnections": [
+          "c5"
+        ]
+      }
+    ],
+    "typeName": "Customer",
+    "x": 44,
+    "y": 202
+  },
+  "target": {
+    "elementType": "Type",
+    "inputs": [
+      {
+        "codePath": "code",
+        "inputConnection": "c10"
+      },
+      {
+        "codePath": "fullName",
+        "inputConnection": "c0"
+      },
+      {
+        "codePath": "phoneNumbers",
+        "inputConnection": "c1"
+      }
+    ],
+    "typeName": "Person",
+    "x": 859,
+    "y": 209
+  }
+}

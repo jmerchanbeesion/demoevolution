@@ -1,0 +1,758 @@
+{
+  "algorithm": {
+    "parameters": [],
+    "statements": [
+      {
+        "command": "Set",
+        "expression": "{ id: 34, name: \"John\", surname: \"Doe\", phoneNumbers: [\"954-123-4224\", \"954-341-2332\"] }",
+        "variableName": "customer1"
+      },
+      {
+        "command": "Set",
+        "expression": "{ id: 182, surname: \"Washington\", phoneNumbers: [\"788-231-4421\", \"777-777-7777\", \"786-111-3355\"] }",
+        "variableName": "customer2"
+      },
+      {
+        "command": "Set",
+        "expression": "[^customer1, ^customer2]",
+        "variableName": "customers"
+      },
+      {
+        "command": "Set",
+        "expression": "\"Jack\"",
+        "variableName": "name"
+      },
+      {
+        "command": "Assert",
+        "expression1": "{ word1: \"Hello\", word2: \"World\" }[\"word2\"]",
+        "expression2": "\"World\"",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "[\"Hello\", \"World\"][1]",
+        "expression2": "\"World\"",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Apply({ Text: \"Hello\", Number: 1 }, { OtherText: \"World\" }) ",
+        "expression2": "{ Text: \"Hello\", Number: 1, OtherText: \"World\" }",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Apply({ Text: \"Hello\", Number: 1 }, { Text: \"World\", OtherNumber: 2 }) ",
+        "expression2": "{ Text: \"World\", Number: 1, OtherNumber: 2 }",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Base64Encode(ConvertToBinary([72,101,108,108,111,32,87,111,114,108,100]))",
+        "expression2": "\"SGVsbG8gV29ybGQ=\"",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Base64Encode(null)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Base64Decode(\"SGVsbG8gV29ybGQ=\")",
+        "expression2": "ConvertToBinary([72,101,108,108,111,32,87,111,114,108,100])",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Base64Decode(null)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "ConvertToBoolean(true)",
+        "expression2": "true",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "ConvertToBoolean(false)",
+        "expression2": "false",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "ConvertToBoolean(\"1\")",
+        "expression2": "true",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "ConvertToBoolean(\"0\")",
+        "expression2": "false",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "ConvertToBoolean(1)",
+        "expression2": "true",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "ConvertToBoolean(0)",
+        "expression2": "false",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "ConvertToBoolean(null)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "ConvertToDate(Date(2018, 1, 1))",
+        "expression2": "Date(2018, 1, 1)",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "ConvertToDate(Datetime(2018, 1, 1, 0, 0, 0, 0))",
+        "expression2": "Date(2018, 1, 1)",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "ConvertToDate(\"2018-01-01\")",
+        "expression2": "Date(2018, 1, 1)",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "ConvertToDate(\"2018-01-01T00:00:00.000Z\")",
+        "expression2": "Date(2018, 1, 1)",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "ConvertToDate(null)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "ConvertToDatetime(Datetime(2018, 1, 1, 0, 0, 0, 0))",
+        "expression2": "Datetime(2018, 1, 1, 0, 0, 0, 0)",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "ConvertToDatetime(\"2018-01-01T00:00:00.000Z\")",
+        "expression2": "Datetime(2018, 1, 1, 0, 0, 0, 0)",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "ConvertToDatetime(null)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "ConvertToDecimal(1.5)",
+        "expression2": "1.5",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "ConvertToDecimal(\"1.5\")",
+        "expression2": "1.5",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "ConvertToDecimal(true)",
+        "expression2": "1",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "ConvertToDecimal(null)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "ConvertToInteger(1)",
+        "expression2": "1",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "ConvertToInteger(\"1\")",
+        "expression2": "1",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "ConvertToInteger(true)",
+        "expression2": "1",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "ConvertToInteger(null)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "ConvertToString(\"Hello World\")",
+        "expression2": "\"Hello World\"",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "ConvertToString(1)",
+        "expression2": "\"1\"",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "ConvertToString(1.5)",
+        "expression2": "\"1.5\"",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "ConvertToString(true)",
+        "expression2": "\"true\"",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "ConvertToString(Datetime(2018, 1, 1, 0, 0, 0, 0))",
+        "expression2": "\"2018-01-01T00:00:00.000Z\"",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "ConvertToString(Date(2018, 1, 1))",
+        "expression2": "\"2018-01-01T00:00:00.000Z\"",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "ConvertToString(Time(0, 0, 0, 0))",
+        "expression2": "\"1970-01-01T00:00:00.000Z\"",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "ConvertToString(null)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "ConvertToTime(Time(0, 0, 0, 0))",
+        "expression2": "Time(0, 0, 0, 0)",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "ConvertToTime(Datetime(2018, 1, 1, 0, 0, 0, 0))",
+        "expression2": "Time(0, 0, 0, 0)",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "ConvertToTime(\"00:00:00.000\")",
+        "expression2": "Time(0, 0, 0, 0)",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "ConvertToTime(\"2018-01-01T00:00:00.000\")",
+        "expression2": "Time(0, 0, 0, 0)",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "ConvertToTime(null)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Entries(null)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Entries([])",
+        "expression2": "[]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Entries({})",
+        "expression2": "[]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Entries(12)",
+        "expression2": "[]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Entries( { a: 1, b: { a: 1 }, c: [1,2,3] })",
+        "expression2": "[ [\"a\", 1],[\"b\", {a:1}],[ \"c\", [1,2,3]]]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Entries( [\"hello\", \"world\"])",
+        "expression2": "[[\"0\", \"hello\"], [\"1\", \"world\"] ]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Entries( \"hello\")",
+        "expression2": "[[\"0\", \"h\"], [\"1\", \"e\"], [\"2\", \"l\"], [\"3\", \"l\"], [\"4\", \"o\"]]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "HtmlEncode(\"<b>Hello World</b>\")",
+        "expression2": "\"&lt;b&gt;Hello World&lt;/b&gt;\"",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "HtmlDecode(\"&lt;b&gt;Hello World&lt;/b&gt;\")",
+        "expression2": "\"<b>Hello World</b>\"",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "If(null, true, false)",
+        "expression2": "false",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "If({}, true, false)",
+        "expression2": "true",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "If(\"\", true, false)",
+        "expression2": "false",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "If([], true, false)",
+        "expression2": "true",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "If(0, true, false)",
+        "expression2": "false",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "If(123, true, false)",
+        "expression2": "true",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "If(\"John\", true, false)",
+        "expression2": "true",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "If(true, \"hi\", \"bye\")",
+        "expression2": "\"hi\"",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "If(false, \"hi\", \"bye\")",
+        "expression2": "\"bye\"",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "If(customers[0] == customer1, \"equal\", \"distinct\")",
+        "expression2": "\"equal\"",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "If(customers[0] == customer1, \n\tIf( customer1[\"name\"] == \"John\", \n    \t\"John is here\", \n        \"Is not John\" \n    ),\n    \"Bad customer\"\n)",
+        "expression2": "\"John is here\"",
+        "operator": "=="
+      },
+      {
+        "command": "Set",
+        "expression": "11",
+        "variableName": "num"
+      },
+      {
+        "command": "Assert",
+        "expression1": "If( num == 5, \"Five\", \nIf( num == 7, \"Seven\", \nIf( num == 11, \"Eleven\", \nIf( num == 15, \"Fifteen\", \n\"Other number (\" + ConvertToString(num) + \")\"\n) ) ) )",
+        "expression2": "\"Eleven\"",
+        "operator": "=="
+      },
+      {
+        "command": "Set",
+        "expression": "1",
+        "variableName": "num"
+      },
+      {
+        "command": "Assert",
+        "expression1": "If( num == 5, \"Five\", \nIf( num == 7, \"Seven\", \nIf( num == 11, \"Eleven\", \nIf( num == 15, \"Fifteen\", \n\"Other number (\" + ConvertToString(num) + \")\"\n) ) ) )",
+        "expression2": "\"Other number (\" + ConvertToString(num) + \")\"",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "\"Hello \" + ConvertToString( If( name == \"Jack\", \"my friend\", \"strange\" ) )",
+        "expression2": "\"Hello my friend\"",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "If( MsDefault.HelloWorld() == \"Hello world\", true, false )",
+        "expression2": "true",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "If( MsDefault.HelloWorld() == \"Bye world\", true, false )",
+        "expression2": "false",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "If( MsDefault.Echo( \"John\" ) == \"John\", true, false )",
+        "expression2": "true",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "If( MsDefault.Echo( \"John\" ) == MsDefault.Echo( \"Jane\" ),  \n\tMsDefault.Echo( \"John is Jane\" ), \n    MsDefault.Echo( \"John is not Jane\" )\n)",
+        "expression2": "\"John is not Jane\"",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "IsNotNull(\"Hello World\")",
+        "expression2": "true",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "IsNotNull(null)",
+        "expression2": "false",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "IsNull(\"Hello World\")",
+        "expression2": "false",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "IsNull(null)",
+        "expression2": "true",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "IsNullOrValue(\"Hello World\", \"Hello World\")",
+        "expression2": "true",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "IsNullOrValue(\"Goodbye World\", \"Hello World\")",
+        "expression2": "false",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "IsNullOrValue(null, \"Hello World\")",
+        "expression2": "true",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "JsonParse(\"{\\\"age\\\":30,\\\"city\\\":\\\"New York\\\",\\\"name\\\":\\\"John\\\"}\")",
+        "expression2": "{age:30,city:\"New York\",name:\"John\"}",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "JsonStringify({age:30,city:\"New York\",name:\"John\"})",
+        "expression2": "\"{\\\"age\\\":30,\\\"city\\\":\\\"New York\\\",\\\"name\\\":\\\"John\\\"}\"",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "JsonStringify({age:30,city:\"New York\",name:\"John\"}, 4)",
+        "expression2": "\"{\\\\n    \\\"age\\\": 30,\\\\n    \\\"city\\\": \\\"New York\\\",\\\\n    \\\"name\\\": \\\"John\\\"\\\\n}\"",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Keys(null)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Keys([])",
+        "expression2": "[]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Keys({})",
+        "expression2": "[]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Keys(12)",
+        "expression2": "[]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Keys( { a: 1, b: { a: 1 }, c: [1,2,3] })",
+        "expression2": "[\"a\",\"b\",\"c\"]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Keys( [\"hello\", \"world\"])",
+        "expression2": "[\"0\", \"1\"]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Keys( \"hello\")",
+        "expression2": "[\"0\",\"1\",\"2\",\"3\",\"4\"]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Map(^customer1, surname)",
+        "expression2": "\"Doe\"",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Map(^customer2, surname)",
+        "expression2": "\"Washington\"",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Map(^customers, surname)",
+        "expression2": "[\"Doe\", \"Washington\"]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Map(null, 1)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Nvl(\"Hello World\", \"Goodbye World\")",
+        "expression2": "\"Hello World\"",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Nvl(null, \"Goodbye World\")",
+        "expression2": "\"Goodbye World\"",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Map(^customer1, Out(name) + \"_\" + name)",
+        "expression2": "\"Jack_John\"",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Map(^customer1, This())",
+        "expression2": "{ id: 34, name: \"John\", surname: \"Doe\", phoneNumbers: [\"954-123-4224\", \"954-341-2332\"] }",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Transform(TrfCustomerToPerson, ^customer1)",
+        "expression2": "{ code: \"000000000034\", fullName: \"John Doe\", phoneNumbers: \"954-123-4224,954-341-2332\" }",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Transform(TrfCustomerToPerson, ^customer2)",
+        "expression2": "{ code: \"000000000182\", fullName: \"Mr. Washington\", phoneNumbers: \"788-231-4421,786-111-3355\" }",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Transform(TrfCustomerToPerson, ^customers)",
+        "expression2": "[{ code: \"000000000034\", fullName: \"John Doe\", phoneNumbers: \"954-123-4224,954-341-2332\" }, { code: \"000000000182\", fullName: \"Mr. Washington\", phoneNumbers: \"788-231-4421,786-111-3355\" }]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Transform(TrfCustomerToPerson, ^customer1, Writer(WriterGetFullNameFromPerson))",
+        "expression2": "\"John Doe\"",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Transform(TrfCustomerToPerson, ^customers, Writer(WriterGetFullNameFromPerson))",
+        "expression2": "[\"John Doe\", \"Mr. Washington\"]",
+        "operator": "=="
+      },
+      {
+        "command": "Set",
+        "expression": "[]",
+        "variableName": "processedPersons"
+      },
+      {
+        "command": "Assert",
+        "expression1": "Transform(TrfCustomerToPerson, ^customer1, Writer(WriterGetFullNameFromPersonWithContext, [processedPersons]))",
+        "expression2": "\"John Doe\"",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "processedPersons",
+        "expression2": "{ code: \"000000000034\", fullName: \"John Doe\", phoneNumbers: \"954-123-4224,954-341-2332\" }",
+        "operator": "=="
+      },
+      {
+        "command": "Set",
+        "expression": "[]",
+        "variableName": "processedPersons"
+      },
+      {
+        "command": "Assert",
+        "expression1": "Transform(TrfCustomerToPerson, ^customers, Writer(WriterGetFullNameFromPersonWithContext, [processedPersons]))",
+        "expression2": "[\"John Doe\", \"Mr. Washington\"]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "processedPersons",
+        "expression2": "[{ code: \"000000000034\", fullName: \"John Doe\", phoneNumbers: \"954-123-4224,954-341-2332\" }, { code: \"000000000182\", fullName: \"Mr. Washington\", phoneNumbers: \"788-231-4421,786-111-3355\" }]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "UrlEncode(\"&hello,world&\")",
+        "expression2": "\"%26hello%2Cworld%26\"",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "UrlDecode(\"%26hello%2Cworld%26\")",
+        "expression2": "\"&hello,world&\"",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Values(null)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Values([])",
+        "expression2": "[]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Values({})",
+        "expression2": "[]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Values(12)",
+        "expression2": "[]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Values( { a: 1, b: { a: 1 }, c: [1,2,3] })",
+        "expression2": "[1,{a:1},[1,2,3]]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Values( [\"hello\", \"world\"])",
+        "expression2": "[\"hello\", \"world\"]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Values( \"hello\")",
+        "expression2": "[\"h\", \"e\", \"l\", \"l\", \"o\"]",
+        "operator": "=="
+      }
+    ],
+    "typeReturn": "any",
+    "variables": [
+      {
+        "name": "customer1",
+        "type": "Customer"
+      },
+      {
+        "name": "customer2",
+        "type": "Customer"
+      },
+      {
+        "name": "customers",
+        "type": "list(Customer)"
+      },
+      {
+        "name": "name",
+        "type": "string"
+      },
+      {
+        "name": "num",
+        "type": "integer"
+      },
+      {
+        "name": "processedPersons",
+        "type": "list(Person)"
+      }
+    ]
+  }
+}

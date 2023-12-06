@@ -1,0 +1,116 @@
+{
+  "eventsAndFunctions": [
+    {
+      "algorithm": {
+        "parameters": [],
+        "statements": [
+          {
+            "command": "Navigate",
+            "expressionStartModel": "{}",
+            "uiComponentName": "CmpDealerDashboard"
+          }
+        ],
+        "typeReturn": "any",
+        "variables": []
+      },
+      "name": "dashboardIcon_click"
+    },
+    {
+      "algorithm": {
+        "parameters": [],
+        "statements": [
+          {
+            "command": "Navigate",
+            "expressionStartModel": "{}",
+            "uiComponentName": "CmpCustomerSurvey"
+          }
+        ],
+        "typeReturn": "any",
+        "variables": []
+      },
+      "name": "surveyIcon_click"
+    }
+  ],
+  "model": [],
+  "root": {
+    "alignItems": "center",
+    "children": [
+      {
+        "align": "left",
+        "color": "default",
+        "cssClass": "blz-padding-top-large blz-padding-bottom-large",
+        "name": "label1",
+        "size": "x-large",
+        "text": "Welcome to The Best Cars.",
+        "widget": "Label"
+      },
+      {
+        "alignItems": "center",
+        "children": [
+          {
+            "children": [
+              {
+                "align": "center",
+                "clickable": true,
+                "color": "default",
+                "icon": "survey-car.svg",
+                "name": "surveyIcon",
+                "size": "xx-large",
+                "widget": "Icon"
+              },
+              {
+                "align": "center",
+                "bold": true,
+                "color": "default",
+                "name": "label2",
+                "size": "large",
+                "text": "Surveys",
+                "widget": "Label"
+              }
+            ],
+            "cssClass": "blz-padding-top-large blz-padding-bottom-large blz-border-top blz-border-right blz-border-left blz-border-bottom",
+            "layout": "container",
+            "size": "third"
+          },
+          {
+            "children": [
+              {
+                "align": "center",
+                "clickable": true,
+                "color": "default",
+                "icon": "dashboard.svg",
+                "name": "dashboardIcon",
+                "size": "xx-large",
+                "widget": "Icon"
+              },
+              {
+                "align": "center",
+                "bold": true,
+                "color": "default",
+                "name": "label3",
+                "size": "large",
+                "text": "Dashboard",
+                "widget": "Label"
+              }
+            ],
+            "cssClass": "blz-padding-top-large blz-padding-bottom-large blz-border-top blz-border-right blz-border-left blz-border-bottom",
+            "layout": "container",
+            "size": "third"
+          }
+        ],
+        "cssClass": "blz-padding-top blz-padding-left blz-padding-bottom blz-area-default",
+        "horizontalSeparation": "normal",
+        "layout": "container",
+        "size": "three-quarter"
+      }
+    ],
+    "cssClass": "blz-padding-top-large blz-padding-right-large blz-padding-left-large blz-padding-bottom-large blz-area-default",
+    "horizontalSeparation": "large",
+    "layout": "container",
+    "verticalSeparation": "large"
+  },
+  "routing": {
+    "path": "/home"
+  },
+  "unused": []
+}

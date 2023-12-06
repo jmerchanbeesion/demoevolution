@@ -1,0 +1,18 @@
+{
+  "algorithm": {
+    "parameters": [],
+    "statements": [
+      {
+        "command": "Execute",
+        "expression": "HazelcastMapDestroy(HazelcastDefault, \"personnelMap\")"
+      },
+      {
+        "command": "Execute",
+        "expression": "HazelcastListDestroy(HazelcastDefault, \"numberList\")"
+      }
+    ],
+    "typeReturn": "any",
+    "variables": []
+  },
+  "routing": null
+}

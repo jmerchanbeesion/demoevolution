@@ -1,0 +1,292 @@
+{
+  "algorithm": {
+    "parameters": [],
+    "statements": [
+      {
+        "command": "Set",
+        "expression": "\"Shhh\"",
+        "variableName": "secret"
+      },
+      {
+        "command": "Set",
+        "expression": "null",
+        "variableName": "result"
+      },
+      {
+        "children": [
+          {
+            "command": "Set",
+            "expression": "JwtSign({ sub: \"John Doe 1\" }, ^secret, \"HMAC-SHA256\")",
+            "variableName": "token"
+          },
+          {
+            "command": "Set",
+            "expression": "JwtVerify(^token, ^secret)",
+            "variableName": "payload"
+          },
+          {
+            "command": "Set",
+            "expression": "\"Ok\"",
+            "variableName": "result"
+          }
+        ],
+        "command": "Try"
+      },
+      {
+        "children": [
+          {
+            "command": "Set",
+            "expression": "\"Expired\"",
+            "variableName": "result"
+          },
+          {
+            "command": "Set",
+            "expression": "^err.data.expiredAt",
+            "variableName": "expiredAt"
+          }
+        ],
+        "command": "Catch",
+        "errorName": "JwtExpired",
+        "variableName": "err"
+      },
+      {
+        "children": [
+          {
+            "command": "Set",
+            "expression": "\"Error\"",
+            "variableName": "result"
+          }
+        ],
+        "command": "Catch",
+        "errorName": "Error",
+        "variableName": "err"
+      },
+      {
+        "command": "Assert",
+        "expression1": "^result",
+        "expression2": "\"Ok\"",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "^payload.sub",
+        "expression2": "\"John Doe 1\"",
+        "operator": "=="
+      },
+      {
+        "command": "Set",
+        "expression": "null",
+        "variableName": "result"
+      },
+      {
+        "children": [
+          {
+            "command": "Set",
+            "expression": "JwtSign({ sub: \"John Doe 2\" }, ^secret, \"HMAC-SHA256\")",
+            "variableName": "token"
+          },
+          {
+            "command": "Set",
+            "expression": "JwtVerify(^token, \"Bad secret\")",
+            "variableName": "payload"
+          },
+          {
+            "command": "Set",
+            "expression": "\"Ok\"",
+            "variableName": "result"
+          }
+        ],
+        "command": "Try"
+      },
+      {
+        "children": [
+          {
+            "command": "Set",
+            "expression": "\"Expired\"",
+            "variableName": "result"
+          },
+          {
+            "command": "Set",
+            "expression": "^err.data.expiredAt",
+            "variableName": "expiredAt"
+          }
+        ],
+        "command": "Catch",
+        "errorName": "JwtExpired",
+        "variableName": "err"
+      },
+      {
+        "children": [
+          {
+            "command": "Set",
+            "expression": "\"Error\"",
+            "variableName": "result"
+          }
+        ],
+        "command": "Catch",
+        "errorName": "Error",
+        "variableName": "err"
+      },
+      {
+        "command": "Assert",
+        "expression1": "^result",
+        "expression2": "\"Error\"",
+        "operator": "=="
+      },
+      {
+        "command": "Set",
+        "expression": "null",
+        "variableName": "result"
+      },
+      {
+        "children": [
+          {
+            "command": "Set",
+            "expression": "JwtSign({ sub: \"John Doe 2\", exp: Floor(DatetimeDiff(Now(), Datetime(1970, 1, 1, 0, 0, 0)) / 1000) - 60 }, ^secret, \"HMAC-SHA256\")",
+            "variableName": "token"
+          },
+          {
+            "command": "Set",
+            "expression": "JwtVerify(^token, ^secret)",
+            "variableName": "payload"
+          },
+          {
+            "command": "Set",
+            "expression": "\"Ok\"",
+            "variableName": "result"
+          }
+        ],
+        "command": "Try"
+      },
+      {
+        "children": [
+          {
+            "command": "Set",
+            "expression": "\"Expired\"",
+            "variableName": "result"
+          },
+          {
+            "command": "Set",
+            "expression": "^err.data.expiredAt",
+            "variableName": "expiredAt"
+          }
+        ],
+        "command": "Catch",
+        "errorName": "JwtExpired",
+        "variableName": "err"
+      },
+      {
+        "children": [
+          {
+            "command": "Set",
+            "expression": "\"Error\"",
+            "variableName": "result"
+          }
+        ],
+        "command": "Catch",
+        "errorName": "Error",
+        "variableName": "err"
+      },
+      {
+        "command": "Assert",
+        "expression1": "^result",
+        "expression2": "\"Expired\"",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "^expiredAt",
+        "expression2": "Now()",
+        "operator": "<="
+      },
+      {
+        "children": [
+          {
+            "command": "Set",
+            "expression": "JwtSign({\n sub: \"1234567890\",\n name: \"John Doe\",\n iat: 1516239022,\n jti: \"b49c5f73-050e-4b62-995a-863575dee410\",\n exp: 2233788530\n}, ^secret, \"HMAC-SHA256\")",
+            "variableName": "token"
+          },
+          {
+            "command": "Set",
+            "expression": "JwtDecode(^token)",
+            "variableName": "payload"
+          },
+          {
+            "command": "Set",
+            "expression": "\"Ok\"",
+            "variableName": "result"
+          }
+        ],
+        "command": "Try"
+      },
+      {
+        "children": [
+          {
+            "command": "Set",
+            "expression": "\"Expired\"",
+            "variableName": "result"
+          },
+          {
+            "command": "Set",
+            "expression": "^err.data.expiredAt",
+            "variableName": "expiredAt"
+          }
+        ],
+        "command": "Catch",
+        "errorName": "JwtExpired",
+        "variableName": "err"
+      },
+      {
+        "children": [
+          {
+            "command": "Set",
+            "expression": "\"Error\"",
+            "variableName": "result"
+          }
+        ],
+        "command": "Catch",
+        "errorName": "Error",
+        "variableName": "err"
+      },
+      {
+        "command": "Assert",
+        "expression1": "^result",
+        "expression2": "\"Ok\"",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "^payload.name",
+        "expression2": "\"John Doe\"",
+        "operator": "=="
+      }
+    ],
+    "typeReturn": "any",
+    "variables": [
+      {
+        "name": "secret",
+        "type": "string"
+      },
+      {
+        "name": "result",
+        "type": "string"
+      },
+      {
+        "name": "expiredAt",
+        "type": "datetime"
+      },
+      {
+        "name": "token",
+        "type": "string"
+      },
+      {
+        "name": "payload",
+        "type": "any"
+      },
+      {
+        "name": "err",
+        "type": "Error"
+      }
+    ]
+  }
+}

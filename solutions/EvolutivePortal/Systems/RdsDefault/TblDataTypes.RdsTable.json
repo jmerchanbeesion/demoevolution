@@ -1,0 +1,117 @@
+{
+  "autoincrementalPrimaryKey": true,
+  "columns": [
+    {
+      "alias": "dataTypeId",
+      "allowNull": false,
+      "name": "DATA_TYPE_ID",
+      "primaryKey": true,
+      "type": "integer"
+    },
+    {
+      "alias": "string1",
+      "allowNull": true,
+      "name": "STRING_1",
+      "primaryKey": false,
+      "type": "string"
+    },
+    {
+      "alias": "string2",
+      "allowNull": true,
+      "name": "STRING_2",
+      "primaryKey": false,
+      "type": "string"
+    },
+    {
+      "alias": "integer1",
+      "allowNull": true,
+      "name": "INTEGER_1",
+      "primaryKey": false,
+      "type": "integer"
+    },
+    {
+      "alias": "integer2",
+      "allowNull": true,
+      "name": "INTEGER_2",
+      "primaryKey": false,
+      "type": "integer"
+    },
+    {
+      "alias": "decimal1",
+      "allowNull": true,
+      "name": "DECIMAL_1",
+      "primaryKey": false,
+      "type": "decimal"
+    },
+    {
+      "alias": "decimal2",
+      "allowNull": true,
+      "name": "DECIMAL_2",
+      "primaryKey": false,
+      "type": "decimal"
+    },
+    {
+      "alias": "boolean1",
+      "allowNull": true,
+      "name": "BOOLEAN_1",
+      "primaryKey": false,
+      "type": "boolean"
+    },
+    {
+      "alias": "boolean2",
+      "allowNull": true,
+      "name": "BOOLEAN_2",
+      "primaryKey": false,
+      "type": "boolean"
+    },
+    {
+      "alias": "datetime1",
+      "allowNull": true,
+      "name": "DATETIME_1",
+      "primaryKey": false,
+      "type": "datetime"
+    },
+    {
+      "alias": "datetime2",
+      "allowNull": true,
+      "name": "DATETIME_2",
+      "primaryKey": false,
+      "type": "datetime"
+    },
+    {
+      "alias": "date1",
+      "allowNull": true,
+      "name": "DATE_1",
+      "primaryKey": false,
+      "type": "date"
+    },
+    {
+      "alias": "date2",
+      "allowNull": true,
+      "name": "DATE_2",
+      "primaryKey": false,
+      "type": "date"
+    },
+    {
+      "alias": "time1",
+      "allowNull": true,
+      "name": "TIME_1",
+      "primaryKey": false,
+      "type": "time"
+    },
+    {
+      "alias": "time2",
+      "allowNull": true,
+      "name": "TIME_2",
+      "primaryKey": false,
+      "type": "time"
+    }
+  ],
+  "foreignKeys": [],
+  "indexes": [],
+  "isView": false,
+  "primaryKeyName": "PK_DATA_TYPES",
+  "sequenceName": "SQ_DATA_TYPES",
+  "tableName": "TBL_DATA_TYPES",
+  "uniqueKeys": []
+}

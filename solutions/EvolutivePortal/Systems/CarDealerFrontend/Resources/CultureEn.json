@@ -1,0 +1,130 @@
+{
+  "dateFormat": "{mm}/{dd}/{yyyy}",
+  "decimalSymbol": ".",
+  "longDateFormat": "{weekDay} {d} {month}, {yyyy}",
+  "moneySymbol": "$",
+  "thousandsSeparator": ",",
+  "timeFormat": "{HH12}:{MM} {AMPM}",
+  "translations": [
+    {
+      "key": "AddFilter",
+      "value": "Add Filter"
+    },
+    {
+      "key": "April",
+      "value": "April"
+    },
+    {
+      "key": "August",
+      "value": "August"
+    },
+    {
+      "key": "Cancel",
+      "value": "Cancel"
+    },
+    {
+      "key": "December",
+      "value": "December"
+    },
+    {
+      "key": "February",
+      "value": "February"
+    },
+    {
+      "key": "Finish",
+      "value": "Finish"
+    },
+    {
+      "key": "Friday",
+      "value": "Friday"
+    },
+    {
+      "key": "January",
+      "value": "January"
+    },
+    {
+      "key": "July",
+      "value": "July"
+    },
+    {
+      "key": "June",
+      "value": "June"
+    },
+    {
+      "key": "March",
+      "value": "March"
+    },
+    {
+      "key": "May",
+      "value": "May"
+    },
+    {
+      "key": "Monday",
+      "value": "Monday"
+    },
+    {
+      "key": "Next",
+      "value": "Next"
+    },
+    {
+      "key": "No",
+      "value": "No"
+    },
+    {
+      "key": "November",
+      "value": "November"
+    },
+    {
+      "key": "October",
+      "value": "October"
+    },
+    {
+      "key": "Ok",
+      "value": "Ok"
+    },
+    {
+      "key": "Previous",
+      "value": "Previous"
+    },
+    {
+      "key": "RequiredField",
+      "value": "Required Field"
+    },
+    {
+      "key": "Saturday",
+      "value": "Saturday"
+    },
+    {
+      "key": "SelectAll",
+      "value": "Select All"
+    },
+    {
+      "key": "September",
+      "value": "September"
+    },
+    {
+      "key": "Sunday",
+      "value": "Sunday"
+    },
+    {
+      "key": "Thursday",
+      "value": "Thursday"
+    },
+    {
+      "key": "Tuesday",
+      "value": "Tuesday"
+    },
+    {
+      "key": "Unselect All",
+      "value": "Unselect All"
+    },
+    {
+      "key": "Wednesday",
+      "value": "Wednesday"
+    },
+    {
+      "key": "Yes",
+      "value": "Yes"
+    }
+  ]
+}

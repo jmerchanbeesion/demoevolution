@@ -1,0 +1,97 @@
+{
+  "algorithm": {
+    "parameters": [
+      {
+        "name": "stringValue",
+        "type": "string"
+      },
+      {
+        "name": "integerValue",
+        "type": "integer"
+      },
+      {
+        "name": "decimalValue",
+        "type": "decimal"
+      },
+      {
+        "name": "booleanValue",
+        "type": "boolean"
+      },
+      {
+        "name": "datetimeValue",
+        "type": "datetime"
+      },
+      {
+        "name": "dateValue",
+        "type": "date"
+      },
+      {
+        "name": "timeValue",
+        "type": "time"
+      }
+    ],
+    "statements": [
+      {
+        "command": "Return",
+        "expression": "^stringValue + \"|\" + ConvertToString(^integerValue) + \"|\" + ConvertToString(^decimalValue) + \"|\" + ConvertToString(^booleanValue) + \"|\" + ConvertToString(^datetimeValue) + \"|\" + ConvertToString(^dateValue) + \"|\" + ConvertToString(^timeValue)"
+      }
+    ],
+    "typeReturn": "string",
+    "variables": []
+  },
+  "routing": {
+    "method": "GET",
+    "parameters": [
+      {
+        "bind": "stringValue",
+        "in": "Query",
+        "name": "string",
+        "remarks": "String parameter"
+      },
+      {
+        "bind": "integerValue",
+        "in": "Query",
+        "name": "integer",
+        "remarks": "Integer parameter"
+      },
+      {
+        "bind": "decimalValue",
+        "in": "Query",
+        "name": "decimal",
+        "remarks": "Decimal parameter"
+      },
+      {
+        "bind": "booleanValue",
+        "in": "Query",
+        "name": "boolean",
+        "remarks": "Boolean parameter"
+      },
+      {
+        "bind": "datetimeValue",
+        "in": "Query",
+        "name": "datetime",
+        "remarks": "Datetime parameter"
+      },
+      {
+        "bind": "dateValue",
+        "in": "Query",
+        "name": "date",
+        "remarks": "Date parameter"
+      },
+      {
+        "bind": "timeValue",
+        "in": "Query",
+        "name": "time",
+        "remarks": "Time parameter"
+      }
+    ],
+    "path": "/receive-query-parameters",
+    "remarks": "Receive Query Parameters",
+    "responses": [
+      {
+        "httpStatus": "200",
+        "remarks": "Success"
+      }
+    ]
+  }
+}

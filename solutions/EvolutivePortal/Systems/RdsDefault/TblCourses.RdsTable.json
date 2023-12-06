@@ -1,0 +1,40 @@
+{
+  "columns": [
+    {
+      "allowNull": false,
+      "name": "COURSE_ID",
+      "alias": "courseId",
+      "primaryKey": true,
+      "type": "integer"
+    },
+    {
+      "allowNull": false,
+      "name": "CODE",
+      "alias": "code",
+      "primaryKey": false,
+      "type": "string"
+    },
+    {
+      "allowNull": false,
+      "name": "NAME",
+      "alias": "name",
+      "primaryKey": false,
+      "type": "string"
+    }
+  ],
+  "autoincrementalPrimaryKey": true,
+  "indexes": [],
+  "isView": false,
+  "primaryKeyName": "PK_COURSES",
+  "foreignKeys": [],
+  "sequenceName": "SQ_COURSES",
+  "tableName": "TBL_COURSES",
+  "uniqueKeys": [
+    {
+      "columnsNames": [
+        "CODE"
+      ],
+      "name": "UK_COURSES_1"
+    }
+  ]
+}

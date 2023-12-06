@@ -1,0 +1,43 @@
+{
+  "algorithm": {
+    "parameters": [],
+    "statements": [
+      {
+        "command": "Execute",
+        "expression": "InitRds()"
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsExecuteQuery(RdsDefault, \"SELECT C.CODE, C.NAME FROM TBL_COURSES C WHERE C.COURSE_ID NOT IN (SELECT I.COURSE_ID FROM TBL_INSCRIPTIONS I) ORDER BY C.CODE\", {}, [\"string\", \"string\"])",
+        "expression2": "[[\"CO007\", \"Drug Delivery\"], [\"CO008\", \"Cardiac Biophysics\"], [\"CO011\", \"Principals of Digital Communications\"], [\"CO012\", \"Bayesian Data Analysis\"]]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsExecuteQuery(RdsDefault, \"SELECT CO.CODE FROM TBL_CAREERS_COURSES CACO, TBL_CAREERS CA, TBL_COURSES CO WHERE CACO.CAREER_ID = CA.CAREER_ID AND CACO.COURSE_ID = CO.COURSE_ID AND CA.CODE = @CareerCode ORDER BY CO.CODE\", { CareerCode: \"CA003\" }, [\"string\"])",
+        "expression2": "[[\"CO001\"], [\"CO002\"], [\"CO003\"], [\"CO004\"], [\"CO009\"], [\"CO010\"], [\"CO011\"], [\"CO012\"]]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsExecuteNonQuery(RdsDefault, \"DELETE FROM TBL_INSCRIPTIONS WHERE COURSE_ID IN (SELECT C.COURSE_ID FROM TBL_COURSES C WHERE C.CODE = @CourseCode)\", { CourseCode: \"CO001\" })",
+        "expression2": "5",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsExecuteQuery(RdsDefault, \"SELECT C.CODE, C.NAME FROM TBL_COURSES C WHERE C.COURSE_ID NOT IN (SELECT I.COURSE_ID FROM TBL_INSCRIPTIONS I) ORDER BY C.CODE\", {}, [\"string\", \"string\"])",
+        "expression2": "[[\"CO001\", \"Physical Mathematics I\"], [\"CO007\", \"Drug Delivery\"], [\"CO008\", \"Cardiac Biophysics\"], [\"CO011\", \"Principals of Digital Communications\"], [\"CO012\", \"Bayesian Data Analysis\"]]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsExecuteQuery(RdsDefault, \"SELECT CO.CODE FROM TBL_CAREERS_COURSES CACO, TBL_CAREERS CA, TBL_COURSES CO WHERE CACO.CAREER_ID = CA.CAREER_ID AND CACO.COURSE_ID = CO.COURSE_ID AND CA.CODE = @CareerCode ORDER BY CO.CODE\", { CareerCode: \"CA003\" }, [\"string\"])",
+        "expression2": "[[\"CO001\"], [\"CO002\"], [\"CO003\"], [\"CO004\"], [\"CO009\"], [\"CO010\"], [\"CO011\"], [\"CO012\"]]",
+        "operator": "=="
+      }
+    ],
+    "typeReturn": "any",
+    "variables": []
+  }
+}

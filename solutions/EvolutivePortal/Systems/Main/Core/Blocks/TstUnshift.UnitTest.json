@@ -1,0 +1,206 @@
+{
+  "algorithm": {
+    "parameters": [],
+    "statements": [
+      {
+        "command": "Set",
+        "expression": "[ 1, 2, 3, 4, 5 ]",
+        "variableName": "list"
+      },
+      {
+        "command": "Unshift",
+        "expressionItem": "6",
+        "variableNameList": "list"
+      },
+      {
+        "command": "Assert",
+        "expression1": "list",
+        "expression2": "[ 6, 1, 2, 3, 4, 5 ]",
+        "operator": "=="
+      },
+      {
+        "command": "Set",
+        "expression": "[]",
+        "variableName": "list"
+      },
+      {
+        "command": "Unshift",
+        "expressionItem": "6",
+        "variableNameList": "list"
+      },
+      {
+        "command": "Assert",
+        "expression1": "list",
+        "expression2": "[ 6 ]",
+        "operator": "=="
+      },
+      {
+        "command": "Set",
+        "expression": "[]",
+        "variableName": "list"
+      },
+      {
+        "command": "Unshift",
+        "expressionItem": "[ 6 ]",
+        "variableNameList": "list"
+      },
+      {
+        "command": "Assert",
+        "expression1": "list",
+        "expression2": "[ [ 6 ] ]",
+        "operator": "=="
+      },
+      {
+        "children": [
+          {
+            "command": "Set",
+            "expression": "null",
+            "variableName": "list"
+          },
+          {
+            "command": "Unshift",
+            "expressionItem": "6",
+            "variableNameList": "list"
+          },
+          {
+            "command": "Assert",
+            "expression1": "\"Not reachable\"",
+            "expression2": "false",
+            "operator": "=="
+          }
+        ],
+        "command": "Try"
+      },
+      {
+        "children": [
+          {
+            "command": "Assert",
+            "expression1": "\"Exception when unshift null list\"",
+            "expression2": "true",
+            "operator": "!="
+          }
+        ],
+        "command": "Catch",
+        "errorName": "Error",
+        "variableName": "error"
+      },
+      {
+        "children": [
+          {
+            "command": "Set",
+            "expression": "10",
+            "variableName": "any"
+          },
+          {
+            "command": "Unshift",
+            "expressionItem": "6",
+            "variableNameList": "any"
+          },
+          {
+            "command": "Assert",
+            "expression1": "\"Not reachable\"",
+            "expression2": "false",
+            "operator": "=="
+          }
+        ],
+        "command": "Try"
+      },
+      {
+        "children": [
+          {
+            "command": "Assert",
+            "expression1": "\"Exception when unshift with numbers\"",
+            "expression2": "true",
+            "operator": "!="
+          }
+        ],
+        "command": "Catch",
+        "errorName": "Error",
+        "variableName": "error"
+      },
+      {
+        "children": [
+          {
+            "command": "Set",
+            "expression": "\"string\"",
+            "variableName": "any"
+          },
+          {
+            "command": "Unshift",
+            "expressionItem": "6",
+            "variableNameList": "any"
+          },
+          {
+            "command": "Assert",
+            "expression1": "\"Not reachable\"",
+            "expression2": "false",
+            "operator": "=="
+          }
+        ],
+        "command": "Try"
+      },
+      {
+        "children": [
+          {
+            "command": "Assert",
+            "expression1": "\"Exception when shift with strings\"",
+            "expression2": "true",
+            "operator": "!="
+          }
+        ],
+        "command": "Catch",
+        "errorName": "Error",
+        "variableName": "error"
+      },
+      {
+        "children": [
+          {
+            "command": "Set",
+            "expression": "{ key: 123 }",
+            "variableName": "any"
+          },
+          {
+            "command": "Unshift",
+            "expressionItem": "6",
+            "variableNameList": "any"
+          },
+          {
+            "command": "Assert",
+            "expression1": "\"Not reachable\"",
+            "expression2": "false",
+            "operator": "=="
+          }
+        ],
+        "command": "Try"
+      },
+      {
+        "children": [
+          {
+            "command": "Assert",
+            "expression1": "\"Exception when unshift with objects\"",
+            "expression2": "true",
+            "operator": "!="
+          }
+        ],
+        "command": "Catch",
+        "errorName": "Error",
+        "variableName": "error"
+      }
+    ],
+    "typeReturn": "any",
+    "variables": [
+      {
+        "name": "list",
+        "type": "list( integer )"
+      },
+      {
+        "name": "error",
+        "type": "any"
+      },
+      {
+        "name": "any",
+        "type": "any"
+      }
+    ]
+  }
+}

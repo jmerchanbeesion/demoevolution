@@ -1,0 +1,229 @@
+{
+  "algorithm": {
+    "parameters": [],
+    "statements": [
+      {
+        "command": "ReadConfigParameter",
+        "configParameterName": "RealMongodb",
+        "variableName": "realMongodb"
+      },
+      {
+        "children": [
+          {
+            "command": "Execute",
+            "expression": "MongodbInsertOne(MongoDefault, \"candidates\", { dummy: 0 })"
+          },
+          {
+            "command": "Execute",
+            "expression": "MongodbDrop(MongoDefault, \"candidates\")"
+          },
+          {
+            "command": "Execute",
+            "expression": "MongodbInsertOne(MongoDefault, \"blz-instances\", { dummy: 0 })"
+          },
+          {
+            "command": "Execute",
+            "expression": "MongodbDrop(MongoDefault, \"blz-instances\")"
+          },
+          {
+            "command": "Execute",
+            "expression": "MongodbInsertOne(MongoDefault, \"blz-jobs\", { dummy: 0 })"
+          },
+          {
+            "command": "Execute",
+            "expression": "MongodbDrop(MongoDefault, \"blz-jobs\")"
+          },
+          {
+            "command": "Set",
+            "expression": "CreateAndStartCandidate({ name: \"James\", surname: \"Smith\" })",
+            "variableName": "candidateId1"
+          },
+          {
+            "command": "Set",
+            "expression": "CreateAndStartCandidate({ name: \"John\", surname: \"Johnson\" })",
+            "variableName": "candidateId2"
+          },
+          {
+            "command": "Set",
+            "expression": "CreateAndStartCandidate({ name: \"Robert\", surname: \"Williams\" })",
+            "variableName": "candidateId3"
+          },
+          {
+            "command": "Set",
+            "expression": "CreateAndStartCandidate({ name: \"Michael\", surname: \"Jones\" })",
+            "variableName": "candidateId4"
+          },
+          {
+            "command": "Set",
+            "expression": "CreateAndStartCandidate({ name: \"William\", surname: \"Brown\", possibleCriminalRecords: true, possibleMedicalConditions: true, additionalData: \"With Criminal Records\" })",
+            "variableName": "candidateId5"
+          },
+          {
+            "command": "Set",
+            "expression": "CreateAndStartCandidate({ name: \"David\", surname: \"Miller\", possibleCriminalRecords: true, possibleMedicalConditions: true, additionalData: \"With Medical Conditions\" })",
+            "variableName": "candidateId6"
+          },
+          {
+            "command": "Set",
+            "expression": "CreateAndStartCandidate({ name: \"Richard\", surname: \"Wilson\", possibleCriminalRecords: true })",
+            "variableName": "candidateId7"
+          },
+          {
+            "command": "Set",
+            "expression": "CreateAndStartCandidate({ name: \"Joseph\", surname: \"Miller\", possibleMedicalConditions: true })",
+            "variableName": "candidateId8"
+          },
+          {
+            "command": "Sleep",
+            "expressionMilliseconds": "40000"
+          },
+          {
+            "command": "Execute",
+            "expression": "SubmitExamOfCandidate(^candidateId2, { scoreJavascript: 4, scoreNodejs: 4, scoreJava: 4, scoreCommunicationSkills: 4 })"
+          },
+          {
+            "command": "Execute",
+            "expression": "SubmitExamOfCandidate(^candidateId3, { scoreJavascript: 9, scoreNodejs: 9, scoreJava: 9, scoreCommunicationSkills: 7 })"
+          },
+          {
+            "command": "Execute",
+            "expression": "SubmitExamOfCandidate(^candidateId4, { scoreJavascript: 7, scoreNodejs: 9, scoreJava: 9, scoreCommunicationSkills: 9 })"
+          },
+          {
+            "command": "Execute",
+            "expression": "SubmitExamOfCandidate(^candidateId5, { scoreJavascript: 9, scoreNodejs: 9, scoreJava: 9, scoreCommunicationSkills: 9 })"
+          },
+          {
+            "command": "Execute",
+            "expression": "SubmitExamOfCandidate(^candidateId6, { scoreJavascript: 9, scoreNodejs: 9, scoreJava: 9, scoreCommunicationSkills: 9 })"
+          },
+          {
+            "command": "Execute",
+            "expression": "SubmitExamOfCandidate(^candidateId7, { scoreJavascript: 9, scoreNodejs: 9, scoreJava: 9, scoreCommunicationSkills: 9 })"
+          },
+          {
+            "command": "Execute",
+            "expression": "SubmitExamOfCandidate(^candidateId8, { scoreJavascript: 9, scoreNodejs: 9, scoreJava: 9, scoreCommunicationSkills: 9 })"
+          },
+          {
+            "command": "Sleep",
+            "expressionMilliseconds": "40000"
+          },
+          {
+            "command": "Assert",
+            "expression1": "Map(GetCandidate(^candidateId1), [result, resultReason])",
+            "expression2": "[\"Rejected\", \"Rejected by Lateness\"]",
+            "operator": "=="
+          },
+          {
+            "command": "Assert",
+            "expression1": "Map(GetCandidate(^candidateId2), [result, resultReason])",
+            "expression2": "[\"Rejected\", \"Rejected by Exam\"]",
+            "operator": "=="
+          },
+          {
+            "command": "Assert",
+            "expression1": "Map(GetCandidate(^candidateId3), [result, resultReason, rrhhFail])",
+            "expression2": "[\"Rejected\", \"Rejected by Evaluation\", true]",
+            "operator": "=="
+          },
+          {
+            "command": "Assert",
+            "expression1": "Map(GetCandidate(^candidateId4), [result, resultReason, engineeringFail])",
+            "expression2": "[\"Rejected\", \"Rejected by Evaluation\", true]",
+            "operator": "=="
+          },
+          {
+            "command": "Assert",
+            "expression1": "Map(GetCandidate(^candidateId5), [result, resultReason, criminalRecordsFail])",
+            "expression2": "[\"Rejected\", \"Rejected by Evaluation\", true]",
+            "operator": "=="
+          },
+          {
+            "command": "Assert",
+            "expression1": "Map(GetCandidate(^candidateId6), [result, resultReason, medicalConditionsFail])",
+            "expression2": "[\"Rejected\", \"Rejected by Evaluation\", true]",
+            "operator": "=="
+          },
+          {
+            "command": "Assert",
+            "expression1": "Map(GetCandidate(^candidateId7), result)",
+            "expression2": "\"Approved\"",
+            "operator": "=="
+          },
+          {
+            "command": "Assert",
+            "expression1": "Map(GetCandidate(^candidateId8), result)",
+            "expression2": "\"Approved\"",
+            "operator": "=="
+          },
+          {
+            "command": "Execute",
+            "expression": "ReceiveMessageOfCandidate(^candidateId7, \"accept\")"
+          },
+          {
+            "command": "Execute",
+            "expression": "ReceiveMessageOfCandidate(^candidateId8, \"reject\")"
+          },
+          {
+            "command": "Sleep",
+            "expressionMilliseconds": "40000"
+          },
+          {
+            "command": "Assert",
+            "expression1": "Map(GetCandidate(^candidateId7), result)",
+            "expression2": "\"Approved\"",
+            "operator": "=="
+          },
+          {
+            "command": "Assert",
+            "expression1": "Map(GetCandidate(^candidateId8), [result, resultReason])",
+            "expression2": "[\"Rejected\", \"Rejected by Compensation\"]",
+            "operator": "=="
+          }
+        ],
+        "command": "If",
+        "expression": "^realMongodb"
+      }
+    ],
+    "typeReturn": "any",
+    "variables": [
+      {
+        "name": "realMongodb",
+        "type": "boolean"
+      },
+      {
+        "name": "candidateId1",
+        "type": "string"
+      },
+      {
+        "name": "candidateId2",
+        "type": "string"
+      },
+      {
+        "name": "candidateId3",
+        "type": "string"
+      },
+      {
+        "name": "candidateId4",
+        "type": "string"
+      },
+      {
+        "name": "candidateId5",
+        "type": "string"
+      },
+      {
+        "name": "candidateId6",
+        "type": "string"
+      },
+      {
+        "name": "candidateId7",
+        "type": "string"
+      },
+      {
+        "name": "candidateId8",
+        "type": "string"
+      }
+    ]
+  }
+}

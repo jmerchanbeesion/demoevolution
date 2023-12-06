@@ -1,0 +1,82 @@
+{
+  "algorithm": {
+    "parameters": [],
+    "statements": [
+      {
+        "command": "LoadResource",
+        "expressionPath": "\"/CultureEn.json\"",
+        "variableName": "culture"
+      },
+      {
+        "command": "LoadResource",
+        "expressionPath": "\"/MenuMain.json\"",
+        "variableName": "menu"
+      },
+      {
+        "command": "Set",
+        "expression": "{}",
+        "variableName": "carDealers"
+      },
+      {
+        "command": "Set",
+        "expression": "[]",
+        "variableName": "carDealers.branches"
+      },
+      {
+        "command": "LoadResource",
+        "expressionPath": "\"/CarDealersInformation.json\"",
+        "variableName": "carDealers.branches"
+      },
+      {
+        "command": "Set",
+        "expression": "{}",
+        "variableName": "surveyQuestions"
+      },
+      {
+        "command": "LoadResource",
+        "expressionPath": "\"/SurveyQuestions.json\"",
+        "variableName": "surveyQuestions.questions"
+      },
+      {
+        "command": "WriteLocalStorage",
+        "expression": "JsonStringify(^surveyQuestions)",
+        "localStorageVariableName": "\"surveyQuestions\""
+      },
+      {
+        "command": "WriteLocalStorage",
+        "expression": "JsonStringify(^carDealers)",
+        "localStorageVariableName": "\"carDealers\""
+      },
+      {
+        "command": "Launch",
+        "expressionCulture": "^culture",
+        "expressionIcon": "\"logo.svg\"",
+        "expressionMainMenu": "^menu",
+        "expressionSubTitle": "null",
+        "expressionTitle": "\"CarDealerSurvey\"",
+        "expressionToolsMenu": "null",
+        "expressionSearch": "false",
+        "uiComponentName": "CmpHome"
+      }
+    ],
+    "typeReturn": "any",
+    "variables": [
+      {
+        "name": "culture",
+        "type": "Culture"
+      },
+      {
+        "name": "menu",
+        "type": "list(MenuItem)"
+      },
+      {
+        "name": "carDealers",
+        "type": "CarDealers"
+      },
+      {
+        "name": "surveyQuestions",
+        "type": "SurveyQuestions"
+      }
+    ]
+  }
+}

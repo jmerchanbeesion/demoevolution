@@ -1,0 +1,70 @@
+{
+  "autoincrementalPrimaryKey": true,
+  "columns": [
+    {
+      "alias": "studentId",
+      "allowNull": false,
+      "name": "STUDENT_ID",
+      "primaryKey": true,
+      "type": "integer"
+    },
+    {
+      "alias": "code",
+      "allowNull": false,
+      "name": "CODE",
+      "primaryKey": false,
+      "type": "string"
+    },
+    {
+      "alias": "name",
+      "allowNull": false,
+      "name": "NAME",
+      "primaryKey": false,
+      "type": "string"
+    },
+    {
+      "alias": "surname",
+      "allowNull": false,
+      "name": "SURNAME",
+      "primaryKey": false,
+      "type": "string"
+    },
+    {
+      "alias": "birthDate",
+      "allowNull": false,
+      "name": "BIRTH_DATE",
+      "primaryKey": false,
+      "type": "date"
+    },
+    {
+      "alias": "gender",
+      "allowNull": false,
+      "columnName": "GENDER",
+      "name": "GENDER",
+      "primaryKey": false,
+      "type": "string"
+    },
+    {
+      "alias": "average",
+      "allowNull": true,
+      "columnName": "AVERAGE",
+      "name": "AVERAGE",
+      "primaryKey": false,
+      "type": "decimal"
+    }
+  ],
+  "foreignKeys": [],
+  "indexes": [],
+  "isView": false,
+  "primaryKeyName": "PK_STUDENTS",
+  "sequenceName": "SQ_STUDENTS",
+  "tableName": "TBL_STUDENTS",
+  "uniqueKeys": [
+    {
+      "columnsNames": [
+        "CODE"
+      ],
+      "name": "UK_STUDENTS_1"
+    }
+  ]
+}

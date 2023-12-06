@@ -1,0 +1,16 @@
+{
+  "callVariableName": "api_key",
+  "configParameterName": null,
+  "cookieName": "",
+  "localStorageVariableName": "",
+  "sessionStorageVariableName": "",
+  "source": "CallVariable",
+  "usages": [
+    {
+      "securitySchemeName": "MsDefault.ApiKeyHeader"
+    },
+    {
+      "securitySchemeName": "MsDefault.ApiKeyQuery"
+    }
+  ]
+}

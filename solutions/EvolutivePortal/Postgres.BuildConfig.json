@@ -1,0 +1,75 @@
+{
+  "items": [
+    {
+      "systemName": "Main",
+      "action": "build",
+      "parameters": [
+        {
+          "configParameterName": "ParamBoolean",
+          "value": true
+        },
+        {
+          "configParameterName": "ParamCredentials",
+          "user": "john",
+          "password": "1234"
+        },
+        {
+          "configParameterName": "ParamNumeric",
+          "value": 100
+        },
+        {
+          "configParameterName": "ParamString",
+          "value": "Hello World"
+        },
+        {
+          "configParameterName": "RealMongodb",
+          "value": false
+        },
+        {
+          "configParameterName": "RealRds",
+          "value": true
+        },
+        {
+          "configParameterName": "RealHazelcast",
+          "value": false
+        },
+        {
+          "configParameterName": "RealRedis",
+          "value": false
+        }
+      ]
+    },
+    {
+      "systemName": "MsDefault",
+      "action": "build"
+    },
+    {
+      "systemName": "ProcessDefault",
+      "action": "build"
+    },
+    {
+      "systemName": "RdsDefault",
+      "action": "connect",
+      "connectionData": {
+        "host": "localhost",
+        "database": "postgres",
+        "user": "root",
+        "password": "root",
+        "providerName": "Postgres",
+        "port": 5439
+      }
+    },
+    {
+      "systemName": "MongoDefault",
+      "action": "omit"
+    },
+    {
+      "systemName": "RedisDefault",
+      "action": "omit"
+    },
+    {
+      "systemName": "HazelcastDefault",
+      "action": "omit"
+    }
+  ]
+}

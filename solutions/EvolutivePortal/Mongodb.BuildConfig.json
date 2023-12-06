@@ -1,0 +1,60 @@
+{
+  "items": [
+    {
+      "systemName": "Main",
+      "action": "build",
+      "parameters": [
+        {
+          "configParameterName": "ParamBoolean",
+          "value": true
+        },
+        {
+          "configParameterName": "ParamCredentials",
+          "user": "john",
+          "password": "1234"
+        },
+        {
+          "configParameterName": "ParamNumeric",
+          "value": 100
+        },
+        {
+          "configParameterName": "ParamString",
+          "value": "Hello World"
+        },
+        {
+          "configParameterName": "UsingRdsMock",
+          "value": true
+        },
+        {
+          "configParameterName": "RealMongodb",
+          "value": true
+        },
+        {
+          "configParameterName": "RealRds",
+          "value": false
+        },
+        {
+          "configParameterName": "RealHazelcast",
+          "value": false
+        },
+        {
+          "configParameterName": "RealRedis",
+          "value": false
+        }
+      ]
+    },
+    {
+      "systemName": "ProcessDefault",
+      "action": "build",
+      "activateProcessPersistence": true
+    },
+    {
+      "systemName": "MongoDefault",
+      "action": "connect",
+      "connectionData": {
+        "url": "mongodb://localhost:27017",
+        "databaseName": "blazedpath-tests"
+      }
+    }
+  ]
+}

@@ -1,0 +1,490 @@
+{
+  "eventsAndFunctions": [
+    {
+      "algorithm": {
+        "parameters": [],
+        "statements": [
+          {
+            "command": "SetValue",
+            "expression": "getTopAssociates()",
+            "widgetName": "topAssociatesRepeater"
+          },
+          {
+            "command": "SetValue",
+            "expression": "getTreeViewData()",
+            "widgetName": "allAssociatesTreeView"
+          }
+        ],
+        "typeReturn": "any",
+        "variables": []
+      },
+      "name": "main_init"
+    },
+    {
+      "algorithm": {
+        "parameters": [
+          {
+            "name": "treeNodeRef",
+            "type": "string"
+          }
+        ],
+        "statements": [
+          {
+            "command": "ReadTreeNode",
+            "expressionTreeNodeRef": "^treeNodeRef",
+            "variableName": "record",
+            "widgetName": "allAssociatesTreeView"
+          },
+          {
+            "buttons": "none",
+            "command": "Open",
+            "expressionIcon": "\"add.svg\"",
+            "expressionStartModel": "{data:record.properties}",
+            "expressionTitle": "\"Details\"",
+            "mode": "right-drawer",
+            "size": "default",
+            "uiComponentName": "CmpAssociateSurveysDetail"
+          }
+        ],
+        "typeReturn": "any",
+        "variables": [
+          {
+            "name": "record",
+            "type": "any"
+          }
+        ]
+      },
+      "name": "allAssociatesTreeView_handlerTreeNodeAction_details"
+    },
+    {
+      "algorithm": {
+        "parameters": [],
+        "statements": [
+          {
+            "command": "Set",
+            "expression": "{}",
+            "variableName": "carDealers"
+          },
+          {
+            "command": "Set",
+            "expression": "getCarDealers()",
+            "variableName": "carDealers.branches"
+          },
+          {
+            "command": "Set",
+            "expression": "[]",
+            "variableName": "bestAssociates"
+          },
+          {
+            "children": [
+              {
+                "command": "Set",
+                "expression": "FindAll(^branch.associates, totalScore >= 4)",
+                "variableName": "associates"
+              },
+              {
+                "children": [
+                  {
+                    "command": "Set",
+                    "expression": "^branch.name",
+                    "variableName": "associate.branchName"
+                  },
+                  {
+                    "children": [
+                      {
+                        "command": "Set",
+                        "expression": "\"woman1\"",
+                        "variableName": "associate.icon"
+                      }
+                    ],
+                    "command": "If",
+                    "expression": "^associate.gender == \"Female\""
+                  },
+                  {
+                    "children": [
+                      {
+                        "command": "Set",
+                        "expression": "\"man1\"",
+                        "variableName": "associate.icon"
+                      }
+                    ],
+                    "command": "Else"
+                  },
+                  {
+                    "command": "Push",
+                    "expressionItem": "^associate",
+                    "variableNameList": "bestAssociates"
+                  }
+                ],
+                "command": "ForEach",
+                "expressionList": "^associates",
+                "variableNameItem": "associate"
+              }
+            ],
+            "command": "ForEach",
+            "expressionList": "^carDealers.branches",
+            "variableNameItem": "branch"
+          },
+          {
+            "command": "Set",
+            "expression": "SortDescending(^bestAssociates, totalScore)",
+            "variableName": "bestAssociates"
+          },
+          {
+            "command": "Return",
+            "expression": "^bestAssociates"
+          }
+        ],
+        "typeReturn": "any",
+        "variables": [
+          {
+            "name": "branch",
+            "type": "CarDealerBranch"
+          },
+          {
+            "name": "carDealers",
+            "type": "CarDealers"
+          },
+          {
+            "name": "associates",
+            "type": "any"
+          },
+          {
+            "name": "associate",
+            "type": "any"
+          },
+          {
+            "name": "bestAssociates",
+            "type": "any"
+          }
+        ]
+      },
+      "name": "getTopAssociates"
+    },
+    {
+      "algorithm": {
+        "parameters": [],
+        "statements": [
+          {
+            "command": "ReadLocalStorage",
+            "localStorageVariableName": "\"carDealers\"",
+            "variableName": "value"
+          },
+          {
+            "command": "Set",
+            "expression": "JsonParse(^value)",
+            "variableName": "carDealers"
+          },
+          {
+            "command": "Return",
+            "expression": "^carDealers.branches"
+          }
+        ],
+        "typeReturn": "CarDealers",
+        "variables": [
+          {
+            "name": "carDealers",
+            "type": "CarDealers"
+          },
+          {
+            "name": "value",
+            "type": "string"
+          }
+        ]
+      },
+      "name": "getCarDealers"
+    },
+    {
+      "algorithm": {
+        "parameters": [],
+        "statements": [
+          {
+            "command": "Set",
+            "expression": "{}",
+            "variableName": "carDealers"
+          },
+          {
+            "command": "Set",
+            "expression": "getCarDealers()",
+            "variableName": "carDealers.branches"
+          },
+          {
+            "command": "Set",
+            "expression": "{children:[]}",
+            "variableName": "convertedData"
+          },
+          {
+            "children": [
+              {
+                "command": "Set",
+                "expression": "{}",
+                "variableName": "data"
+              },
+              {
+                "command": "Set",
+                "expression": "[\n                {\n                    bindText: \"since\"\n                },\n                {\n                    bindText: \"totalScore\"\n                }\n            ]",
+                "variableName": "data.columns"
+              },
+              {
+                "command": "Set",
+                "expression": "\"name\"",
+                "variableName": "data.bindText"
+              },
+              {
+                "command": "Set",
+                "expression": "{name: ^branch.name}",
+                "variableName": "data.properties"
+              },
+              {
+                "command": "Set",
+                "expression": "[]",
+                "variableName": "data.children"
+              },
+              {
+                "command": "Set",
+                "expression": "Map(^branch, associates)",
+                "variableName": "associates"
+              },
+              {
+                "children": [
+                  {
+                    "command": "Set",
+                    "expression": "{}",
+                    "variableName": "associateData"
+                  },
+                  {
+                    "command": "Set",
+                    "expression": "\"name\"",
+                    "variableName": "associateData.bindText"
+                  },
+                  {
+                    "command": "Set",
+                    "expression": "^associate",
+                    "variableName": "associateData.properties"
+                  },
+                  {
+                    "command": "Push",
+                    "expressionItem": "^associateData",
+                    "variableNameList": "data.children"
+                  },
+                  {
+                    "children": [
+                      {
+                        "command": "Set",
+                        "expression": "[\n                {\n                    bindText: \"since\"\n                },\n                {\n                    bindText: \"totalScore\",\n                    color: \"success\"\n                }\n            ]",
+                        "variableName": "associateData.columns"
+                      }
+                    ],
+                    "command": "If",
+                    "expression": "^associate.totalScore >= 4"
+                  },
+                  {
+                    "children": [
+                      {
+                        "command": "Set",
+                        "expression": "[\n                {\n                    bindText: \"since\"\n                },\n                {\n                    bindText: \"totalScore\",\n                    color: \"warning\"\n                }\n            ]",
+                        "variableName": "associateData.columns"
+                      }
+                    ],
+                    "command": "ElseIf",
+                    "expression": "^associate.totalScore >= 2.5"
+                  },
+                  {
+                    "children": [
+                      {
+                        "command": "Set",
+                        "expression": "[\n                {\n                    bindText: \"since\"\n                },\n                {\n                    bindText: \"totalScore\",\n                    color: \"error\"\n                }\n            ]",
+                        "variableName": "associateData.columns"
+                      }
+                    ],
+                    "command": "ElseIf",
+                    "expression": "^associate.totalScore > 0"
+                  },
+                  {
+                    "children": [
+                      {
+                        "command": "Set",
+                        "expression": "[\n                {\n                    bindText: \"since\"\n                },\n                {\n                    bindText: \"totalScore\"\n                }\n            ]",
+                        "variableName": "associateData.columns"
+                      }
+                    ],
+                    "command": "Else"
+                  }
+                ],
+                "command": "ForEach",
+                "expressionList": "^associates",
+                "variableNameItem": "associate"
+              },
+              {
+                "command": "Push",
+                "expressionItem": "^data",
+                "variableNameList": "convertedData.children"
+              }
+            ],
+            "command": "ForEach",
+            "expressionList": "^carDealers.branches",
+            "variableNameItem": "branch"
+          },
+          {
+            "command": "Return",
+            "expression": "^convertedData"
+          }
+        ],
+        "typeReturn": "any",
+        "variables": [
+          {
+            "name": "carDealers",
+            "type": "CarDealers"
+          },
+          {
+            "name": "branch",
+            "type": "CarDealerBranch"
+          },
+          {
+            "name": "convertedData",
+            "type": "any"
+          },
+          {
+            "name": "data",
+            "type": "any"
+          },
+          {
+            "name": "associates",
+            "type": "any"
+          },
+          {
+            "name": "associate",
+            "type": "any"
+          },
+          {
+            "name": "associateData",
+            "type": "any"
+          }
+        ]
+      },
+      "name": "getTreeViewData"
+    }
+  ],
+  "model": [],
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "align": "left",
+            "color": "default",
+            "icon": "dashboard.svg",
+            "name": "headerIcon",
+            "size": "xx-large",
+            "widget": "Icon"
+          },
+          {
+            "align": "left",
+            "color": "default",
+            "dock": "previous",
+            "name": "headerLabel",
+            "size": "large",
+            "text": "The Best Cars Associates Dashboard.",
+            "widget": "Label"
+          }
+        ],
+        "cssClass": "blz-border-radius blz-cast-shadow blz-area-default",
+        "layout": "container"
+      },
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "name": "topAssociatesRepeater",
+                "uiComponentBinding": {
+                  "associate": "{record}"
+                },
+                "uiComponentName": "CmpTopAssociateCard",
+                "widget": "Repeater"
+              }
+            ],
+            "layout": "container",
+            "title": "Top Associates"
+          },
+          {
+            "children": [
+              {
+                "columns": [
+                  {
+                    "align": "left",
+                    "header": "Name",
+                    "key": "name"
+                  },
+                  {
+                    "align": "center",
+                    "header": "Date Joined",
+                    "key": "since"
+                  },
+                  {
+                    "align": "right",
+                    "header": "Score",
+                    "key": "score"
+                  }
+                ],
+                "hideRoot": true,
+                "name": "allAssociatesTreeView",
+                "treeNodeActions": [
+                  {
+                    "icon": "information.svg",
+                    "key": "details"
+                  }
+                ],
+                "widget": "TreeView"
+              }
+            ],
+            "layout": "container",
+            "title": "All Associates"
+          }
+        ],
+        "cssClass": "blz-border-radius blz-cast-shadow blz-area-default",
+        "layout": "tabs",
+        "size": "12/12"
+      }
+    ],
+    "cssClass": "blz-padding-top-large blz-padding-right-large blz-padding-left-large blz-padding-bottom-large blz-area-main",
+    "horizontalSeparation": "large",
+    "layout": "container",
+    "verticalSeparation": "large"
+  },
+  "routing": {
+    "path": "/dealer-dashboard2"
+  },
+  "unused": [
+    {
+      "__internalName": "allAssociatesTreeGrid",
+      "columns": [
+        {
+          "align": "left",
+          "bindText": "name",
+          "header": "Name"
+        },
+        {
+          "align": "center",
+          "bindText": "since",
+          "format": "Date",
+          "header": "Date Joined"
+        },
+        {
+          "align": "right",
+          "bindText": "totalScore",
+          "header": "Score",
+          "key": "totalScore"
+        }
+      ],
+      "name": "allAssociatesTreeGrid",
+      "recordActions": [
+        {
+          "icon": "information.svg",
+          "key": "details"
+        }
+      ],
+      "widget": "TreeGrid"
+    }
+  ]
+}

@@ -1,0 +1,459 @@
+{
+  "algorithm": {
+    "parameters": [],
+    "statements": [
+      {
+        "command": "Execute",
+        "expression": "RdsDelete(RdsDefault.TblCareersCourses, true)"
+      },
+      {
+        "command": "Execute",
+        "expression": "RdsDelete(RdsDefault.TblInscriptions, true)"
+      },
+      {
+        "command": "Execute",
+        "expression": "RdsDelete(RdsDefault.TblCareers, true)"
+      },
+      {
+        "command": "Execute",
+        "expression": "RdsDelete(RdsDefault.TblCourses, true)"
+      },
+      {
+        "command": "Execute",
+        "expression": "RdsDelete(RdsDefault.TblCareers, true)"
+      },
+      {
+        "command": "Execute",
+        "expression": "RdsDelete(RdsDefault.TblStudents, true)"
+      },
+      {
+        "command": "Execute",
+        "expression": "RdsDelete(RdsDefault.TblDataTypes, true)"
+      },
+      {
+        "command": "Set",
+        "expression": "RdsInsert(RdsDefault.TblCareers, { code: \"CA001\", name: \"Environmental Sciences\" })",
+        "variableName": "careerId01"
+      },
+      {
+        "command": "Set",
+        "expression": "RdsInsert(RdsDefault.TblCareers, { code: \"CA002\", name: \"Bioengineering\" })",
+        "variableName": "careerId02"
+      },
+      {
+        "command": "Set",
+        "expression": "RdsInsert(RdsDefault.TblCareers, { code: \"CA003\", name: \"Electrical Engineering\" })",
+        "variableName": "careerId03"
+      },
+      {
+        "command": "Set",
+        "expression": "RdsInsert(RdsDefault.TblCareers, { code: \"CA004\", name: \"Applied Mechanics\" })",
+        "variableName": "careerId04"
+      },
+      {
+        "command": "Set",
+        "expression": "RdsInsert(RdsDefault.TblCourses, { code: \"CO001\", name: \"Physical Mathematics I\" })",
+        "variableName": "courseId01"
+      },
+      {
+        "command": "Set",
+        "expression": "RdsInsert(RdsDefault.TblCourses, { code: \"CO002\", name: \"Physical Mathematics II\" })",
+        "variableName": "courseId02"
+      },
+      {
+        "command": "Set",
+        "expression": "RdsInsert(RdsDefault.TblCourses, { code: \"CO003\", name: \"Scientific Computing\" })",
+        "variableName": "courseId03"
+      },
+      {
+        "command": "Set",
+        "expression": "RdsInsert(RdsDefault.TblCourses, { code: \"CO004\", name: \"Numerical methods\" })",
+        "variableName": "courseId04"
+      },
+      {
+        "command": "Set",
+        "expression": "RdsInsert(RdsDefault.TblCourses, { code: \"CO005\", name: \"Advanced Cellular Engineering\" })",
+        "variableName": "courseId05"
+      },
+      {
+        "command": "Set",
+        "expression": "RdsInsert(RdsDefault.TblCourses, { code: \"CO006\", name: \"Advanced Tissue Engineering\" })",
+        "variableName": "courseId06"
+      },
+      {
+        "command": "Set",
+        "expression": "RdsInsert(RdsDefault.TblCourses, { code: \"CO007\", name: \"Drug Delivery\" })",
+        "variableName": "courseId07"
+      },
+      {
+        "command": "Set",
+        "expression": "RdsInsert(RdsDefault.TblCourses, { code: \"CO008\", name: \"Cardiac Biophysics\" })",
+        "variableName": "courseId08"
+      },
+      {
+        "command": "Set",
+        "expression": "RdsInsert(RdsDefault.TblCourses, { code: \"CO009\", name: \"Differential Geometry\" })",
+        "variableName": "courseId09"
+      },
+      {
+        "command": "Set",
+        "expression": "RdsInsert(RdsDefault.TblCourses, { code: \"CO010\", name: \"Discrete Stochastic Processes\" })",
+        "variableName": "courseId10"
+      },
+      {
+        "command": "Set",
+        "expression": "RdsInsert(RdsDefault.TblCourses, { code: \"CO011\", name: \"Principals of Digital Communications\" })",
+        "variableName": "courseId11"
+      },
+      {
+        "command": "Set",
+        "expression": "RdsInsert(RdsDefault.TblCourses, { code: \"CO012\", name: \"Bayesian Data Analysis\" })",
+        "variableName": "courseId12"
+      },
+      {
+        "command": "Set",
+        "expression": "RdsInsert(RdsDefault.TblCourses, { code: \"CO013\", name: \"Fluid Dynamics\" })",
+        "variableName": "courseId13"
+      },
+      {
+        "command": "Set",
+        "expression": "RdsInsert(RdsDefault.TblCourses, { code: \"CO014\", name: \"Solid Mechanics\" })",
+        "variableName": "courseId14"
+      },
+      {
+        "command": "Set",
+        "expression": "RdsInsert(RdsDefault.TblCourses, { code: \"CO015\", name: \"Introduction to Soft Matter\" })",
+        "variableName": "courseId15"
+      },
+      {
+        "command": "Set",
+        "expression": "RdsInsert(RdsDefault.TblCourses, { code: \"CO016\", name: \"Advanced Elasticity\" })",
+        "variableName": "courseId16"
+      },
+      {
+        "command": "Set",
+        "expression": "RdsInsert(RdsDefault.TblStudents, { code: \"ST001\", name: \"Gerard\", surname: \"Madden\", birthDate: Date(1977, 9, 5), gender: \"M\", average: 6 })",
+        "variableName": "studentId01"
+      },
+      {
+        "command": "Set",
+        "expression": "RdsInsert(RdsDefault.TblStudents, { code: \"ST002\", name: \"Andrew\", surname: \"Hanrahan\", birthDate: Date(1976, 2, 1), gender: \"M\", average: 4 })",
+        "variableName": "studentId02"
+      },
+      {
+        "command": "Set",
+        "expression": "RdsInsert(RdsDefault.TblStudents, { code: \"ST003\", name: \"Tracey\", surname: \"Follan\", birthDate: Date(1974, 5, 22), gender: \"F\", average: 6 })",
+        "variableName": "studentId03"
+      },
+      {
+        "command": "Set",
+        "expression": "RdsInsert(RdsDefault.TblStudents, { code: \"ST004\", name: \"Scott\", surname: \"Doyle\", birthDate: Date(1978, 1, 19), gender: \"M\", average: 9 })",
+        "variableName": "studentId04"
+      },
+      {
+        "command": "Set",
+        "expression": "RdsInsert(RdsDefault.TblStudents, { code: \"ST005\", name: \"Jenny\", surname: \"Surplice\", birthDate: Date(1977, 12, 10), gender: \"F\", average: 8 })",
+        "variableName": "studentId05"
+      },
+      {
+        "command": "Set",
+        "expression": "RdsInsert(RdsDefault.TblStudents, { code: \"ST006\", name: \"Ben\", surname: \"Pearce\", birthDate: Date(1979, 10, 25), gender: \"M\", average: 8 })",
+        "variableName": "studentId06"
+      },
+      {
+        "command": "Set",
+        "expression": "RdsInsert(RdsDefault.TblStudents, { code: \"ST007\", name: \"Graham\", surname: \"Meani\", birthDate: Date(1976, 5, 12), gender: \"M\", average: null })",
+        "variableName": "studentId07"
+      },
+      {
+        "command": "Set",
+        "expression": "RdsInsert(RdsDefault.TblStudents, { code: \"ST008\", name: \"Tara\", surname: \"Grocott\", birthDate: Date(1975, 9, 22), gender: \"F\", average: 1 })",
+        "variableName": "studentId08"
+      },
+      {
+        "command": "Execute",
+        "expression": "RdsInsert(RdsDefault.TblCareersCourses, { careerId: ^careerId01, courseId: ^courseId01 })"
+      },
+      {
+        "command": "Execute",
+        "expression": "RdsInsert(RdsDefault.TblCareersCourses, { careerId: ^careerId01, courseId: ^courseId02 })"
+      },
+      {
+        "command": "Execute",
+        "expression": "RdsInsert(RdsDefault.TblCareersCourses, { careerId: ^careerId01, courseId: ^courseId03 })"
+      },
+      {
+        "command": "Execute",
+        "expression": "RdsInsert(RdsDefault.TblCareersCourses, { careerId: ^careerId01, courseId: ^courseId04 })"
+      },
+      {
+        "command": "Execute",
+        "expression": "RdsInsert(RdsDefault.TblCareersCourses, { careerId: ^careerId02, courseId: ^courseId01 })"
+      },
+      {
+        "command": "Execute",
+        "expression": "RdsInsert(RdsDefault.TblCareersCourses, { careerId: ^careerId02, courseId: ^courseId03 })"
+      },
+      {
+        "command": "Execute",
+        "expression": "RdsInsert(RdsDefault.TblCareersCourses, { careerId: ^careerId02, courseId: ^courseId05 })"
+      },
+      {
+        "command": "Execute",
+        "expression": "RdsInsert(RdsDefault.TblCareersCourses, { careerId: ^careerId02, courseId: ^courseId06 })"
+      },
+      {
+        "command": "Execute",
+        "expression": "RdsInsert(RdsDefault.TblCareersCourses, { careerId: ^careerId02, courseId: ^courseId07 })"
+      },
+      {
+        "command": "Execute",
+        "expression": "RdsInsert(RdsDefault.TblCareersCourses, { careerId: ^careerId02, courseId: ^courseId08 })"
+      },
+      {
+        "command": "Execute",
+        "expression": "RdsInsert(RdsDefault.TblCareersCourses, { careerId: ^careerId03, courseId: ^courseId01 })"
+      },
+      {
+        "command": "Execute",
+        "expression": "RdsInsert(RdsDefault.TblCareersCourses, { careerId: ^careerId03, courseId: ^courseId02 })"
+      },
+      {
+        "command": "Execute",
+        "expression": "RdsInsert(RdsDefault.TblCareersCourses, { careerId: ^careerId03, courseId: ^courseId03 })"
+      },
+      {
+        "command": "Execute",
+        "expression": "RdsInsert(RdsDefault.TblCareersCourses, { careerId: ^careerId03, courseId: ^courseId04 })"
+      },
+      {
+        "command": "Execute",
+        "expression": "RdsInsert(RdsDefault.TblCareersCourses, { careerId: ^careerId03, courseId: ^courseId09 })"
+      },
+      {
+        "command": "Execute",
+        "expression": "RdsInsert(RdsDefault.TblCareersCourses, { careerId: ^careerId03, courseId: ^courseId10 })"
+      },
+      {
+        "command": "Execute",
+        "expression": "RdsInsert(RdsDefault.TblCareersCourses, { careerId: ^careerId03, courseId: ^courseId12 })"
+      },
+      {
+        "command": "Execute",
+        "expression": "RdsInsert(RdsDefault.TblCareersCourses, { careerId: ^careerId04, courseId: ^courseId01 })"
+      },
+      {
+        "command": "Execute",
+        "expression": "RdsInsert(RdsDefault.TblCareersCourses, { careerId: ^careerId04, courseId: ^courseId04 })"
+      },
+      {
+        "command": "Execute",
+        "expression": "RdsInsert(RdsDefault.TblCareersCourses, { careerId: ^careerId04, courseId: ^courseId13 })"
+      },
+      {
+        "command": "Execute",
+        "expression": "RdsInsert(RdsDefault.TblCareersCourses, { careerId: ^careerId04, courseId: ^courseId14 })"
+      },
+      {
+        "command": "Execute",
+        "expression": "RdsInsert(RdsDefault.TblCareersCourses, { careerId: ^careerId04, courseId: ^courseId15 })"
+      },
+      {
+        "command": "Execute",
+        "expression": "RdsInsert(RdsDefault.TblCareersCourses, { careerId: ^careerId04, courseId: ^courseId16 })"
+      },
+      {
+        "command": "Execute",
+        "expression": "RdsInsert(RdsDefault.TblCareersCourses, { careerId: ^careerId03, courseId: ^courseId11 })"
+      },
+      {
+        "command": "Execute",
+        "expression": "RdsInsert(RdsDefault.TblInscriptions, { studentId: ^studentId01, courseId: ^courseId01, creationDatetime: Datetime(2018, 1, 17, 12, 0, 0) })"
+      },
+      {
+        "command": "Execute",
+        "expression": "RdsInsert(RdsDefault.TblInscriptions, { studentId: ^studentId01, courseId: ^courseId05, creationDatetime: Datetime(2018, 1, 18, 12, 0, 0) })"
+      },
+      {
+        "command": "Execute",
+        "expression": "RdsInsert(RdsDefault.TblInscriptions, { studentId: ^studentId01, courseId: ^courseId06, creationDatetime: Datetime(2018, 1, 18, 12, 0, 0) })"
+      },
+      {
+        "command": "Execute",
+        "expression": "RdsInsert(RdsDefault.TblInscriptions, { studentId: ^studentId02, courseId: ^courseId01, creationDatetime: Datetime(2018, 1, 22, 12, 0, 0) })"
+      },
+      {
+        "command": "Execute",
+        "expression": "RdsInsert(RdsDefault.TblInscriptions, { studentId: ^studentId04, courseId: ^courseId01, creationDatetime: Datetime(2018, 1, 23, 12, 0, 0) })"
+      },
+      {
+        "command": "Execute",
+        "expression": "RdsInsert(RdsDefault.TblInscriptions, { studentId: ^studentId04, courseId: ^courseId02, creationDatetime: Datetime(2018, 1, 23, 12, 0, 0) })"
+      },
+      {
+        "command": "Execute",
+        "expression": "RdsInsert(RdsDefault.TblInscriptions, { studentId: ^studentId04, courseId: ^courseId03, creationDatetime: Datetime(2018, 1, 23, 12, 0, 0) })"
+      },
+      {
+        "command": "Execute",
+        "expression": "RdsInsert(RdsDefault.TblInscriptions, { studentId: ^studentId04, courseId: ^courseId04, creationDatetime: Datetime(2018, 1, 23, 12, 0, 0) })"
+      },
+      {
+        "command": "Execute",
+        "expression": "RdsInsert(RdsDefault.TblInscriptions, { studentId: ^studentId04, courseId: ^courseId09, creationDatetime: Datetime(2018, 1, 23, 12, 0, 0) })"
+      },
+      {
+        "command": "Execute",
+        "expression": "RdsInsert(RdsDefault.TblInscriptions, { studentId: ^studentId04, courseId: ^courseId10, creationDatetime: Datetime(2018, 1, 23, 12, 0, 0) })"
+      },
+      {
+        "command": "Execute",
+        "expression": "RdsInsert(RdsDefault.TblInscriptions, { studentId: ^studentId05, courseId: ^courseId01, creationDatetime: Datetime(2018, 2, 1, 12, 0, 0) })"
+      },
+      {
+        "command": "Execute",
+        "expression": "RdsInsert(RdsDefault.TblInscriptions, { studentId: ^studentId05, courseId: ^courseId04, creationDatetime: Datetime(2018, 2, 1, 12, 0, 0) })"
+      },
+      {
+        "command": "Execute",
+        "expression": "RdsInsert(RdsDefault.TblInscriptions, { studentId: ^studentId05, courseId: ^courseId13, creationDatetime: Datetime(2018, 2, 1, 12, 0, 0) })"
+      },
+      {
+        "command": "Execute",
+        "expression": "RdsInsert(RdsDefault.TblInscriptions, { studentId: ^studentId05, courseId: ^courseId14, creationDatetime: Datetime(2018, 2, 3, 12, 0, 0) })"
+      },
+      {
+        "command": "Execute",
+        "expression": "RdsInsert(RdsDefault.TblInscriptions, { studentId: ^studentId05, courseId: ^courseId15, creationDatetime: Datetime(2018, 2, 3, 12, 0, 0) })"
+      },
+      {
+        "command": "Execute",
+        "expression": "RdsInsert(RdsDefault.TblInscriptions, { studentId: ^studentId05, courseId: ^courseId16, creationDatetime: Datetime(2018, 2, 3, 12, 0, 0) })"
+      },
+      {
+        "command": "Execute",
+        "expression": "RdsInsert(RdsDefault.TblInscriptions, { studentId: ^studentId07, courseId: ^courseId01, creationDatetime: Datetime(2018, 1, 29, 12, 0, 0) })"
+      },
+      {
+        "command": "Return",
+        "expression": "null"
+      }
+    ],
+    "typeReturn": "any",
+    "variables": [
+      {
+        "name": "careerId01",
+        "type": "integer"
+      },
+      {
+        "name": "careerId02",
+        "type": "integer"
+      },
+      {
+        "name": "careerId03",
+        "type": "integer"
+      },
+      {
+        "name": "careerId04",
+        "type": "integer"
+      },
+      {
+        "name": "courseId01",
+        "type": "integer"
+      },
+      {
+        "name": "courseId02",
+        "type": "integer"
+      },
+      {
+        "name": "courseId03",
+        "type": "integer"
+      },
+      {
+        "name": "courseId04",
+        "type": "integer"
+      },
+      {
+        "name": "courseId05",
+        "type": "integer"
+      },
+      {
+        "name": "courseId06",
+        "type": "integer"
+      },
+      {
+        "name": "courseId07",
+        "type": "integer"
+      },
+      {
+        "name": "courseId08",
+        "type": "integer"
+      },
+      {
+        "name": "courseId09",
+        "type": "integer"
+      },
+      {
+        "name": "courseId10",
+        "type": "integer"
+      },
+      {
+        "name": "courseId11",
+        "type": "integer"
+      },
+      {
+        "name": "courseId12",
+        "type": "integer"
+      },
+      {
+        "name": "courseId13",
+        "type": "integer"
+      },
+      {
+        "name": "courseId14",
+        "type": "integer"
+      },
+      {
+        "name": "courseId15",
+        "type": "integer"
+      },
+      {
+        "name": "courseId16",
+        "type": "integer"
+      },
+      {
+        "name": "studentId01",
+        "type": "integer"
+      },
+      {
+        "name": "studentId02",
+        "type": "integer"
+      },
+      {
+        "name": "studentId03",
+        "type": "integer"
+      },
+      {
+        "name": "studentId04",
+        "type": "integer"
+      },
+      {
+        "name": "studentId05",
+        "type": "integer"
+      },
+      {
+        "name": "studentId06",
+        "type": "integer"
+      },
+      {
+        "name": "studentId07",
+        "type": "integer"
+      },
+      {
+        "name": "studentId08",
+        "type": "integer"
+      }
+    ]
+  },
+  "routing": null
+}

@@ -1,0 +1,495 @@
+{
+  "algorithm": {
+    "parameters": [],
+    "statements": [
+      {
+        "command": "Assert",
+        "expression1": "Datetime(2018, 1, 1, 0, 0, 0, 0) + 1000",
+        "expression2": "Datetime(2018, 1, 1, 0, 0, 1, 0)",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Datetime(2018, 1, 1, 0, 0, 0, 0) - 1000",
+        "expression2": "Datetime(2017, 12, 31, 23, 59, 59, 0)",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Datetime(2018, 1, 1, 0, 0, 1, 0) - Datetime(2017, 12, 31, 23, 59, 59, 0)",
+        "expression2": "2000",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Date(2018, 1, 1) + 10",
+        "expression2": "Date(2018, 1, 11)",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Date(2018, 1, 1) - 10",
+        "expression2": "Date(2017, 12, 22)",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Date(2018, 1, 11) - Date(2017, 12, 22)",
+        "expression2": "20",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Time(12, 0, 0, 0) + 1000",
+        "expression2": "Time(12, 0, 1, 0)",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Time(12, 0, 0, 0) - 1000",
+        "expression2": "Time(11, 59, 59, 0)",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Time(12, 0, 1, 0) - Time(11, 59, 59, 0)",
+        "expression2": "2000",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "AddDays(Datetime(2018, 1, 1, 0, 0, 0, 0), 10)",
+        "expression2": "Datetime(2018, 1, 11, 0, 0, 0, 0)",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "AddDays(Date(2018, 1, 1), 10)",
+        "expression2": "Date(2018, 1, 11)",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "AddDays(null, 10)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "AddHours(Datetime(2018, 1, 1, 0, 0, 0, 0), 10)",
+        "expression2": "Datetime(2018, 1, 1, 10, 0, 0, 0)",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "AddHours(Time(12, 0, 0, 0), 10)",
+        "expression2": "Time(22, 0, 0, 0)",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "AddHours(null, 10)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "AddMilliseconds(Datetime(2018, 1, 1, 0, 0, 0, 0), 1000)",
+        "expression2": "Datetime(2018, 1, 1, 0, 0, 1, 0)",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "AddMilliseconds(Time(12, 0, 0, 0), 1000)",
+        "expression2": "Time(12, 0, 1, 0)",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "AddMilliseconds(null, 1000)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "AddMinutes(Datetime(2018, 1, 1, 0, 0, 0, 0), 10)",
+        "expression2": "Datetime(2018, 1, 1, 0, 10, 0, 0)",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "AddMinutes(Time(12, 0, 0, 0), 10)",
+        "expression2": "Time(12, 10, 0, 0)",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "AddMinutes(null, 10)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "AddMonths(Datetime(2018, 1, 1, 0, 0, 0, 0), 10)",
+        "expression2": "Datetime(2018, 11, 1, 0, 0, 0, 0)",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "AddMonths(Date(2018, 1, 1), 10)",
+        "expression2": "Date(2018, 11, 1)",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "AddMonths(null, 10)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "AddSeconds(Datetime(2018, 1, 1, 0, 0, 0, 0), 10)",
+        "expression2": "Datetime(2018, 1, 1, 0, 0, 10, 0)",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "AddSeconds(Time(12, 0, 0, 0), 10)",
+        "expression2": "Time(12, 0, 10, 0)",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "AddSeconds(null, 10)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "AddYears(Datetime(2018, 1, 1, 0, 0, 0, 0), 10)",
+        "expression2": "Datetime(2028, 1, 1, 0, 0, 0, 0)",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "AddYears(Date(2018, 1, 1), 10)",
+        "expression2": "Date(2028, 1, 1)",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "AddYears(null, 10)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "DateDiff(Date(2018, 1, 11), Date(2017, 12, 22))",
+        "expression2": "20",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "DatetimeDiff(Datetime(2018, 1, 1, 0, 0, 1, 0), Datetime(2017, 12, 31, 23, 59, 59, 0))",
+        "expression2": "2000",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Day(Datetime(2018, 1, 1, 0, 0, 0, 0))",
+        "expression2": "1",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Day(Date(2018, 1, 1))",
+        "expression2": "1",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Day(null)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Hour(Datetime(2018, 1, 1, 0, 0, 0, 0))",
+        "expression2": "0",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Hour(Time(12, 0, 0, 0))",
+        "expression2": "12",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Hour(null)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Millisecond(Datetime(2018, 1, 1, 0, 0, 0, 0))",
+        "expression2": "0",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Millisecond(Time(12, 0, 0, 0))",
+        "expression2": "0",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Millisecond(null)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Minute(Datetime(2018, 1, 1, 0, 0, 0, 0))",
+        "expression2": "0",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Minute(Time(12, 0, 0, 0))",
+        "expression2": "0",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Minute(null)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Month(Datetime(2018, 1, 1, 0, 0, 0, 0))",
+        "expression2": "1",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Month(Date(2018, 1, 1))",
+        "expression2": "1",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Month(null)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "MonthText(Datetime(2018, 1, 1, 0, 0, 0, 0))",
+        "expression2": "\"January\"",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "MonthText(Date(2018, 1, 1))",
+        "expression2": "\"January\"",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "MonthText(null)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Second(Datetime(2018, 1, 1, 0, 0, 0, 0))",
+        "expression2": "0",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Second(Time(12, 0, 0, 0))",
+        "expression2": "0",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Second(null)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "SubtractDays(Datetime(2018, 1, 1, 0, 0, 0, 0), 10)",
+        "expression2": "Datetime(2017, 12, 22, 0, 0, 0, 0)",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "SubtractDays(Date(2018, 1, 1), 10)",
+        "expression2": "Date(2017, 12, 22)",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "SubtractDays(null, 10)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "SubtractHours(Datetime(2018, 1, 1, 0, 0, 0, 0), 10)",
+        "expression2": "Datetime(2017, 12, 31, 14, 0, 0, 0)",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "SubtractHours(Time(12, 0, 0, 0), 10)",
+        "expression2": "Time(2, 0, 0, 0)",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "SubtractHours(null, 10)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "SubtractMilliseconds(Datetime(2018, 1, 1, 0, 0, 0, 0), 1000)",
+        "expression2": "Datetime(2017, 12, 31, 23, 59, 59, 0)",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "SubtractMilliseconds(Time(12, 0, 0, 0), 1000)",
+        "expression2": "Time(11, 59, 59, 0)",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "SubtractMilliseconds(null, 1000)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "SubtractMinutes(Datetime(2018, 1, 1, 0, 0, 0, 0), 10)",
+        "expression2": "Datetime(2017, 12, 31, 23, 50, 0, 0)",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "SubtractMinutes(Time(12, 0, 0, 0), 10)",
+        "expression2": "Time(11, 50, 0, 0)",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "SubtractMinutes(null, 10)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "SubtractSeconds(Datetime(2018, 1, 1, 0, 0, 0, 0), 10)",
+        "expression2": "Datetime(2017, 12, 31, 23, 59, 50, 0)",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "SubtractSeconds(Time(12, 0, 0, 0), 10)",
+        "expression2": "Time(11, 59, 50, 0)",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "SubtractSeconds(null, 10)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "TimeDiff(Time(12, 0, 1, 0), Time(11, 59, 59, 0))",
+        "expression2": "2000",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Week(Datetime(2018, 1, 1, 0, 0, 0, 0))",
+        "expression2": "1",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Week(Date(2018, 1, 1))",
+        "expression2": "1",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Week(null)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "WeekDay(Datetime(2018, 1, 1, 0, 0, 0, 0))",
+        "expression2": "1",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "WeekDay(Date(2018, 1, 1))",
+        "expression2": "1",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "WeekDay(null)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "WeekDayText(Datetime(2018, 1, 1, 0, 0, 0, 0))",
+        "expression2": "\"Monday\"",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "WeekDayText(Date(2018, 1, 1))",
+        "expression2": "\"Monday\"",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "WeekDayText(null)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Year(Datetime(2018, 1, 1, 0, 0, 0, 0))",
+        "expression2": "2018",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Year(Date(2018, 1, 1))",
+        "expression2": "2018",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Year(null)",
+        "expression2": "null",
+        "operator": "=="
+      }
+    ],
+    "typeReturn": "any",
+    "variables": []
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "algorithm": {
+    "parameters": [],
+    "statements": [
+      {
+        "command": "Execute",
+        "expression": "MongodbInsertOne(MongoDefault, \"lost-pets\", { dummy: 0 })"
+      },
+      {
+        "command": "Execute",
+        "expression": "MongodbDrop(MongoDefault, \"lost-pets\")"
+      },
+      {
+        "command": "Execute",
+        "expression": "MongodbInsertOne(MongoDefault, \"lost-pets\", { name: \"Charlie\", race: \"Bulldog\", color: \"black\", lostDatetime: Datetime(2020, 1, 1, 12, 0, 0), lostLocation: [1, 1], reward: 300 })"
+      },
+      {
+        "command": "Execute",
+        "expression": "MongodbInsertOne(MongoDefault, \"lost-pets\", { name: \"Max\", race: \"Beagle\", color: \"white\", lostDatetime: Datetime(2020, 1, 1, 12, 0, 0), lostLocation: [2, 2], reward: 100 })"
+      },
+      {
+        "command": "Execute",
+        "expression": "MongodbInsertOne(MongoDefault, \"lost-pets\", { name: \"Buddy\", race: \"Bulldog\", color: \"brown\", lostDatetime: Datetime(2020, 1, 1, 12, 0, 0), lostLocation: [1.2, 1.2], reward: 600 })"
+      },
+      {
+        "command": "Execute",
+        "expression": "MongodbInsertOne(MongoDefault, \"lost-pets\", { name: \"Milo\", race: \"Cocker\", color: \"brown\", lostDatetime: Datetime(2020, 1, 1, 12, 0, 0), lostLocation: [0.8, 1.2], reward: 200 })"
+      },
+      {
+        "command": "Execute",
+        "expression": "MongodbInsertOne(MongoDefault, \"lost-pets\", { name: \"Archie\", race: \"Border Collie\", color: \"white\", lostDatetime: Datetime(2020, 1, 1, 12, 0, 0), lostLocation: [0, 0], reward: 500 })"
+      },
+      {
+        "command": "Execute",
+        "expression": "MongodbInsertOne(MongoDefault, \"lost-pets\", { name: \"Toby\", race: \"Beagle\", color: \"black\", lostDatetime: Datetime(2020, 1, 1, 12, 0, 0), lostLocation: [2, 0], reward: 200 })"
+      },
+      {
+        "command": "Execute",
+        "expression": "MongodbInsertOne(MongoDefault, \"lost-pets\", { name: \"Coco\", race: \"Bull terrier\", color: \"black\", lostDatetime: Datetime(2020, 1, 1, 12, 0, 0), lostLocation: [1.4, 1], reward: 100 })"
+      },
+      {
+        "command": "Execute",
+        "expression": "MongodbInsertOne(MongoDefault, \"lost-pets\", { name: \"Thor\", race: \"Cocker\", color: \"white\", lostDatetime: Datetime(2020, 1, 1, 12, 0, 0), lostLocation: [0.8, 0.8], reward: 400 })"
+      },
+      {
+        "command": "Execute",
+        "expression": "MongodbCreateIndex(MongoDefault, \"lost-pets\", { lostLocation: \"geoHaystack\", type: 1 }, { bucketSize: 1 })"
+      }
+    ],
+    "typeReturn": "any",
+    "variables": []
+  },
+  "routing": null
+}

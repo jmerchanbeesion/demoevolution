@@ -1,0 +1,141 @@
+{
+  "eventsAndFunctions": [
+    {
+      "algorithm": {
+        "parameters": [],
+        "statements": [
+          {
+            "command": "ReadModel",
+            "modelVariableName": "userName",
+            "variableName": "userName"
+          },
+          {
+            "command": "ReadModel",
+            "modelVariableName": "userEmail",
+            "variableName": "userEmail"
+          },
+          {
+            "command": "SetValue",
+            "expression": "userName",
+            "widgetName": "nameField"
+          },
+          {
+            "command": "SetValue",
+            "expression": "userEmail",
+            "widgetName": "emailField"
+          }
+        ],
+        "typeReturn": "any",
+        "variables": [
+          {
+            "name": "userName",
+            "type": "string"
+          },
+          {
+            "name": "userEmail",
+            "type": "string"
+          }
+        ]
+      },
+      "name": "main_init"
+    },
+    {
+      "algorithm": {
+        "parameters": [],
+        "statements": [
+          {
+            "command": "Navigate",
+            "expressionStartModel": "{}",
+            "uiComponentName": "CmpCustomerSurvey"
+          }
+        ],
+        "typeReturn": "any",
+        "variables": []
+      },
+      "name": "infoContainer_handlerAction_newSurvey"
+    },
+    {
+      "algorithm": {
+        "parameters": [],
+        "statements": [
+          {
+            "command": "Navigate",
+            "expressionStartModel": "{}",
+            "uiComponentName": "CmpDealerDashboard"
+          }
+        ],
+        "typeReturn": "any",
+        "variables": []
+      },
+      "name": "infoContainer_handlerAction_dashboard"
+    }
+  ],
+  "model": [
+    {
+      "name": "userName",
+      "required": true,
+      "type": "string"
+    },
+    {
+      "name": "userEmail",
+      "required": true,
+      "type": "string"
+    }
+  ],
+  "root": {
+    "children": [
+      {
+        "actions": [
+          {
+            "key": "newSurvey",
+            "text": "Take New Survey"
+          },
+          {
+            "key": "dashboard",
+            "text": "Dashboard"
+          }
+        ],
+        "children": [
+          {
+            "align": "center",
+            "color": "default",
+            "name": "nameField",
+            "size": "large",
+            "widget": "Field"
+          },
+          {
+            "align": "left",
+            "color": "default",
+            "dock": "previous",
+            "name": "label1",
+            "size": "large",
+            "text": ", thank you for sharing your feedback with us!",
+            "widget": "Label"
+          },
+          {
+            "align": "center",
+            "color": "default",
+            "name": "label2",
+            "text": "We will in touch with you using the e-mail address: ",
+            "widget": "Label"
+          },
+          {
+            "align": "left",
+            "color": "default",
+            "dock": "previous",
+            "name": "emailField",
+            "widget": "Field"
+          }
+        ],
+        "layout": "container",
+        "name": "infoContainer"
+      }
+    ],
+    "cssClass": "blz-padding-top-large blz-padding-right-large blz-padding-left-large blz-padding-bottom-large blz-area-default",
+    "horizontalSeparation": "large",
+    "layout": "container",
+    "verticalSeparation": "large"
+  },
+  "routing": null,
+  "unused": []
+}

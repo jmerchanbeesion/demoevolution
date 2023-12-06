@@ -1,0 +1,91 @@
+{
+  "systems": [
+    {
+      "name": "CarDealerFrontend",
+      "type": "WebFrontend",
+      "x": 191.0198974609375,
+      "y": 244.00852584838867
+    },
+    {
+      "name": "HazelcastDefault",
+      "type": "Hazelcast",
+      "x": 854,
+      "y": 611
+    },
+    {
+      "name": "Main",
+      "type": "Microservice",
+      "x": 455,
+      "y": 242
+    },
+    {
+      "name": "MongoDefault",
+      "type": "Mongodb",
+      "x": 854,
+      "y": 396
+    },
+    {
+      "name": "MsDefault",
+      "type": "Microservice",
+      "x": 852,
+      "y": 100
+    },
+    {
+      "name": "ProcessDefault",
+      "type": "ProcessEngine",
+      "x": 734,
+      "y": 236
+    },
+    {
+      "name": "RdsDefault",
+      "type": "RelationalDatabase",
+      "x": 457,
+      "y": 400
+    },
+    {
+      "name": "RedisDefault",
+      "type": "Redis",
+      "x": 659,
+      "y": 611
+    }
+  ],
+  "references": [
+    {
+      "fromSystemName": "CarDealerFrontend",
+      "toSystemName": "Main"
+    },
+    {
+      "fromSystemName": "Main",
+      "toSystemName": "HazelcastDefault"
+    },
+    {
+      "fromSystemName": "Main",
+      "toSystemName": "MongoDefault"
+    },
+    {
+      "fromSystemName": "Main",
+      "toSystemName": "MsDefault"
+    },
+    {
+      "fromSystemName": "Main",
+      "toSystemName": "ProcessDefault"
+    },
+    {
+      "fromSystemName": "Main",
+      "toSystemName": "RdsDefault"
+    },
+    {
+      "fromSystemName": "Main",
+      "toSystemName": "RedisDefault"
+    },
+    {
+      "fromSystemName": "ProcessDefault",
+      "toSystemName": "MongoDefault",
+      "processPersistence": true
+    },
+    {
+      "fromSystemName": "ProcessDefault",
+      "toSystemName": "MsDefault"
+    }
+  ]
+}

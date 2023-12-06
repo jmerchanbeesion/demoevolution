@@ -1,0 +1,28 @@
+{
+  "algorithm": {
+    "parameters": [
+      {
+        "name": "person",
+        "type": "Person"
+      },
+      {
+        "name": "previousProcessedPersons",
+        "type": "list(Person)"
+      }
+    ],
+    "statements": [
+      {
+        "command": "Push",
+        "expressionItem": "person",
+        "variableNameList": "previousProcessedPersons"
+      },
+      {
+        "command": "Return",
+        "expression": "WriterGetFullNameFromPerson(person)"
+      }
+    ],
+    "typeReturn": "string",
+    "variables": []
+  },
+  "routing": null
+}

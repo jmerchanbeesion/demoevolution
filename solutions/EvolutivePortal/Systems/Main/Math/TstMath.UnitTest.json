@@ -1,0 +1,333 @@
+{
+  "algorithm": {
+    "parameters": [],
+    "statements": [
+      {
+        "command": "Assert",
+        "expression1": "5 + 2",
+        "expression2": "7",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "5 - 2",
+        "expression2": "3",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "5 * 2",
+        "expression2": "10",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "5 / 2",
+        "expression2": "2.5",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "5 % 2",
+        "expression2": "1",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Abs(0.5)",
+        "expression2": "0.5",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Abs(-0.5)",
+        "expression2": "0.5",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Abs(null)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Trunc(Acos(0.5), 6)",
+        "expression2": "1.047197",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Acos(null)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Trunc(Asin(0.5), 6)",
+        "expression2": "0.523598",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Asin(null)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Trunc(Atan(0.5), 6)",
+        "expression2": "0.463647",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Atan(null)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Trunc(Atan2(1, 2), 6)",
+        "expression2": "1.107148",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Atan2(1, null)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Atan2(null, 2)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Ceil(0.5)",
+        "expression2": "1",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Ceil(null)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Trunc(Cos(0.5), 6)",
+        "expression2": "0.877582",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Cos(null)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Trunc(Cosh(0.5), 6)",
+        "expression2": "1.127625",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Cosh(null)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Trunc(Exp(3), 6)",
+        "expression2": "20.085536",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Exp(null)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Floor(0.5)",
+        "expression2": "0",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Floor(null)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Trunc(Log(0.5, 3), 6)",
+        "expression2": "-0.630929",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Log(null, 3)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Trunc(Log10(0.5), 6)",
+        "expression2": "-0.301029",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Log10(null)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Pow(0.5 ,3)",
+        "expression2": "0.125",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Pow(null, 3)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Random()",
+        "expression2": "0",
+        "operator": ">="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Random()",
+        "expression2": "1",
+        "operator": "<="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Round(0.123456789)",
+        "expression2": "0",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Round(0.123456789, 6)",
+        "expression2": "0.123457",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Round(null)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Sign(0.5)",
+        "expression2": "1",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Sign(-0.5)",
+        "expression2": "-1",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Sign(null)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Trunc(Sin(0.5), 6)",
+        "expression2": "0.479425",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Sin(null)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Trunc(Sinh(0.5), 6)",
+        "expression2": "0.521095",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Sinh(null)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Trunc(Sqrt(0.5), 6)",
+        "expression2": "0.707106",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Sqrt(null)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Trunc(Tan(0.5), 6)",
+        "expression2": "0.546302",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Tan(null)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Trunc(Tanh(0.5), 6)",
+        "expression2": "0.462117",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Tanh(null)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Trunc(0.123456789)",
+        "expression2": "0",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Trunc(0.123456789, 6)",
+        "expression2": "0.123456",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Trunc(null)",
+        "expression2": "null",
+        "operator": "=="
+      }
+    ],
+    "typeReturn": "any",
+    "variables": []
+  }
+}

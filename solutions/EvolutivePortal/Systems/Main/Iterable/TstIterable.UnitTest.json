@@ -1,0 +1,1060 @@
+{
+  "algorithm": {
+    "parameters": [],
+    "statements": [
+      {
+        "command": "Set",
+        "expression": "{ code: \"001\", company: \"Gislason Flatley\", category: \"MASSIVE\", amount: 600 }",
+        "variableName": "account1"
+      },
+      {
+        "command": "Set",
+        "expression": "{ code: \"002\", company: \"Bogisich Walker\", category: \"MASSIVE\", amount: 400 }",
+        "variableName": "account2"
+      },
+      {
+        "command": "Set",
+        "expression": "{ code: \"003\", company: \"Wiegand PLC\", category: \"VIP\", amount: 600 }",
+        "variableName": "account3"
+      },
+      {
+        "command": "Set",
+        "expression": "{ code: \"004\", company: \"Sanford Legros\", category: \"MASSIVE\", amount: 900 }",
+        "variableName": "account4"
+      },
+      {
+        "command": "Set",
+        "expression": "{ code: \"005\", company: \"Koch Hirthe\", category: \"VIP\", amount: 800 }",
+        "variableName": "account5"
+      },
+      {
+        "command": "Set",
+        "expression": "{ code: \"006\", company: \"Bradtke Group\", category: \"MASSIVE\", amount: 800 }",
+        "variableName": "account6"
+      },
+      {
+        "command": "Set",
+        "expression": "{ code: \"007\", company: \"Gutkowski Wyman\", category: \"MASSIVE\", amount: null }",
+        "variableName": "account7"
+      },
+      {
+        "command": "Set",
+        "expression": "{ code: \"008\", company: \"Terry Ltd\", category: \"VIP\", amount: 100 }",
+        "variableName": "account8"
+      },
+      {
+        "command": "Set",
+        "expression": "[^account1, ^account2, ^account3, ^account4, ^account5, ^account6, ^account7, ^account8]",
+        "variableName": "accounts"
+      },
+      {
+        "command": "Set",
+        "expression": "Map(^accounts, amount)",
+        "variableName": "amounts"
+      },
+      {
+        "command": "Assert",
+        "expression1": "All(^accounts, amount > 800)",
+        "expression2": "false",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "All(^accounts, amount < 1000)",
+        "expression2": "true",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "All(null, true)",
+        "expression2": "false",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Any(^accounts, amount == 500)",
+        "expression2": "false",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Any(^accounts, amount == 800)",
+        "expression2": "true",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Any(null, true)",
+        "expression2": "false",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Avg(^accounts, amount)",
+        "expression2": "600",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Avg(^amounts)",
+        "expression2": "600",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Avg(null, 1)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Avg(null)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Count(^accounts)",
+        "expression2": "8",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "ConcatList(null)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "ConcatList(null,[])",
+        "expression2": "[]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "ConcatList([], null)",
+        "expression2": "[]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "ConcatList([], [1,2,3,4])",
+        "expression2": "[1,2,3,4]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "ConcatList([1,2,3,4],[])",
+        "expression2": "[1,2,3,4]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "ConcatList([1],[2,3],[4],[])",
+        "expression2": "[1,2,3,4]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "ConcatList([1,[2],[3,4]],[5])",
+        "expression2": "[1,[2],[3,4],5]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "ConcatList([account1,[account2],[account3,account4]],[account5])",
+        "expression2": "[account1,[account2],[account3,account4],[account5]]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "ConcatList([account1],[account2,account3],[account4],[])",
+        "expression2": "[account1,account2,account3,account4]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Count(null)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Distinct(^accounts, amount)",
+        "expression2": "[^account1, ^account2, ^account4, ^account5, ^account7, ^account8]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Distinct(^amounts)",
+        "expression2": "[600, 400, 900, 800, null, 100]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Distinct(null, true)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Distinct(null)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "ElementAt(^accounts, 1)",
+        "expression2": "^account2",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "ElementAt(null, 1)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Except(^accounts, FindAll(^accounts, amount > 700))",
+        "expression2": "[^account1, ^account2, ^account3, ^account7, ^account8]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Except(null, null)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "FindAll(^accounts, amount > 700)",
+        "expression2": "[^account4, ^account5, ^account6]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "FindAll(null, true)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "FindFirst(^accounts, amount > 700)",
+        "expression2": "^account4",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "FindFirst(null, true)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "FindIndex(null, null)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "FindIndex([], null)",
+        "expression2": "-1",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "FindIndex([1,2,3,4], null)",
+        "expression2": "-1",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "FindIndex([1,2,3,4], This()>1)",
+        "expression2": "1",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "FindIndex([\"Louis\", \"Sarah\", \"Mark\", \"Alex\", \"Sarah\"], This()== \"Sarah\")",
+        "expression2": "1",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "FindIndex(accounts, category == \"VIP\" )",
+        "expression2": "2",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "FindIndex(accounts, amount == 800 )",
+        "expression2": "4",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "FindLast(^accounts, amount > 700)",
+        "expression2": "^account6",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "FindLast(null, true)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "FindLastIndex(null, null)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "FindLastIndex([], null)",
+        "expression2": "-1",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "FindLastIndex([1,2,3,4], null)",
+        "expression2": "-1",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "FindLastIndex([1,2,3,4], This()>1)",
+        "expression2": "3",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "FindLastIndex([\"Louis\", \"Sarah\", \"Mark\", \"Alex\", \"Sarah\"], This()== \"Sarah\")",
+        "expression2": "4",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "FindLastIndex(accounts, category == \"VIP\" )",
+        "expression2": "7",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "FindLastIndex(accounts, amount == 800 )",
+        "expression2": "5",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "First(^accounts)",
+        "expression2": "^account1",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "First(null)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Flat([])",
+        "expression2": "[]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Flat([1])",
+        "expression2": "[1]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Flat([1,2,3,4])",
+        "expression2": "[1,2,3,4]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Flat([[1],2,[3,4]])",
+        "expression2": "[1,2,3,4]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Flat([[1],[2,[3,4]]])",
+        "expression2": "[1,2,[3,4]]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Flat([[1],[2,[3,4]]], 2)",
+        "expression2": "[1,2,3,4]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Flat([[1],[2,[3,[4]]]], 2)",
+        "expression2": "[1,2,3,[4]]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Flat([[1],[2,[3,[4]]]], 3)",
+        "expression2": "[1,2,3,4]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Flat([[1],[2,[3,[4]]]], 10)",
+        "expression2": "[1,2,3,4]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Flat([0, 1, 2, [[[3, 4]]]], 2)",
+        "expression2": "[0, 1, 2, [3, 4]]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Flat([\n\taccount1,\n    [account2],\n    [\n    \taccount3,\n        account4\n    ]\n] )",
+        "expression2": "[\n\taccount1,\n    account2,\n    account3,\n    account4\n]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Flat([\n\taccount1,\n    [account2],\n    [\n    \t[account3],\n        [account4]\n    ]\n] )",
+        "expression2": "[\n\taccount1,\n    account2,\n    [account3],\n    [account4]\n]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Includes(null, null)",
+        "expression2": "false",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Includes([], null)",
+        "expression2": "false",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Includes([1,2,3,4,5,6], null)",
+        "expression2": "false",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Includes([1,2,3,4,5,6], 1)",
+        "expression2": "true",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Includes([\"John\", \"Jane\", \"James\"], 1)",
+        "expression2": "false",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Includes([\"John\", \"Jane\", \"James\"], \"Sarah\")",
+        "expression2": "false",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Includes([\"John\", \"Jane\", \"James\"], \"james\")",
+        "expression2": "false",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Includes([\"John\", \"Jane\", \"James\"], \"James\")",
+        "expression2": "true",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Includes([1,2,3,4,5,6], 4, 2)",
+        "expression2": "true",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Includes([1,2,3,4,5,6], 4, 4)",
+        "expression2": "false",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Includes( accounts, account1 )",
+        "expression2": "true",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Includes( accounts, account1, 1 )",
+        "expression2": "false",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "InsertAt(null, 0, null)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "InsertAt(null, 0, [1,2,3])",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "InsertAt([1,2], 0, null)",
+        "expression2": "[1,2]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "InsertAt([1,2], 0, [-1,0])",
+        "expression2": "[-1,0,1,2]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "InsertAt([1,2], null, [-1,0])",
+        "expression2": "[-1,0,1,2]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "InsertAt([0,1,2,3,4,5,6], 3, [777,888,999])",
+        "expression2": "[0,1,2,777,888,999,3,4,5,6]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "InsertAt([0,1,2,3,4,5,6], -1, [777,888,999])",
+        "expression2": "[0,1,2,3,4,5,777,888,999,6]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "InsertAt([account1,account2,account5,account6,account7,account8], 2, [account3,account4])",
+        "expression2": "accounts",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "InsertAt( [ account1, account2, account3, account4, account5, account8 ], -1, [ account6, account7 ] )",
+        "expression2": "accounts",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Sort(Map(Intersect(FindAll(^accounts, amount > 700), FindAll(^accounts, category == \"MASSIVE\")), code))",
+        "expression2": "[\"004\", \"006\"]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Intersect(null, null)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Intersect(^amounts, null)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Intersect(null, ^amounts)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Intersect(^accounts, [^account2])",
+        "expression2": "[^account2]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Last(^accounts)",
+        "expression2": "^account8",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Last(null)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Max(^accounts, amount)",
+        "expression2": "900",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Max(^amounts)",
+        "expression2": "900",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Max(null, 1)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Max(null)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Min(^accounts, amount)",
+        "expression2": "100",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Min(^amounts)",
+        "expression2": "100",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Min(null, 1)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Min(null)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RemoveAt(null, null, null)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RemoveAt(null, null)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RemoveAt([1,2], 0)",
+        "expression2": "[1,2]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RemoveAt([1,2], null)",
+        "expression2": "[1,2]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RemoveAt([0,1,2,3,4,5,6], 3, null)",
+        "expression2": "[0,1,2,3,4,5,6]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RemoveAt([0,1,2,3,4,5,6], 3, 0)",
+        "expression2": "[0,1,2,3,4,5,6]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RemoveAt([0,1,2,3,4,5,6], 3, -1)",
+        "expression2": "[0,1,2,3,4,5,6]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RemoveAt([0,1,2,3,4,5,6], -1, -1)",
+        "expression2": "[0,1,2,3,4,5,6]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RemoveAt([0,1,2,3,4,5,6], 3, 1)",
+        "expression2": "[0,1,2,4,5,6]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RemoveAt([0,1,2,3,4,5,6], -1, 1)",
+        "expression2": "[0,1,2,3,4,5]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RemoveAt(accounts, 3, 3)",
+        "expression2": "[ account1, account2, account3, account7, account8 ]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RemoveAt(accounts, -2, 1)",
+        "expression2": "[ account1, account2, account3, account4, account5, account6, account8 ]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Reverse(null)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Reverse([])",
+        "expression2": "[]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Reverse([1])",
+        "expression2": "[1]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Reverse([1,2,3])",
+        "expression2": "[3,2,1]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Reverse([\"one\", \"two\", \"three\"])",
+        "expression2": "[\"three\", \"two\", \"one\"]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Reverse( [ account1, account2, account3, account4, account5, account6, account7, account8 ] )",
+        "expression2": "[ account8, account7, account6, account5, account4, account3, account2, account1 ]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Skip(^accounts, 2)",
+        "expression2": "[^account3, ^account4, ^account5, ^account6, ^account7, ^account8]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Skip(null, 2)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "SkipWhile(^accounts, amount < 800)",
+        "expression2": "[^account4, ^account5, ^account6, ^account7, ^account8]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "SkipWhile(null, true)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Slice(null)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Slice(null, null)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Slice(null, null, null)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Slice([])",
+        "expression2": "[]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Slice([1,2,3,4])",
+        "expression2": "[1,2,3,4]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Slice(accounts, 9)",
+        "expression2": "[]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Slice(accounts, 2, 4)",
+        "expression2": "[ account3, account4]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Slice(accounts, 1, -2)",
+        "expression2": "[account2, account3, account4, account5, account6]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Slice(accounts, 5)",
+        "expression2": "[account6, account7, account8]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Slice(accounts, -2)",
+        "expression2": "[account7, account8]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Slice(accounts, -2, -1)",
+        "expression2": "[account7]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Sort(^amounts)",
+        "expression2": "[null, 100, 400, 600, 600, 800, 800, 900]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Sort(^accounts, company)",
+        "expression2": "[^account2, ^account6, ^account1, ^account7, ^account5, ^account4, ^account8, ^account3]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Sort(null)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Sort(null, 1)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "SortDescending(^amounts)",
+        "expression2": "[900, 800, 800, 600, 600, 400, 100, null]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "SortDescending(^accounts, company)",
+        "expression2": "[^account3, ^account8, ^account4, ^account5, ^account7, ^account1, ^account6, ^account2]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "SortDescending(null)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "SortDescending(null, 1)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Sum(^accounts, amount)",
+        "expression2": "4200",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Sum(^amounts)",
+        "expression2": "4200",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Sum(null, 1)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Sum(null)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Take(^accounts, 2)",
+        "expression2": "[^account1, ^account2]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Take(null, 2)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "TakeWhile(^accounts, amount < 800)",
+        "expression2": "[^account1, ^account2, ^account3]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "TakeWhile(null, true)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Sort(Map(Union(FindAll(^accounts, amount > 700), FindAll(^accounts, category == \"MASSIVE\")), code))",
+        "expression2": "[\"001\", \"002\", \"004\", \"005\", \"006\", \"007\"]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Union(null, null)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Union([], null)",
+        "expression2": "[]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Union(null,[])",
+        "expression2": "[]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Union([],[])",
+        "expression2": "[]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Union([1,2],[3,4])",
+        "expression2": "[1,2,3,4]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Union([1,2,3],[2,3,4])",
+        "expression2": "[1,2,3,4]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Union([3,2,1],[2,3,4])",
+        "expression2": "[3,2,1,4]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Union([account1], [account2])",
+        "expression2": "[account1,account2]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Union([account1,account2,account3,account4], [account5,account6,account7,account8])",
+        "expression2": "accounts",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Union([account1], [account3], amount)",
+        "expression2": "[account1]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Union([account1, account5], [account3, account6], amount)",
+        "expression2": "[account1, account5]",
+        "operator": "=="
+      }
+    ],
+    "typeReturn": "any",
+    "variables": [
+      {
+        "name": "account1",
+        "type": "Account"
+      },
+      {
+        "name": "account2",
+        "type": "Account"
+      },
+      {
+        "name": "account3",
+        "type": "Account"
+      },
+      {
+        "name": "account4",
+        "type": "Account"
+      },
+      {
+        "name": "account5",
+        "type": "Account"
+      },
+      {
+        "name": "account6",
+        "type": "Account"
+      },
+      {
+        "name": "account7",
+        "type": "Account"
+      },
+      {
+        "name": "account8",
+        "type": "Account"
+      },
+      {
+        "name": "accounts",
+        "type": "list(Account)"
+      },
+      {
+        "name": "amounts",
+        "type": "list(decimal)"
+      }
+    ]
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "items": [
+    {
+      "rdsTableName": "TblCareers",
+      "x": 132,
+      "y": 96
+    },
+    {
+      "rdsTableName": "TblCareersCourses",
+      "x": 477,
+      "y": 100
+    },
+    {
+      "rdsTableName": "TblCourses",
+      "x": 856,
+      "y": 102
+    },
+    {
+      "rdsTableName": "TblDataTypes",
+      "x": 125,
+      "y": 273
+    },
+    {
+      "rdsTableName": "TblInscriptions",
+      "x": 859,
+      "y": 282
+    },
+    {
+      "rdsTableName": "TblStudents",
+      "x": 859,
+      "y": 481
+    }
+  ]
+}

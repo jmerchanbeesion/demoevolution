@@ -1,0 +1,105 @@
+{
+  "algorithm": {
+    "parameters": [],
+    "statements": [
+      {
+        "command": "Execute",
+        "expression": "InitRds()"
+      },
+      {
+        "command": "Set",
+        "expression": "RdsSelectOne(RdsDefault.TblStudents, studentId, code == \"ST002\")",
+        "variableName": "studentId"
+      },
+      {
+        "command": "Set",
+        "expression": "RdsSelectOne(RdsDefault.TblCourses, courseId, code == \"CO002\")",
+        "variableName": "courseId"
+      },
+      {
+        "command": "Set",
+        "expression": "RdsSelectOne(RdsDefault.TblCourses, courseId, code == \"CO003\")",
+        "variableName": "otherCourseId"
+      },
+      {
+        "command": "Assert",
+        "expression1": "Map(Transform(TrfInscriptionForRead, RdsSelectReader(RdsDefault.TblInscriptions, studentId == ^studentId, courseId)), [studentFullName, courseName])",
+        "expression2": "[[\"Andrew Hanrahan\", \"Physical Mathematics I\"]]",
+        "operator": "=="
+      },
+      {
+        "command": "Set",
+        "expression": "Transform(TrfInscriptionForWrite, { studentId: ^studentId, courseId: ^courseId }, RdsInsertWriter(RdsDefault.TblInscriptions))",
+        "variableName": "newInscriptionId"
+      },
+      {
+        "command": "Assert",
+        "expression1": "Map(Transform(TrfInscriptionForRead, RdsSelectReader(RdsDefault.TblInscriptions, studentId == ^studentId, courseId)), [studentFullName, courseName])",
+        "expression2": "[[\"Andrew Hanrahan\", \"Physical Mathematics I\"], [\"Andrew Hanrahan\", \"Physical Mathematics II\"]]",
+        "operator": "=="
+      },
+      {
+        "command": "Execute",
+        "expression": "Transform(TrfInscriptionForWrite, { inscriptionId: ^newInscriptionId, studentId: ^studentId, courseId: ^otherCourseId }, RdsUpdateWriter(RdsDefault.TblInscriptions))"
+      },
+      {
+        "command": "Assert",
+        "expression1": "Map(Transform(TrfInscriptionForRead, RdsSelectReader(RdsDefault.TblInscriptions, studentId == ^studentId, courseId)), [studentFullName, courseName])",
+        "expression2": "[[\"Andrew Hanrahan\", \"Physical Mathematics I\"], [\"Andrew Hanrahan\", \"Scientific Computing\"]]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Transform(TrfInscriptionForRead, RdsSelectReader(RdsDefault.TblInscriptions, studentId == ^studentId, courseId), Writer(WriterGetStudentFullNameFromInscription))",
+        "expression2": "[\"Andrew Hanrahan\", \"Andrew Hanrahan\"]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Transform(TrfInscriptionForRead, RdsSelectOneReader(RdsDefault.TblInscriptions, studentId == ^studentId), Writer(WriterGetStudentFullNameFromInscription))",
+        "expression2": "\"Andrew Hanrahan\"",
+        "operator": "=="
+      },
+      {
+        "command": "Set",
+        "expression": "[]",
+        "variableName": "processedInscriptions"
+      },
+      {
+        "command": "Assert",
+        "expression1": "Transform(TrfInscriptionForRead, RdsSelectReader(RdsDefault.TblInscriptions, studentId == ^studentId, courseId), Writer(WriterGetStudentFullNameFromInscriptionWithContext, [processedInscriptions]))",
+        "expression2": "[\"Andrew Hanrahan\", \"Andrew Hanrahan\"]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Map(processedInscriptions, { \n\tcourseCode: courseCode, \n    courseName: courseName, \n    studentCode: studentCode, \n    studentFullName: studentFullName\n})",
+        "expression2": "[{\n\tcourseCode: \"CO001\",\n    courseName: \"Physical Mathematics I\",\n    studentCode: \"ST002\",\n    studentFullName: \"Andrew Hanrahan\"\n},{\n\tcourseCode: \"CO003\",\n    courseName: \"Scientific Computing\",\n    studentCode: \"ST002\",\n    studentFullName: \"Andrew Hanrahan\"\n}]",
+        "operator": "=="
+      }
+    ],
+    "typeReturn": "any",
+    "variables": [
+      {
+        "name": "studentId",
+        "type": "integer"
+      },
+      {
+        "name": "courseId",
+        "type": "integer"
+      },
+      {
+        "name": "otherCourseId",
+        "type": "integer"
+      },
+      {
+        "name": "newInscriptionId",
+        "type": "integer"
+      },
+      {
+        "name": "processedInscriptions",
+        "type": "list(Inscription)"
+      }
+    ]
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "autoincrementalPrimaryKey": true,
+  "columns": [
+    {
+      "alias": "careerCourseId",
+      "allowNull": false,
+      "name": "CAREER_COURSE_ID",
+      "primaryKey": true,
+      "type": "integer"
+    },
+    {
+      "alias": "careerId",
+      "allowNull": false,
+      "name": "CAREER_ID",
+      "primaryKey": false,
+      "type": "integer"
+    },
+    {
+      "alias": "courseId",
+      "allowNull": false,
+      "name": "COURSE_ID",
+      "primaryKey": false,
+      "type": "integer"
+    }
+  ],
+  "foreignKeys": [
+    {
+      "alias": "career",
+      "details": [
+        {
+          "columnName": "CAREER_ID",
+          "relatedColumnName": "CAREER_ID"
+        }
+      ],
+      "name": "FK_CAREERS_COURSES_1",
+      "rdsTableName": "TblCareers"
+    },
+    {
+      "alias": "course",
+      "details": [
+        {
+          "columnName": "COURSE_ID",
+          "relatedColumnName": "COURSE_ID"
+        }
+      ],
+      "name": "FK_CAREERS_COURSES_2",
+      "rdsTableName": "TblCourses"
+    }
+  ],
+  "indexes": [],
+  "isView": false,
+  "primaryKeyName": "PK_CAREERS_COURSES",
+  "sequenceName": "SQ_CAREERS_COURSES",
+  "tableName": "TBL_CAREERS_COURSES",
+  "uniqueKeys": [
+    {
+      "columnsNames": [
+        "CAREER_ID",
+        "COURSE_ID"
+      ],
+      "name": "UK_CAREERS_COURSES_1"
+    }
+  ]
+}

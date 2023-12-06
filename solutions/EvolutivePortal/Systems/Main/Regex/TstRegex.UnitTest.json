@@ -1,0 +1,63 @@
+{
+  "algorithm": {
+    "parameters": [],
+    "statements": [
+      {
+        "command": "Assert",
+        "expression1": "RegexReplace(\"Hello, my email is 'john@doe.com'.\", \"([a-zA-Z0-9_\\\\-\\\\.]+)@([a-zA-Z0-9_\\\\-\\\\.]+)\\\\.([a-zA-Z]{2,5})\", \"HIDDEN\")",
+        "expression2": "\"Hello, my email is 'HIDDEN'.\"",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RegexReplace(\"Hello World\", \"([a-zA-Z0-9_\\\\-\\\\.]+)@([a-zA-Z0-9_\\\\-\\\\.]+)\\\\.([a-zA-Z]{2,5})\", \"HIDDEN\")",
+        "expression2": "\"Hello World\"",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RegexReplace(null, \"([a-zA-Z0-9_\\\\-\\\\.]+)@([a-zA-Z0-9_\\\\-\\\\.]+)\\\\.([a-zA-Z]{2,5})\", \"HIDDEN\")",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RegexSearch(\"Hello, my email is 'john@doe.com'.\", \"([a-zA-Z0-9_\\\\-\\\\.]+)@([a-zA-Z0-9_\\\\-\\\\.]+)\\\\.([a-zA-Z]{2,5})\")",
+        "expression2": "20",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RegexSearch(\"Hello World\", \"([a-zA-Z0-9_\\\\-\\\\.]+)@([a-zA-Z0-9_\\\\-\\\\.]+)\\\\.([a-zA-Z]{2,5})\")",
+        "expression2": "-1",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RegexSearch(null, \"([a-zA-Z0-9_\\\\-\\\\.]+)@([a-zA-Z0-9_\\\\-\\\\.]+)\\\\.([a-zA-Z]{2,5})\")",
+        "expression2": "-1",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RegexTest(\"john@doe.com\", \"^([a-zA-Z0-9_\\\\-\\\\.]+)@([a-zA-Z0-9_\\\\-\\\\.]+)\\\\.([a-zA-Z]{2,5})$\")",
+        "expression2": "true",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RegexTest(\"Hello World\", \"^([a-zA-Z0-9_\\\\-\\\\.]+)@([a-zA-Z0-9_\\\\-\\\\.]+)\\\\.([a-zA-Z]{2,5})$\")",
+        "expression2": "false",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RegexTest(null, \"^([a-zA-Z0-9_\\\\-\\\\.]+)@([a-zA-Z0-9_\\\\-\\\\.]+)\\\\.([a-zA-Z]{2,5})$\")",
+        "expression2": "false",
+        "operator": "=="
+      }
+    ],
+    "typeReturn": "any",
+    "variables": []
+  }
+}

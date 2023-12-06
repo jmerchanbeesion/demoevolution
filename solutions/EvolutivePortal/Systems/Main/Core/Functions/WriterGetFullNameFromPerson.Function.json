@@ -1,0 +1,19 @@
+{
+  "algorithm": {
+    "parameters": [
+      {
+        "name": "person",
+        "type": "Person"
+      }
+    ],
+    "statements": [
+      {
+        "command": "Return",
+        "expression": "person.fullName"
+      }
+    ],
+    "typeReturn": "string",
+    "variables": []
+  },
+  "routing": null
+}

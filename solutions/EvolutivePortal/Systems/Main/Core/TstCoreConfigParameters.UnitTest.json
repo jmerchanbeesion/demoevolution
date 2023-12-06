@@ -1,0 +1,76 @@
+{
+  "algorithm": {
+    "parameters": [],
+    "statements": [
+      {
+        "command": "ReadConfigParameter",
+        "configParameterName": "ParamString",
+        "variableName": "paramString"
+      },
+      {
+        "command": "Assert",
+        "expression1": "^paramString",
+        "expression2": "\"Hello World\"",
+        "operator": "=="
+      },
+      {
+        "command": "ReadConfigParameter",
+        "configParameterName": "ParamNumeric",
+        "variableName": "paramNumeric"
+      },
+      {
+        "command": "Assert",
+        "expression1": "^paramNumeric",
+        "expression2": "100",
+        "operator": "=="
+      },
+      {
+        "command": "ReadConfigParameter",
+        "configParameterName": "ParamBoolean",
+        "variableName": "paramBoolean"
+      },
+      {
+        "command": "Assert",
+        "expression1": "^paramBoolean",
+        "expression2": "true",
+        "operator": "=="
+      },
+      {
+        "command": "ReadConfigParameter",
+        "configParameterName": "ParamCredentials",
+        "variableName": "paramCredentials"
+      },
+      {
+        "command": "Assert",
+        "expression1": "^paramCredentials.user",
+        "expression2": "\"john\"",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "^paramCredentials.password",
+        "expression2": "\"1234\"",
+        "operator": "=="
+      }
+    ],
+    "typeReturn": "any",
+    "variables": [
+      {
+        "name": "paramString",
+        "type": "string"
+      },
+      {
+        "name": "paramNumeric",
+        "type": "decimal"
+      },
+      {
+        "name": "paramBoolean",
+        "type": "boolean"
+      },
+      {
+        "name": "paramCredentials",
+        "type": "Credentials"
+      }
+    ]
+  }
+}

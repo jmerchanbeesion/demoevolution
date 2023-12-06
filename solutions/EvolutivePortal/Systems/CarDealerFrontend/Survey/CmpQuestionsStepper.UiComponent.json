@@ -1,0 +1,324 @@
+{
+  "eventsAndFunctions": [
+    {
+      "algorithm": {
+        "parameters": [],
+        "statements": [
+          {
+            "command": "Set",
+            "expression": "{}",
+            "variableName": "stepperConfig"
+          },
+          {
+            "command": "Set",
+            "expression": "[]",
+            "variableName": "stepperConfig.steps"
+          },
+          {
+            "command": "ReadModel",
+            "modelVariableName": "survey",
+            "variableName": "survey"
+          },
+          {
+            "children": [
+              {
+                "command": "Push",
+                "expressionItem": "{title: \"\", uiComponentName:\"CmpQuestionStep\"}",
+                "variableNameList": "stepperConfig.steps"
+              }
+            ],
+            "command": "ForEach",
+            "expressionList": "^survey.questions",
+            "variableNameItem": "question"
+          },
+          {
+            "command": "WriteModel",
+            "expression": "0",
+            "modelVariableName": "index"
+          },
+          {
+            "command": "WriteModel",
+            "expression": "[]",
+            "modelVariableName": "answers"
+          },
+          {
+            "command": "Load",
+            "expression": "^stepperConfig",
+            "widgetName": "questionsStepper"
+          }
+        ],
+        "typeReturn": "any",
+        "variables": [
+          {
+            "name": "stepperConfig",
+            "type": "StepperConfig"
+          },
+          {
+            "name": "survey",
+            "type": "SurveyQuestions"
+          },
+          {
+            "name": "question",
+            "type": "string"
+          },
+          {
+            "name": "index",
+            "type": "integer"
+          }
+        ]
+      },
+      "name": "main_init"
+    },
+    {
+      "algorithm": {
+        "parameters": [
+          {
+            "name": "stepIndex",
+            "type": "integer"
+          }
+        ],
+        "statements": [
+          {
+            "command": "WriteModel",
+            "expression": "^stepIndex+1",
+            "modelVariableName": "index"
+          },
+          {
+            "command": "Return",
+            "expression": "true"
+          }
+        ],
+        "typeReturn": "boolean",
+        "variables": []
+      },
+      "name": "questionsStepper_next"
+    },
+    {
+      "algorithm": {
+        "parameters": [
+          {
+            "name": "data",
+            "type": "any"
+          }
+        ],
+        "statements": [
+          {
+            "command": "ReadModel",
+            "modelVariableName": "answers",
+            "variableName": "answers"
+          },
+          {
+            "command": "ReadModel",
+            "modelVariableName": "index",
+            "variableName": "index"
+          },
+          {
+            "command": "Set",
+            "expression": "ElementAt(^answers, ^index)",
+            "variableName": "value"
+          },
+          {
+            "children": [
+              {
+                "command": "Set",
+                "expression": "^data.answer",
+                "variableName": "value.answer"
+              }
+            ],
+            "command": "If",
+            "expression": "IsNotNull(^value)"
+          },
+          {
+            "children": [
+              {
+                "command": "Push",
+                "expressionItem": "^data",
+                "variableNameList": "answers"
+              }
+            ],
+            "command": "Else"
+          }
+        ],
+        "typeReturn": "any",
+        "variables": [
+          {
+            "name": "index",
+            "type": "integer"
+          },
+          {
+            "name": "answers",
+            "type": "any"
+          },
+          {
+            "name": "value",
+            "type": "any"
+          }
+        ]
+      },
+      "name": "main_receiveData"
+    },
+    {
+      "algorithm": {
+        "parameters": [
+          {
+            "name": "stepIndex",
+            "type": "integer"
+          }
+        ],
+        "statements": [
+          {
+            "command": "WriteModel",
+            "expression": "^stepIndex-1",
+            "modelVariableName": "index"
+          }
+        ],
+        "typeReturn": "boolean",
+        "variables": []
+      },
+      "name": "questionsStepper_back"
+    },
+    {
+      "algorithm": {
+        "parameters": [],
+        "statements": [
+          {
+            "command": "ReadModel",
+            "modelVariableName": "answers",
+            "variableName": "answers"
+          },
+          {
+            "command": "Set",
+            "expression": "{}",
+            "variableName": "surveyDetails"
+          },
+          {
+            "command": "Set",
+            "expression": "Now()",
+            "variableName": "surveyDetails.date"
+          },
+          {
+            "command": "Set",
+            "expression": "Round(Avg(^answers, answer), 2)",
+            "variableName": "surveyDetails.score"
+          },
+          {
+            "command": "ReadLocalStorage",
+            "localStorageVariableName": "\"carDealers\"",
+            "variableName": "carDealers"
+          },
+          {
+            "command": "Set",
+            "expression": "JsonParse(^carDealers)",
+            "variableName": "carDealers"
+          },
+          {
+            "command": "ReadModel",
+            "modelVariableName": "branch",
+            "variableName": "branch"
+          },
+          {
+            "command": "Set",
+            "expression": "FindFirst(^carDealers.branches, name == ^branch)",
+            "variableName": "branch"
+          },
+          {
+            "command": "ReadModel",
+            "modelVariableName": "associate",
+            "variableName": "associate"
+          },
+          {
+            "command": "Set",
+            "expression": "FindFirst(^branch.associates, name == ^associate)",
+            "variableName": "associate"
+          },
+          {
+            "command": "Push",
+            "expressionItem": "^surveyDetails",
+            "variableNameList": "associate.surveys"
+          },
+          {
+            "command": "Set",
+            "expression": "Avg(Map(associate.surveys, score))",
+            "variableName": "associate.totalScore"
+          },
+          {
+            "command": "SendDataToParent",
+            "expressionData": "{\n\tcarDealers: ^carDealers\n}"
+          }
+        ],
+        "typeReturn": "boolean",
+        "variables": [
+          {
+            "name": "branch",
+            "type": "any"
+          },
+          {
+            "name": "carDealers",
+            "type": "any"
+          },
+          {
+            "name": "answers",
+            "type": "any"
+          },
+          {
+            "name": "surveyDetails",
+            "type": "any"
+          },
+          {
+            "name": "associate",
+            "type": "any"
+          }
+        ]
+      },
+      "name": "questionsStepper_finish"
+    }
+  ],
+  "model": [
+    {
+      "name": "carDealers",
+      "required": true,
+      "type": "CarDealers"
+    },
+    {
+      "name": "survey",
+      "required": true,
+      "type": "SurveyQuestions"
+    },
+    {
+      "name": "branch",
+      "required": true,
+      "type": "string"
+    },
+    {
+      "name": "associate",
+      "required": true,
+      "type": "string"
+    },
+    {
+      "name": "index",
+      "required": true,
+      "type": "integer"
+    },
+    {
+      "name": "answers",
+      "required": true,
+      "type": "any"
+    }
+  ],
+  "root": {
+    "children": [
+      {
+        "cssClass": "blz-area-default",
+        "name": "questionsStepper",
+        "orientation": "horizontal",
+        "steps": [],
+        "toolbarOrientation": "right",
+        "widget": "Stepper"
+      }
+    ],
+    "cssClass": "blz-padding-top-large blz-padding-right-large blz-padding-left-large blz-padding-bottom-large blz-area-default",
+    "layout": "container"
+  },
+  "routing": null,
+  "unused": []
+}

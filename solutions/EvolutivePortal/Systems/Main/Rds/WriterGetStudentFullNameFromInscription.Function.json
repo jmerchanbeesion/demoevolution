@@ -1,0 +1,19 @@
+{
+  "algorithm": {
+    "parameters": [
+      {
+        "name": "inscription",
+        "type": "Inscription"
+      }
+    ],
+    "statements": [
+      {
+        "command": "Return",
+        "expression": "inscription.studentFullName"
+      }
+    ],
+    "typeReturn": "string",
+    "variables": []
+  },
+  "routing": null
+}

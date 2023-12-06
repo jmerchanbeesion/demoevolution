@@ -1,0 +1,326 @@
+{
+  "algorithm": {
+    "parameters": [],
+    "statements": [
+      {
+        "command": "ReadConfigParameter",
+        "configParameterName": "RealRds",
+        "variableName": "realRds"
+      },
+      {
+        "children": [
+          {
+            "command": "Execute",
+            "expression": "InitRds()"
+          },
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "command": "Set",
+                    "expression": "RdsInsert(RdsDefault.TblStudents, { code: \"ST009\", name: \"Thomas\", surname: \"Alby\", birthDate: Date(1977, 5, 1), gender: \"M\", average: 4 })",
+                    "variableName": "newStudentId"
+                  },
+                  {
+                    "command": "Execute",
+                    "expression": "RdsInsert(RdsDefault.TblStudents, { code: \"ST009\", name: \"Thomas\", surname: \"Alby\", birthDate: Date(1977, 5, 1), gender: \"M\", average: 4 })"
+                  }
+                ],
+                "command": "Transaction",
+                "transactionType": "required"
+              }
+            ],
+            "command": "Try"
+          },
+          {
+            "children": [],
+            "command": "Catch",
+            "errorName": "Error",
+            "variableName": "err"
+          },
+          {
+            "command": "Assert",
+            "expression1": "RdsExists(RdsDefault.TblStudents, code == \"ST009\")",
+            "expression2": "false",
+            "operator": "=="
+          },
+          {
+            "command": "Set",
+            "expression": "false",
+            "variableName": "wasMandatoryTransactionViolation"
+          },
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "command": "Set",
+                    "expression": "RdsInsert(RdsDefault.TblStudents, { code: \"ST009\", name: \"Thomas\", surname: \"Alby\", birthDate: Date(1977, 5, 1), gender: \"M\", average: 4 })",
+                    "variableName": "newStudentId"
+                  }
+                ],
+                "command": "Transaction",
+                "transactionType": "mandatory"
+              }
+            ],
+            "command": "Try"
+          },
+          {
+            "children": [
+              {
+                "command": "Set",
+                "expression": "true",
+                "variableName": "wasMandatoryTransactionViolation"
+              }
+            ],
+            "command": "Catch",
+            "errorName": "MandatoryTransactionViolation",
+            "variableName": "err"
+          },
+          {
+            "command": "Assert",
+            "expression1": "^wasMandatoryTransactionViolation",
+            "expression2": "true",
+            "operator": "=="
+          },
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "command": "Set",
+                    "expression": "RdsInsert(RdsDefault.TblStudents, { code: \"ST009\", name: \"Thomas\", surname: \"Alby\", birthDate: Date(1977, 5, 1), gender: \"M\", average: 4 })",
+                    "variableName": "newStudentId"
+                  }
+                ],
+                "command": "Transaction",
+                "transactionType": "mandatory"
+              }
+            ],
+            "command": "Transaction",
+            "transactionType": "required"
+          },
+          {
+            "command": "Assert",
+            "expression1": "RdsSelectOne(RdsDefault.TblStudents, code, studentId == ^newStudentId)",
+            "expression2": "\"ST009\"",
+            "operator": "=="
+          },
+          {
+            "command": "Execute",
+            "expression": "RdsDelete(RdsDefault.TblStudents, studentId == ^newStudentId)"
+          },
+          {
+            "command": "Set",
+            "expression": "false",
+            "variableName": "wasNeverTransactionViolation"
+          },
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "command": "Set",
+                        "expression": "RdsInsert(RdsDefault.TblStudents, { code: \"ST009\", name: \"Thomas\", surname: \"Alby\", birthDate: Date(1977, 5, 1), gender: \"M\", average: 4 })",
+                        "variableName": "newStudentId"
+                      }
+                    ],
+                    "command": "Transaction",
+                    "transactionType": "never"
+                  }
+                ],
+                "command": "Transaction",
+                "transactionType": "required"
+              }
+            ],
+            "command": "Try"
+          },
+          {
+            "children": [
+              {
+                "command": "Set",
+                "expression": "true",
+                "variableName": "wasNeverTransactionViolation"
+              }
+            ],
+            "command": "Catch",
+            "errorName": "NeverTransactionViolation",
+            "variableName": "err"
+          },
+          {
+            "command": "Assert",
+            "expression1": "^wasNeverTransactionViolation",
+            "expression2": "true",
+            "operator": "=="
+          },
+          {
+            "children": [
+              {
+                "command": "Set",
+                "expression": "RdsInsert(RdsDefault.TblStudents, { code: \"ST009\", name: \"Thomas\", surname: \"Alby\", birthDate: Date(1977, 5, 1), gender: \"M\", average: 4 })",
+                "variableName": "newStudentId"
+              }
+            ],
+            "command": "Transaction",
+            "transactionType": "never"
+          },
+          {
+            "command": "Assert",
+            "expression1": "RdsSelectOne(RdsDefault.TblStudents, code, studentId == ^newStudentId)",
+            "expression2": "\"ST009\"",
+            "operator": "=="
+          },
+          {
+            "command": "Execute",
+            "expression": "RdsDelete(RdsDefault.TblStudents, studentId == ^newStudentId)"
+          },
+          {
+            "children": [
+              {
+                "command": "Set",
+                "expression": "RdsInsert(RdsDefault.TblStudents, { code: \"ST009\", name: \"Thomas\", surname: \"Alby\", birthDate: Date(1977, 5, 1), gender: \"M\", average: 4 })",
+                "variableName": "newStudentId"
+              },
+              {
+                "children": [
+                  {
+                    "command": "Assert",
+                    "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsCount(studentId))",
+                    "expression2": "8",
+                    "operator": "=="
+                  },
+                  {
+                    "command": "Assert",
+                    "expression1": "RdsSelectOne(RdsDefault.TblStudents, code, studentId == ^newStudentId)",
+                    "expression2": "null",
+                    "operator": "=="
+                  }
+                ],
+                "command": "Transaction",
+                "transactionType": "not-supported"
+              }
+            ],
+            "command": "Transaction",
+            "transactionType": "required"
+          },
+          {
+            "command": "Assert",
+            "expression1": "RdsSelectOne(RdsDefault.TblStudents, code, studentId == ^newStudentId)",
+            "expression2": "\"ST009\"",
+            "operator": "=="
+          },
+          {
+            "command": "Execute",
+            "expression": "RdsDelete(RdsDefault.TblStudents, studentId == ^newStudentId)"
+          },
+          {
+            "children": [
+              {
+                "command": "Set",
+                "expression": "RdsInsert(RdsDefault.TblStudents, { code: \"ST009\", name: \"Thomas\", surname: \"Alby\", birthDate: Date(1977, 5, 1), gender: \"M\", average: 4 })",
+                "variableName": "newStudentId"
+              },
+              {
+                "children": [
+                  {
+                    "command": "Assert",
+                    "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsCount(studentId))",
+                    "expression2": "9",
+                    "operator": "=="
+                  },
+                  {
+                    "command": "Assert",
+                    "expression1": "RdsSelectOne(RdsDefault.TblStudents, code, studentId == ^newStudentId)",
+                    "expression2": "\"ST009\"",
+                    "operator": "=="
+                  }
+                ],
+                "command": "Transaction",
+                "transactionType": "required"
+              }
+            ],
+            "command": "Transaction",
+            "transactionType": "required"
+          },
+          {
+            "command": "Assert",
+            "expression1": "RdsSelectOne(RdsDefault.TblStudents, code, studentId == ^newStudentId)",
+            "expression2": "\"ST009\"",
+            "operator": "=="
+          },
+          {
+            "command": "Execute",
+            "expression": "RdsDelete(RdsDefault.TblStudents, studentId == ^newStudentId)"
+          },
+          {
+            "children": [
+              {
+                "command": "Set",
+                "expression": "RdsInsert(RdsDefault.TblStudents, { code: \"ST009\", name: \"Thomas\", surname: \"Alby\", birthDate: Date(1977, 5, 1), gender: \"M\", average: 4 })",
+                "variableName": "newStudentId"
+              },
+              {
+                "children": [
+                  {
+                    "command": "Assert",
+                    "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsCount(studentId))",
+                    "expression2": "8",
+                    "operator": "=="
+                  },
+                  {
+                    "command": "Assert",
+                    "expression1": "RdsSelectOne(RdsDefault.TblStudents, code, studentId == ^newStudentId)",
+                    "expression2": "null",
+                    "operator": "=="
+                  }
+                ],
+                "command": "Transaction",
+                "transactionType": "requires-new"
+              }
+            ],
+            "command": "Transaction",
+            "transactionType": "required"
+          },
+          {
+            "command": "Assert",
+            "expression1": "RdsSelectOne(RdsDefault.TblStudents, code, studentId == ^newStudentId)",
+            "expression2": "\"ST009\"",
+            "operator": "=="
+          },
+          {
+            "command": "Execute",
+            "expression": "RdsDelete(RdsDefault.TblStudents, studentId == ^newStudentId)"
+          }
+        ],
+        "command": "If",
+        "expression": "^realRds"
+      }
+    ],
+    "typeReturn": "any",
+    "variables": [
+      {
+        "name": "realRds",
+        "type": "boolean"
+      },
+      {
+        "name": "newStudentId",
+        "type": "integer"
+      },
+      {
+        "name": "err",
+        "type": "Error"
+      },
+      {
+        "name": "wasMandatoryTransactionViolation",
+        "type": "boolean"
+      },
+      {
+        "name": "wasNeverTransactionViolation",
+        "type": "boolean"
+      }
+    ]
+  }
+}

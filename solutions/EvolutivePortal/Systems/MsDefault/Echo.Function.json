@@ -1,0 +1,31 @@
+{
+  "algorithm": {
+    "parameters": [
+      {
+        "name": "param",
+        "type": "string"
+      }
+    ],
+    "statements": [
+      {
+        "command": "Return",
+        "expression": "param"
+      }
+    ],
+    "typeReturn": "string",
+    "variables": []
+  },
+  "routing": {
+    "method": "GET",
+    "parameters": [
+      {
+        "bind": "param",
+        "in": "Path",
+        "name": "param",
+        "remarks": "The same param to be returned"
+      }
+    ],
+    "path": "/echo/{param}",
+    "remarks": "Echos a received param"
+  }
+}

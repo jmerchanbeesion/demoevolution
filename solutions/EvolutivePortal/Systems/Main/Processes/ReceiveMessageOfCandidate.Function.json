@@ -1,0 +1,33 @@
+{
+  "algorithm": {
+    "parameters": [
+      {
+        "name": "candidateId",
+        "type": "string"
+      },
+      {
+        "name": "messageKey",
+        "type": "string"
+      }
+    ],
+    "statements": [
+      {
+        "command": "Set",
+        "expression": "MongodbFindOne(MongoDefault, \"candidates\", { _id: { $eq: { $oid: ^candidateId } } })",
+        "variableName": "candidate"
+      },
+      {
+        "command": "Execute",
+        "expression": "ProcessSendMessage(ProcessDefault.ProcessRecruitment, ^candidate.instanceId, ^messageKey, null)"
+      }
+    ],
+    "typeReturn": "any",
+    "variables": [
+      {
+        "name": "candidate",
+        "type": "ProcessDefault.Candidate"
+      }
+    ]
+  },
+  "routing": null
+}

@@ -1,0 +1,37 @@
+{
+  "algorithm": {
+    "parameters": [
+      {
+        "name": "dto",
+        "type": "Dto"
+      }
+    ],
+    "statements": [
+      {
+        "command": "Return",
+        "expression": "^dto.stringValue + \"|\" + ConvertToString(^dto.integerValue) + \"|\" + ConvertToString(^dto.decimalValue) + \"|\" + ConvertToString(^dto.booleanValue) + \"|\" + ConvertToString(^dto.datetimeValue) + \"|\" + ConvertToString(^dto.dateValue) + \"|\" + ConvertToString(^dto.timeValue)"
+      }
+    ],
+    "typeReturn": "string",
+    "variables": []
+  },
+  "routing": {
+    "method": "POST",
+    "parameters": [
+      {
+        "bind": "dto",
+        "in": "Body",
+        "name": "body",
+        "remarks": "Body parameter"
+      }
+    ],
+    "path": "/receive-body-parameter",
+    "remarks": "Receive Body Parameter",
+    "responses": [
+      {
+        "httpStatus": "200",
+        "remarks": "Success"
+      }
+    ]
+  }
+}

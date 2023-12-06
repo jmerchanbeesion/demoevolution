@@ -1,0 +1,48 @@
+{
+  "algorithm": {
+    "parameters": [
+      {
+        "name": "name",
+        "type": "string"
+      },
+      {
+        "name": "surname",
+        "type": "string"
+      }
+    ],
+    "statements": [
+      {
+        "children": [
+          {
+            "command": "Return",
+            "expression": "^name"
+          }
+        ],
+        "command": "If",
+        "expression": "IsNullOrEmpty(^surname)"
+      },
+      {
+        "children": [
+          {
+            "command": "Return",
+            "expression": "\"Mr. \" + ^surname"
+          }
+        ],
+        "command": "ElseIf",
+        "expression": "IsNullOrEmpty(^name)"
+      },
+      {
+        "children": [
+          {
+            "command": "Return",
+            "expression": "^name + \" \" + ^surname"
+          }
+        ],
+        "command": "Else"
+      }
+    ],
+    "typeReturn": "string",
+    "variables": []
+  },
+  "routing": null
+}

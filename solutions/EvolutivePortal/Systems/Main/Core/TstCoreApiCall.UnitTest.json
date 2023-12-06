@@ -1,0 +1,65 @@
+{
+  "algorithm": {
+    "parameters": [],
+    "statements": [
+      {
+        "command": "Parallel"
+      },
+      {
+        "children": [
+          {
+            "command": "Assert",
+            "expression1": "MsDefault.ReceivePathParameters(\"Hello World\", 32, 4.56, false, Datetime(2017, 12, 31, 23, 50, 0, 0), Date(2018, 1, 1), Time(12, 0, 1, 0))",
+            "expression2": "\"Hello World|32|4.56|false|2017-12-31T23:50:00.000Z|2018-01-01T00:00:00.000Z|1970-01-01T12:00:01.000Z\"",
+            "operator": "=="
+          }
+        ],
+        "command": "Lane"
+      },
+      {
+        "children": [
+          {
+            "command": "Assert",
+            "expression1": "MsDefault.ReceiveQueryParameters(\"Hello World\", 32, 4.56, false, Datetime(2017, 12, 31, 23, 50, 0, 0), Date(2018, 1, 1), Time(12, 0, 1, 0))",
+            "expression2": "\"Hello World|32|4.56|false|2017-12-31T23:50:00.000Z|2018-01-01T00:00:00.000Z|1970-01-01T12:00:01.000Z\"",
+            "operator": "=="
+          }
+        ],
+        "command": "Lane"
+      },
+      {
+        "children": [
+          {
+            "command": "Assert",
+            "expression1": "MsDefault.ReceiveHeaderParameters(\"Hello World\", 32, 4.56, false, Datetime(2017, 12, 31, 23, 50, 0, 0), Date(2018, 1, 1), Time(12, 0, 1, 0))",
+            "expression2": "\"Hello World|32|4.56|false|2017-12-31T23:50:00.000Z|2018-01-01T00:00:00.000Z|1970-01-01T12:00:01.000Z\"",
+            "operator": "=="
+          }
+        ],
+        "command": "Lane"
+      },
+      {
+        "children": [
+          {
+            "command": "Assert",
+            "expression1": "MsDefault.ReceiveBodyParameter({ stringValue: \"Hello World\", integerValue: 32, decimalValue: 4.56, booleanValue: false, datetimeValue: Datetime(2017, 12, 31, 23, 50, 0, 0), dateValue: Date(2018, 1, 1), timeValue: Time(12, 0, 1, 0) })",
+            "expression2": "\"Hello World|32|4.56|false|2017-12-31T23:50:00.000Z|2018-01-01T00:00:00.000Z|1970-01-01T12:00:01.000Z\"",
+            "operator": "=="
+          }
+        ],
+        "command": "Lane"
+      }
+    ],
+    "typeReturn": "any",
+    "variables": [
+      {
+        "name": "wasInternalServerError",
+        "type": "boolean"
+      },
+      {
+        "name": "err",
+        "type": "Error"
+      }
+    ]
+  }
+}

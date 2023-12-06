@@ -1,0 +1,20 @@
+[
+  {
+    "children": [],
+    "icon": "home.svg",
+    "text": "Home",
+    "uiComponentName": "CmpHome"
+  },
+  {
+    "children": [],
+    "icon": "menu-survey-car.svg",
+    "text": "Customer Survey",
+    "uiComponentName": "CmpCustomerSurvey"
+  },
+  {
+    "children": [],
+    "icon": "menu-dashboard.svg",
+    "text": "Dashboard",
+    "uiComponentName": "CmpDealerDashboard"
+  }
+]

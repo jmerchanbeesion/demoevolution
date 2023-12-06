@@ -1,0 +1,77 @@
+{
+  "algorithm": {
+    "parameters": [],
+    "statements": [
+      {
+        "command": "Execute",
+        "expression": "InitRds()"
+      },
+      {
+        "command": "Set",
+        "expression": "RdsSelectOne(RdsDefault.TblStudents, studentId, code == \"ST001\")",
+        "variableName": "studentId"
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, IsNotNull(\"Hello World\"), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "true",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, IsNotNull(null), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "false",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, IsNull(\"Hello World\"), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "false",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, IsNull(null), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "true",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, IsNullOrValue(\"Hello World\", \"Hello World\"), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "true",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, IsNullOrValue(\"Goodbye World\", \"Hello World\"), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "false",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, IsNullOrValue(null, \"Hello World\"), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "true",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, Nvl(\"Hello World\", \"Goodbye World\"), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "\"Hello World\"",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, Nvl(null, \"Goodbye World\"), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "\"Goodbye World\"",
+        "operator": "=="
+      }
+    ],
+    "typeReturn": "any",
+    "variables": [
+      {
+        "name": "studentId",
+        "type": "integer"
+      }
+    ]
+  }
+}

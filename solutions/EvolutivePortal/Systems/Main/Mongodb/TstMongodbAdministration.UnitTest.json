@@ -1,0 +1,77 @@
+{
+  "algorithm": {
+    "parameters": [],
+    "statements": [
+      {
+        "command": "ReadConfigParameter",
+        "configParameterName": "RealMongodb",
+        "variableName": "realMongodb"
+      },
+      {
+        "children": [
+          {
+            "command": "Execute",
+            "expression": "InitMongodb()"
+          },
+          {
+            "command": "Execute",
+            "expression": "MongodbCreateIndex(MongoDefault, \"lost-pets\", { name: 1 })"
+          },
+          {
+            "command": "Assert",
+            "expression1": "MongodbIndexExists(MongoDefault, \"lost-pets\", \"name_1\")",
+            "expression2": "true",
+            "operator": "=="
+          },
+          {
+            "command": "Assert",
+            "expression1": "Map(MongodbListIndexes(MongoDefault, \"lost-pets\"), name)",
+            "expression2": "[\"_id_\", \"lostLocation_geoHaystack_type_1\", \"name_1\"]",
+            "operator": "=="
+          },
+          {
+            "command": "Execute",
+            "expression": "MongodbDropIndex(MongoDefault, \"lost-pets\", \"name_1\")"
+          },
+          {
+            "command": "Assert",
+            "expression1": "MongodbIndexExists(MongoDefault, \"lost-pets\", \"name_1\")",
+            "expression2": "false",
+            "operator": "=="
+          },
+          {
+            "command": "Assert",
+            "expression1": "Map(MongodbListIndexes(MongoDefault, \"lost-pets\"), name)",
+            "expression2": "[\"_id_\", \"lostLocation_geoHaystack_type_1\"]",
+            "operator": "=="
+          },
+          {
+            "command": "Execute",
+            "expression": "MongodbDropIndexes(MongoDefault, \"lost-pets\")"
+          },
+          {
+            "command": "Assert",
+            "expression1": "Map(MongodbListIndexes(MongoDefault, \"lost-pets\"), name)",
+            "expression2": "[\"_id_\"]",
+            "operator": "=="
+          },
+          {
+            "command": "Assert",
+            "expression1": "MongodbIsCapped(MongoDefault, \"lost-pets\")",
+            "expression2": "Map(MongodbStats(MongoDefault, \"lost-pets\"), capped)",
+            "operator": "=="
+          }
+        ],
+        "command": "If",
+        "expression": "^realMongodb"
+      }
+    ],
+    "typeReturn": "any",
+    "variables": [
+      {
+        "name": "realMongodb",
+        "type": "boolean"
+      }
+    ]
+  }
+}

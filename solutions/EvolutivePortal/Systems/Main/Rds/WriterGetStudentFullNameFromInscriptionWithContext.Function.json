@@ -1,0 +1,28 @@
+{
+  "algorithm": {
+    "parameters": [
+      {
+        "name": "inscription",
+        "type": "Inscription"
+      },
+      {
+        "name": "previousInscriptions",
+        "type": "list(Inscription)"
+      }
+    ],
+    "statements": [
+      {
+        "command": "Push",
+        "expressionItem": "inscription",
+        "variableNameList": "previousInscriptions"
+      },
+      {
+        "command": "Return",
+        "expression": "WriterGetStudentFullNameFromInscription(inscription)"
+      }
+    ],
+    "typeReturn": "string",
+    "variables": []
+  },
+  "routing": null
+}

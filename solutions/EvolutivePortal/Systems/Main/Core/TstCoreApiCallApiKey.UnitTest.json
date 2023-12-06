@@ -1,0 +1,114 @@
+{
+  "algorithm": {
+    "parameters": [],
+    "statements": [
+      {
+        "callVariableName": "api_key",
+        "command": "WriteCallVariable",
+        "expression": "\"my_key\""
+      },
+      {
+        "command": "Assert",
+        "expression1": "MsDefault.HelloWorldWithApiKeyHeader()",
+        "expression2": "\"Hello World\"",
+        "operator": "=="
+      },
+      {
+        "command": "Set",
+        "expression": "false",
+        "variableName": "wasUnauthorized"
+      },
+      {
+        "children": [
+          {
+            "callVariableName": "api_key",
+            "command": "WriteCallVariable",
+            "expression": "\"wrong_key\""
+          },
+          {
+            "command": "Execute",
+            "expression": "MsDefault.HelloWorldWithApiKeyHeader()"
+          }
+        ],
+        "command": "Try"
+      },
+      {
+        "children": [
+          {
+            "command": "Set",
+            "expression": "true",
+            "variableName": "wasUnauthorized"
+          }
+        ],
+        "command": "Catch",
+        "errorName": "Unauthorized",
+        "variableName": "err"
+      },
+      {
+        "command": "Assert",
+        "expression1": "^wasUnauthorized",
+        "expression2": "true",
+        "operator": "=="
+      },
+      {
+        "callVariableName": "api_key",
+        "command": "WriteCallVariable",
+        "expression": "\"my_key\""
+      },
+      {
+        "command": "Assert",
+        "expression1": "MsDefault.HelloWorldWithApiKeyQuery()",
+        "expression2": "\"Hello World\"",
+        "operator": "=="
+      },
+      {
+        "command": "Set",
+        "expression": "false",
+        "variableName": "wasUnauthorized"
+      },
+      {
+        "children": [
+          {
+            "callVariableName": "api_key",
+            "command": "WriteCallVariable",
+            "expression": "\"wrong_key\""
+          },
+          {
+            "command": "Execute",
+            "expression": "MsDefault.HelloWorldWithApiKeyQuery()"
+          }
+        ],
+        "command": "Try"
+      },
+      {
+        "children": [
+          {
+            "command": "Set",
+            "expression": "true",
+            "variableName": "wasUnauthorized"
+          }
+        ],
+        "command": "Catch",
+        "errorName": "Unauthorized",
+        "variableName": "err"
+      },
+      {
+        "command": "Assert",
+        "expression1": "^wasUnauthorized",
+        "expression2": "true",
+        "operator": "=="
+      }
+    ],
+    "typeReturn": "any",
+    "variables": [
+      {
+        "name": "wasUnauthorized",
+        "type": "boolean"
+      },
+      {
+        "name": "err",
+        "type": "Error"
+      }
+    ]
+  }
+}

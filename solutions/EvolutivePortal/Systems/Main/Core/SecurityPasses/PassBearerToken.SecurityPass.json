@@ -1,0 +1,13 @@
+{
+  "callVariableName": "bearer_token",
+  "configParameterName": null,
+  "cookieName": "",
+  "localStorageVariableName": "",
+  "sessionStorageVariableName": "",
+  "source": "CallVariable",
+  "usages": [
+    {
+      "securitySchemeName": "MsDefault.BearerToken"
+    }
+  ]
+}

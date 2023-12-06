@@ -1,0 +1,79 @@
+{
+  "algorithm": {
+    "parameters": [],
+    "statements": [
+      {
+        "command": "ReadConfigParameter",
+        "configParameterName": "RealRedis",
+        "variableName": "realRedis"
+      },
+      {
+        "children": [
+          {
+            "command": "Execute",
+            "expression": "InitRedis()"
+          },
+          {
+            "command": "Execute",
+            "expression": "RedisLpush(RedisDefault, \"number-list\", \"one\")"
+          },
+          {
+            "command": "Execute",
+            "expression": "RedisRpush(RedisDefault, \"number-list\", \"two\")"
+          },
+          {
+            "command": "Execute",
+            "expression": "RedisRpush(RedisDefault, \"number-list\", \"three\")"
+          },
+          {
+            "command": "Execute",
+            "expression": "RedisLset(RedisDefault, \"number-list\", 2, \"three modified\")"
+          },
+          {
+            "command": "Assert",
+            "expression1": "RedisLindex(RedisDefault, \"number-list\", 2)",
+            "expression2": "\"three modified\"",
+            "operator": "=="
+          },
+          {
+            "command": "Assert",
+            "expression1": "RedisLlen(RedisDefault, \"number-list\")",
+            "expression2": "3",
+            "operator": "=="
+          },
+          {
+            "command": "Assert",
+            "expression1": "RedisLpop(RedisDefault, \"number-list\")",
+            "expression2": "\"one\"",
+            "operator": "=="
+          },
+          {
+            "command": "Assert",
+            "expression1": "RedisRpop(RedisDefault, \"number-list\")",
+            "expression2": "\"three modified\"",
+            "operator": "=="
+          },
+          {
+            "command": "Assert",
+            "expression1": "RedisLlen(RedisDefault, \"number-list\")",
+            "expression2": "1",
+            "operator": "=="
+          },
+          {
+            "command": "Execute",
+            "expression": "EndRedis()"
+          }
+        ],
+        "command": "If",
+        "expression": "^realRedis"
+      }
+    ],
+    "typeReturn": "any",
+    "variables": [
+      {
+        "name": "realRedis",
+        "type": "boolean"
+      }
+    ]
+  }
+}

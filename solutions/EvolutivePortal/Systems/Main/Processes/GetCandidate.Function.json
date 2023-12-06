@@ -1,0 +1,19 @@
+{
+  "algorithm": {
+    "parameters": [
+      {
+        "name": "candidateId",
+        "type": "string"
+      }
+    ],
+    "statements": [
+      {
+        "command": "Return",
+        "expression": "MongodbFindOne(MongoDefault, \"candidates\", { _id: { $eq: { $oid: ^candidateId } } })"
+      }
+    ],
+    "typeReturn": "ProcessDefault.Candidate",
+    "variables": []
+  },
+  "routing": null
+}

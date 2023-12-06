@@ -1,0 +1,220 @@
+{
+  "eventsAndFunctions": [
+    {
+      "algorithm": {
+        "parameters": [],
+        "statements": [
+          {
+            "command": "OpenInContainer",
+            "expressionIcon": "null",
+            "expressionStartModel": "{carDealers: getCarDealers()}",
+            "expressionTitle": "null",
+            "uiComponentName": "CmpCustomerInfo",
+            "widgetNameContainer": "surveyContainer"
+          }
+        ],
+        "typeReturn": "any",
+        "variables": []
+      },
+      "name": "main_init"
+    },
+    {
+      "algorithm": {
+        "parameters": [
+          {
+            "name": "data",
+            "type": "any"
+          }
+        ],
+        "statements": [
+          {
+            "children": [
+              {
+                "command": "WriteLocalStorage",
+                "expression": "JsonStringify(^data.carDealers)",
+                "localStorageVariableName": "\"carDealers\""
+              },
+              {
+                "command": "ReadModel",
+                "modelVariableName": "userName",
+                "variableName": "userName"
+              },
+              {
+                "command": "ReadModel",
+                "modelVariableName": "userSurname",
+                "variableName": "userSurname"
+              },
+              {
+                "command": "ReadModel",
+                "modelVariableName": "userEmail",
+                "variableName": "userEmail"
+              },
+              {
+                "command": "OpenInContainer",
+                "expressionIcon": "null",
+                "expressionStartModel": "{\n\tuserName: ^userName,\n    userSurname: ^userSurname,\n    userEmail: ^userEmail\n}",
+                "expressionTitle": "null",
+                "uiComponentName": "CmpQuesitonsCompleted",
+                "widgetNameContainer": "surveyContainer"
+              }
+            ],
+            "command": "If",
+            "expression": "IsNotNull(^data.carDealers)"
+          },
+          {
+            "children": [
+              {
+                "command": "WriteModel",
+                "expression": "^data.userName",
+                "modelVariableName": "userName"
+              },
+              {
+                "command": "WriteModel",
+                "expression": "^data.userSurname",
+                "modelVariableName": "userSurname"
+              },
+              {
+                "command": "WriteModel",
+                "expression": "^data.userEmail",
+                "modelVariableName": "userEmail"
+              },
+              {
+                "command": "ReadLocalStorage",
+                "localStorageVariableName": "\"surveyQuestions\"",
+                "variableName": "survey"
+              },
+              {
+                "command": "Set",
+                "expression": "JsonParse(^survey)",
+                "variableName": "survey"
+              },
+              {
+                "command": "OpenInContainer",
+                "expressionIcon": "null",
+                "expressionStartModel": "{\n\tbranch: ^data.branch,\n    associate: ^data.associate,\n\tsurvey: ^survey,\n    carDealers: getCarDealers()\n}",
+                "expressionTitle": "null",
+                "uiComponentName": "CmpQuestionsStepper",
+                "widgetNameContainer": "surveyContainer"
+              }
+            ],
+            "command": "Else"
+          }
+        ],
+        "typeReturn": "any",
+        "variables": [
+          {
+            "name": "survey",
+            "type": "any"
+          },
+          {
+            "name": "userName",
+            "type": "string"
+          },
+          {
+            "name": "userSurname",
+            "type": "string"
+          },
+          {
+            "name": "userEmail",
+            "type": "string"
+          }
+        ]
+      },
+      "name": "main_receiveData"
+    },
+    {
+      "algorithm": {
+        "parameters": [],
+        "statements": [
+          {
+            "command": "ReadLocalStorage",
+            "localStorageVariableName": "\"carDealers\"",
+            "variableName": "value"
+          },
+          {
+            "command": "Set",
+            "expression": "JsonParse(^value)",
+            "variableName": "carDealers"
+          },
+          {
+            "command": "Return",
+            "expression": "^carDealers"
+          }
+        ],
+        "typeReturn": "any",
+        "variables": [
+          {
+            "name": "carDealers",
+            "type": "CarDealers"
+          },
+          {
+            "name": "value",
+            "type": "string"
+          }
+        ]
+      },
+      "name": "getCarDealers"
+    }
+  ],
+  "model": [
+    {
+      "name": "userName",
+      "required": true,
+      "type": "string"
+    },
+    {
+      "name": "userSurname",
+      "required": true,
+      "type": "string"
+    },
+    {
+      "name": "userEmail",
+      "required": true,
+      "type": "string"
+    }
+  ],
+  "root": {
+    "alignItems": "center",
+    "children": [
+      {
+        "children": [
+          {
+            "align": "left",
+            "color": "default",
+            "icon": "survey-car.svg",
+            "name": "headerIcon",
+            "size": "xx-large",
+            "widget": "Icon"
+          },
+          {
+            "align": "left",
+            "color": "default",
+            "dock": "previous",
+            "name": "headerLabel",
+            "size": "large",
+            "text": "The Best Cars Customer Satisfaction Survey System.",
+            "widget": "Label"
+          }
+        ],
+        "cssClass": "blz-padding-top-large blz-padding-right-large blz-padding-left-large blz-padding-bottom-large blz-border-radius blz-cast-shadow blz-area-default",
+        "layout": "container",
+        "size": "two-third"
+      },
+      {
+        "cssClass": "blz-border-radius blz-cast-shadow blz-area-default",
+        "height": 560,
+        "name": "surveyContainer",
+        "size": "two-third",
+        "widget": "DynContainer"
+      }
+    ],
+    "cssClass": "blz-padding-top-large blz-padding-right-large blz-padding-left-large blz-padding-bottom-large blz-area-main",
+    "horizontalSeparation": "large",
+    "layout": "container",
+    "verticalSeparation": "large"
+  },
+  "routing": {
+    "path": "/customer-survey"
+  },
+  "unused": []
+}

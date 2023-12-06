@@ -1,0 +1,33 @@
+{
+  "algorithm": {
+    "parameters": [
+      {
+        "name": "user",
+        "type": "string"
+      },
+      {
+        "name": "password",
+        "type": "string"
+      }
+    ],
+    "statements": [
+      {
+        "children": [
+          {
+            "command": "Throw",
+            "errorName": "Unauthorized",
+            "expressionData": "null",
+            "expressionInnerError": "null"
+          }
+        ],
+        "command": "If",
+        "expression": "^user != \"john\" || ^password != \"1234\""
+      }
+    ],
+    "typeReturn": "any",
+    "variables": []
+  },
+  "apiKeyIn": null,
+  "apiKeyName": "",
+  "securityType": "BasicAuth"
+}

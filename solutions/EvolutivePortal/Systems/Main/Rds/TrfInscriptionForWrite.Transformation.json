@@ -1,0 +1,64 @@
+{
+  "betweens": [
+    {
+      "betweenType": "Function",
+      "functionName": "Now",
+      "outputConnections": [
+        "c2"
+      ],
+      "parameters": [],
+      "x": 443,
+      "y": 189
+    }
+  ],
+  "source": {
+    "elementType": "Type",
+    "outputs": [
+      {
+        "codePath": "courseId",
+        "outputConnections": [
+          "c1"
+        ]
+      },
+      {
+        "codePath": "inscriptionId",
+        "outputConnections": [
+          "c3"
+        ]
+      },
+      {
+        "codePath": "studentId",
+        "outputConnections": [
+          "c0"
+        ]
+      }
+    ],
+    "typeName": "Inscription",
+    "x": 60,
+    "y": 60
+  },
+  "target": {
+    "elementType": "RdsTable",
+    "inputs": [
+      {
+        "codePath": "inscriptionId",
+        "inputConnection": "c3"
+      },
+      {
+        "codePath": "studentId",
+        "inputConnection": "c0"
+      },
+      {
+        "codePath": "courseId",
+        "inputConnection": "c1"
+      },
+      {
+        "codePath": "creationDatetime",
+        "inputConnection": "c2"
+      }
+    ],
+    "rdsTableName": "RdsDefault.TblInscriptions",
+    "x": 600,
+    "y": 60
+  }
+}

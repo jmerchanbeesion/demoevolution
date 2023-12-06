@@ -1,0 +1,75 @@
+{
+  "algorithm": {
+    "parameters": [],
+    "statements": [
+      {
+        "command": "Assert",
+        "expression1": "Encrypt(\"Hello World\", null, \"MD5\")",
+        "expression2": "\"b10a8db164e0754105b7a99be72e3fe5\"",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Encrypt(\"Hello World\", null, \"SHA1\")",
+        "expression2": "\"0a4d55a8d778e5022fab701977c5d840bbc486d0\"",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Encrypt(\"Hello World\", null, \"SHA256\")",
+        "expression2": "\"a591a6d40bf420404a011733cfb7b190d62c65bf0bcda32b57b277d9ad9f146e\"",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Encrypt(\"Hello World\", null, \"SHA384\")",
+        "expression2": "\"99514329186b2f6ae4a1329e7ee6c610a729636335174ac6b740f9028396fcc803d0e93863a7c3d90f86beee782f4f3f\"",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Encrypt(\"Hello World\", null, \"SHA512\")",
+        "expression2": "\"2c74fd17edafd80e8447b0d46741ee243b7eb74dd2149a0ab1b9246fb30382f27e853d8585719e0e67cbda0daa8f51671064615d645ae27acb15bfb1447f459b\"",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Encrypt(\"Hello World\", \"Shhh\", \"HMAC-MD5\")",
+        "expression2": "\"6de5cadd9b2603c4329d257f7db30ba1\"",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Encrypt(\"Hello World\", \"Shhh\", \"HMAC-SHA1\")",
+        "expression2": "\"32ace4589e0e2637a51a7fc1968717f330236982\"",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Encrypt(\"Hello World\", \"Shhh\", \"HMAC-SHA256\")",
+        "expression2": "\"58c77b4e619e51c28ac03dd0dbafd7ed5f4f1fd1a1eede100175a469c874c0e0\"",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Encrypt(\"Hello World\", \"Shhh\", \"HMAC-SHA384\")",
+        "expression2": "\"1e0d66b0d8ff69aea52b8e4e512dc1130cf6fa61cf89e43683a26bfdef1e80ed5f4f27ed576a7eead574b14d17e9a1cb\"",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Encrypt(\"Hello World\", \"Shhh\", \"HMAC-SHA512\")",
+        "expression2": "\"da866f80f558037759f255c681934c87217243f16a11371ae749e3ec4c50306be8f02163a7b5386505f2c132e4be07784d0a4033c5c475254ec8b65526853932\"",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Decrypt(Encrypt(\"Hello World\", \"Shhh\", \"AES\"), \"Shhh\", \"AES\")",
+        "expression2": "\"Hello World\"",
+        "operator": "=="
+      }
+    ],
+    "typeReturn": "any",
+    "variables": []
+  }
+}

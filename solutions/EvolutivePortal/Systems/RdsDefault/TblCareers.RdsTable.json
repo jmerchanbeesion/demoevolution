@@ -1,0 +1,40 @@
+{
+  "autoincrementalPrimaryKey": true,
+  "columns": [
+    {
+      "alias": "careerId",
+      "allowNull": false,
+      "name": "CAREER_ID",
+      "primaryKey": true,
+      "type": "integer"
+    },
+    {
+      "alias": "code",
+      "allowNull": false,
+      "name": "CODE",
+      "primaryKey": false,
+      "type": "string"
+    },
+    {
+      "alias": "name",
+      "allowNull": false,
+      "name": "NAME",
+      "primaryKey": false,
+      "type": "string"
+    }
+  ],
+  "foreignKeys": [],
+  "indexes": [],
+  "isView": false,
+  "primaryKeyName": "PK_CAREERS",
+  "sequenceName": "SQ_CAREERS",
+  "tableName": "TBL_CAREERS",
+  "uniqueKeys": [
+    {
+      "columnsNames": [
+        "CODE"
+      ],
+      "name": "UK_CAREERS_1"
+    }
+  ]
+}

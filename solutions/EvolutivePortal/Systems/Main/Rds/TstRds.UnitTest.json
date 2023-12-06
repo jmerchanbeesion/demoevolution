@@ -1,0 +1,609 @@
+{
+  "algorithm": {
+    "parameters": [],
+    "statements": [
+      {
+        "command": "Execute",
+        "expression": "InitRds()"
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelect(RdsDefault.TblStudents, code, true, code)",
+        "expression2": "[\"ST001\", \"ST002\", \"ST003\", \"ST004\", \"ST005\", \"ST006\", \"ST007\", \"ST008\"]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelect(RdsDefault.TblStudents, code, true, RdsAsc(code))",
+        "expression2": "[\"ST001\", \"ST002\", \"ST003\", \"ST004\", \"ST005\", \"ST006\", \"ST007\", \"ST008\"]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelect(RdsDefault.TblStudents, code, true, RdsDesc(code))",
+        "expression2": "[\"ST008\", \"ST007\", \"ST006\", \"ST005\", \"ST004\", \"ST003\", \"ST002\", \"ST001\"]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelect(RdsDefault.TblStudents, code, true, [gender, code])",
+        "expression2": "[\"ST003\", \"ST005\", \"ST008\", \"ST001\", \"ST002\", \"ST004\", \"ST006\", \"ST007\"]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelect(RdsDefault.TblStudents, code, true, [RdsDesc(gender), code])",
+        "expression2": "[\"ST001\", \"ST002\", \"ST004\", \"ST006\", \"ST007\", \"ST003\", \"ST005\", \"ST008\"]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelect(RdsDefault.TblStudents, code, true, [gender, RdsDesc(code)])",
+        "expression2": "[\"ST008\", \"ST005\", \"ST003\", \"ST007\", \"ST006\", \"ST004\", \"ST002\", \"ST001\"]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelect(RdsDefault.TblStudents, code, gender == \"M\", code)",
+        "expression2": "[\"ST001\", \"ST002\", \"ST004\", \"ST006\", \"ST007\"]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelect(RdsDefault.TblStudents, code, RdsLike(name, \"%ra\"), code)",
+        "expression2": "[\"ST008\"]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelect(RdsDefault.TblStudents, code, RdsLike(name, \"%ra%\"), code)",
+        "expression2": "[\"ST001\", \"ST003\", \"ST007\", \"ST008\"]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelect(RdsDefault.TblStudents, code, RdsLike(name, \"_____\"), code)",
+        "expression2": "[\"ST004\", \"ST005\"]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelect(RdsDefault.TblStudents, code, RdsLike(name, \"_e%\"), code)",
+        "expression2": "[\"ST001\", \"ST005\", \"ST006\"]",
+        "operator": "=="
+      },
+      {
+        "command": "Set",
+        "expression": "RdsSelect(RdsDefault.TblCourses, courseId, true, courseId)",
+        "variableName": "courseIds"
+      },
+      {
+        "command": "Set",
+        "expression": "RdsSelect(RdsDefault.TblCareersCourses, course.code, [RdsIn(courseId, ^courseIds)], course.code )",
+        "variableName": "codes"
+      },
+      {
+        "command": "Assert",
+        "expression1": "Distinct(codes)",
+        "expression2": "[\"CO001\",\"CO002\",\"CO003\",\"CO004\",\"CO005\",\"CO006\",\"CO007\",\"CO008\",\"CO009\",\"CO010\",\"CO011\",\"CO012\",\"CO013\",\"CO014\",\"CO015\",\"CO016\"]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelect(RdsDefault.TblStudents, code, RdsIn(studentId, RdsSelect(RdsDefault.TblInscriptions, studentId)), code)",
+        "expression2": "[\"ST001\", \"ST002\", \"ST004\", \"ST005\", \"ST007\"]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelect(RdsDefault.TblStudents, code, RdsNotIn(studentId, RdsSelect(RdsDefault.TblInscriptions, studentId)), code)",
+        "expression2": "[\"ST003\", \"ST006\", \"ST008\"]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelect(RdsDefault.TblStudents, code, RdsIn(average, [4, 9]), code)",
+        "expression2": "[\"ST002\", \"ST004\"]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelect(RdsDefault.TblStudents, code, RdsNotIn(average, [4, 9]), code)",
+        "expression2": "[\"ST001\", \"ST003\", \"ST005\", \"ST006\", \"ST008\"]",
+        "operator": "=="
+      },
+      {
+        "command": "Set",
+        "expression": "[4, 9]",
+        "variableName": "averages"
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelect(RdsDefault.TblStudents, code, RdsIn(average, ^averages), code)",
+        "expression2": "[\"ST002\", \"ST004\"]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelect(RdsDefault.TblStudents, code, RdsNotIn(average, ^averages), code)",
+        "expression2": "[\"ST001\", \"ST003\", \"ST005\", \"ST006\", \"ST008\"]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelect(RdsDefault.TblStudents, code, true, code, 3, 3)",
+        "expression2": "[\"ST004\", \"ST005\", \"ST006\"]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelect(RdsDefault.TblStudents, code, true, code, 4, 2)",
+        "expression2": "[\"ST005\", \"ST006\"]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelect(RdsDefault.TblStudents, average, true, average)",
+        "expression2": "[null, 1, 4, 6, 6, 8, 8, 9]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelect(RdsDefault.TblStudents, average, true, RdsDesc(average))",
+        "expression2": "[9, 8, 8, 6, 6, 4, 1, null]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelect(RdsDefault.TblStudents, RdsDistinct(average), true, average)",
+        "expression2": "[null, 1, 4, 6, 8, 9]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelect(RdsDefault.TblStudents, RdsDistinct(average), true, RdsDesc(average))",
+        "expression2": "[9, 8, 6, 4, 1, null]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsExists(RdsDefault.TblStudents, average == 9)",
+        "expression2": "true",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsExists(RdsDefault.TblStudents, average > 9)",
+        "expression2": "false",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, code, average == 9)",
+        "expression2": "\"ST004\"",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsAvg(average))",
+        "expression2": "6",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsCount(average))",
+        "expression2": "7",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsCountDistinct(average))",
+        "expression2": "5",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsMax(average))",
+        "expression2": "9",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsMin(average))",
+        "expression2": "1",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSum(average))",
+        "expression2": "42",
+        "operator": "=="
+      },
+      {
+        "command": "Set",
+        "expression": "null",
+        "variableName": "filterGender"
+      },
+      {
+        "command": "Set",
+        "expression": "null",
+        "variableName": "filterMinAverage"
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelect(RdsDefault.TblStudents, code, RdsConditional(gender == ^filterGender, !IsNull(^filterGender)), code)",
+        "expression2": "[\"ST001\", \"ST002\", \"ST003\", \"ST004\", \"ST005\", \"ST006\", \"ST007\", \"ST008\"]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelect(RdsDefault.TblStudents, code, [RdsConditional(gender == ^filterGender, !IsNull(^filterGender)), RdsConditional(average >= ^filterMinAverage, !IsNull(^filterMinAverage))], code)",
+        "expression2": "[\"ST001\", \"ST002\", \"ST003\", \"ST004\", \"ST005\", \"ST006\", \"ST007\", \"ST008\"]",
+        "operator": "=="
+      },
+      {
+        "command": "Set",
+        "expression": "\"M\"",
+        "variableName": "filterGender"
+      },
+      {
+        "command": "Set",
+        "expression": "null",
+        "variableName": "filterMinAverage"
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelect(RdsDefault.TblStudents, code, RdsConditional(gender == ^filterGender, !IsNull(^filterGender)), code)",
+        "expression2": "[\"ST001\", \"ST002\", \"ST004\", \"ST006\", \"ST007\"]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelect(RdsDefault.TblStudents, code, [RdsConditional(gender == ^filterGender, !IsNull(^filterGender)), RdsConditional(average >= ^filterMinAverage, !IsNull(^filterMinAverage))], code)",
+        "expression2": "[\"ST001\", \"ST002\", \"ST004\", \"ST006\", \"ST007\"]",
+        "operator": "=="
+      },
+      {
+        "command": "Set",
+        "expression": "null",
+        "variableName": "filterGender"
+      },
+      {
+        "command": "Set",
+        "expression": "8",
+        "variableName": "filterMinAverage"
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelect(RdsDefault.TblStudents, code, RdsConditional(gender == ^filterGender, !IsNull(^filterGender)), code)",
+        "expression2": "[\"ST001\", \"ST002\", \"ST003\", \"ST004\", \"ST005\", \"ST006\", \"ST007\", \"ST008\"]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelect(RdsDefault.TblStudents, code, [RdsConditional(gender == ^filterGender, !IsNull(^filterGender)), RdsConditional(average >= ^filterMinAverage, !IsNull(^filterMinAverage))], code)",
+        "expression2": "[\"ST004\", \"ST005\", \"ST006\"]",
+        "operator": "=="
+      },
+      {
+        "command": "Set",
+        "expression": "\"M\"",
+        "variableName": "filterGender"
+      },
+      {
+        "command": "Set",
+        "expression": "8",
+        "variableName": "filterMinAverage"
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelect(RdsDefault.TblStudents, code, RdsConditional(gender == ^filterGender, !IsNull(^filterGender)), code)",
+        "expression2": "[\"ST001\", \"ST002\", \"ST004\", \"ST006\", \"ST007\"]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelect(RdsDefault.TblStudents, code, [RdsConditional(gender == ^filterGender, !IsNull(^filterGender)), RdsConditional(average >= ^filterMinAverage, !IsNull(^filterMinAverage))], code)",
+        "expression2": "[\"ST004\", \"ST006\"]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelect(RdsDefault.TblStudents, code, RdsConditional(gender == ^filterGender, !IsNull(TrimEnd(^filterGender))), code)",
+        "expression2": "[\"ST001\", \"ST002\", \"ST004\", \"ST006\", \"ST007\"]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelect(RdsDefault.TblInscriptions, [student.code, course.code], student.average >= 8, [student.code, course.code])",
+        "expression2": "[[\"ST004\", \"CO001\"], [\"ST004\", \"CO002\"], [\"ST004\", \"CO003\"], [\"ST004\", \"CO004\"], [\"ST004\", \"CO009\"], [\"ST004\", \"CO010\"], [\"ST005\", \"CO001\"], [\"ST005\", \"CO004\"], [\"ST005\", \"CO013\"], [\"ST005\", \"CO014\"], [\"ST005\", \"CO015\"], [\"ST005\", \"CO016\"]]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelect(RdsDefault.TblStudents, code, RdsSelectOne(RdsDefault.TblInscriptions, RdsCount(1), studentId == Out(studentId)) > 0, code)",
+        "expression2": "[\"ST001\", \"ST002\", \"ST004\", \"ST005\", \"ST007\"]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelect(RdsDefault.TblStudents, code, RdsSelectOne(RdsDefault.TblInscriptions, RdsCount(1), studentId == Out(studentId)) == 0, code)",
+        "expression2": "[\"ST003\", \"ST006\", \"ST008\"]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelect(RdsDefault.TblStudents, code, RdsExists(RdsDefault.TblInscriptions, studentId == Out(studentId)), code)",
+        "expression2": "[\"ST001\", \"ST002\", \"ST004\", \"ST005\", \"ST007\"]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelect(RdsDefault.TblStudents, code, !RdsExists(RdsDefault.TblInscriptions, studentId == Out(studentId)), code)",
+        "expression2": "[\"ST003\", \"ST006\", \"ST008\"]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelect(RdsDefault.TblStudents, code, code == Out(TrimEnd(\"ST001   \")), code)",
+        "expression2": "[\"ST001\"]",
+        "operator": "=="
+      },
+      {
+        "command": "Set",
+        "expression": "RdsInsert(RdsDefault.TblStudents, { code: \"ST009\", name: \"Jack\", surname: \"Barletta\", birthDate: Date(1975, 1, 12), gender: \"M\", average: 4 })",
+        "variableName": "newStudentId"
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, average, studentId == ^newStudentId)",
+        "expression2": "4",
+        "operator": "=="
+      },
+      {
+        "command": "Execute",
+        "expression": "RdsUpdate(RdsDefault.TblStudents, { average: 5 }, studentId == ^newStudentId)"
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, average, studentId == ^newStudentId)",
+        "expression2": "5",
+        "operator": "=="
+      },
+      {
+        "command": "Execute",
+        "expression": "RdsDelete(RdsDefault.TblStudents, studentId == ^newStudentId)"
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, average, studentId == ^newStudentId)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Set",
+        "expression": "RdsInsert(RdsDefault.TblDataTypes, { string1: \"0123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789\", string2: \"01234567890123456789012345678901234567890123456789\", integer1: 2012012012, integer2: (-1000), decimal1: 3.1415, decimal2: 2.7182, boolean1: true, boolean2: false, datetime1: Datetime(2018, 1, 1, 0, 0, 0, 0), datetime2: Datetime(2017, 12, 31, 0, 0, 0, 0), date1: Date(2018, 1, 1), date2: Date(2017, 12, 31), time1: Time(0, 0, 0, 0), time2: Time(23, 59, 59, 0) })",
+        "variableName": "dataTypeId"
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblDataTypes, string1, dataTypeId == ^dataTypeId)",
+        "expression2": "\"0123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789\"",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblDataTypes, string2, dataTypeId == ^dataTypeId)",
+        "expression2": "\"01234567890123456789012345678901234567890123456789\"",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblDataTypes, integer1, dataTypeId == ^dataTypeId)",
+        "expression2": "2012012012",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblDataTypes, integer2, dataTypeId == ^dataTypeId)",
+        "expression2": "-1000",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblDataTypes, decimal1, dataTypeId == ^dataTypeId)",
+        "expression2": "3.1415",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblDataTypes, decimal2, dataTypeId == ^dataTypeId)",
+        "expression2": "2.7182",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblDataTypes, boolean1, dataTypeId == ^dataTypeId)",
+        "expression2": "true",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblDataTypes, boolean2, dataTypeId == ^dataTypeId)",
+        "expression2": "false",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblDataTypes, datetime1, dataTypeId == ^dataTypeId)",
+        "expression2": "Datetime(2018, 1, 1, 0, 0, 0, 0)",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblDataTypes, datetime2, dataTypeId == ^dataTypeId)",
+        "expression2": "Datetime(2017, 12, 31, 0, 0, 0, 0)",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblDataTypes, date1, dataTypeId == ^dataTypeId)",
+        "expression2": "Date(2018, 1, 1)",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblDataTypes, date2, dataTypeId == ^dataTypeId)",
+        "expression2": "Date(2017, 12, 31)",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblDataTypes, time1, dataTypeId == ^dataTypeId)",
+        "expression2": "Time(0, 0, 0, 0)",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblDataTypes, time2, dataTypeId == ^dataTypeId)",
+        "expression2": "Time(23, 59, 59, 0)",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblDataTypes, dataTypeId, boolean1)",
+        "expression2": "^dataTypeId",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblDataTypes, dataTypeId, !boolean2)",
+        "expression2": "^dataTypeId",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsExists(RdsDefault.TblDataTypes, dataTypeId == ^dataTypeId && boolean1)",
+        "expression2": "true",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsExists(RdsDefault.TblDataTypes, dataTypeId == ^dataTypeId && boolean2)",
+        "expression2": "false",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsExists(RdsDefault.TblDataTypes, dataTypeId == ^dataTypeId && !boolean2)",
+        "expression2": "true",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblDataTypes, boolean1 && boolean2, dataTypeId == ^dataTypeId)",
+        "expression2": "false",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblDataTypes, boolean1 || boolean2, dataTypeId == ^dataTypeId)",
+        "expression2": "true",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsExists(RdsDefault.TblDataTypes, boolean1 == true)",
+        "expression2": "true",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsExists(RdsDefault.TblDataTypes, boolean2 == true)",
+        "expression2": "false",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsExists(RdsDefault.TblDataTypes, boolean1 == false)",
+        "expression2": "false",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsExists(RdsDefault.TblDataTypes, boolean2 == false)",
+        "expression2": "true",
+        "operator": "=="
+      },
+      {
+        "command": "Set",
+        "expression": "true",
+        "variableName": "booleanCondition"
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsExists(RdsDefault.TblDataTypes, boolean1 == ^booleanCondition)",
+        "expression2": "true",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsExists(RdsDefault.TblDataTypes, boolean2 == ^booleanCondition)",
+        "expression2": "false",
+        "operator": "=="
+      },
+      {
+        "command": "Set",
+        "expression": "false",
+        "variableName": "booleanCondition"
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsExists(RdsDefault.TblDataTypes, boolean1 == ^booleanCondition)",
+        "expression2": "false",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsExists(RdsDefault.TblDataTypes, boolean2 == ^booleanCondition)",
+        "expression2": "true",
+        "operator": "=="
+      }
+    ],
+    "typeReturn": "any",
+    "variables": [
+      {
+        "name": "averages",
+        "type": "list(integer)"
+      },
+      {
+        "name": "filterGender",
+        "type": "string"
+      },
+      {
+        "name": "filterMinAverage",
+        "type": "decimal"
+      },
+      {
+        "name": "newStudentId",
+        "type": "integer"
+      },
+      {
+        "name": "dataTypeId",
+        "type": "integer"
+      },
+      {
+        "name": "courseIds",
+        "type": "list(integer)"
+      },
+      {
+        "name": "codes",
+        "type": "list(string)"
+      },
+      {
+        "name": "booleanCondition",
+        "type": "boolean"
+      }
+    ]
+  }
+}

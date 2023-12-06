@@ -1,0 +1,548 @@
+{
+  "algorithm": {
+    "parameters": [],
+    "statements": [
+      {
+        "command": "Execute",
+        "expression": "InitRds()"
+      },
+      {
+        "command": "Set",
+        "expression": "RdsSelectOne(RdsDefault.TblStudents, studentId, code == \"ST001\")",
+        "variableName": "studentId"
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, Datetime(2018, 1, 1, 0, 0, 0, 0) + 1000, studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "Datetime(2018, 1, 1, 0, 0, 1, 0)",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, Datetime(2018, 1, 1, 0, 0, 0, 0) - 1000, studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "Datetime(2017, 12, 31, 23, 59, 59, 0)",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, Datetime(2018, 1, 1, 0, 0, 1, 0) - Datetime(2017, 12, 31, 23, 59, 59, 0), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "2000",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, Date(2018, 1, 1) + 10, studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "Date(2018, 1, 11)",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, Date(2018, 1, 1) - 10, studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "Date(2017, 12, 22)",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, Date(2018, 1, 11) - Date(2017, 12, 22), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "20",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, Time(12, 0, 0, 0) + 1000, studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "Time(12, 0, 1, 0)",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, Time(12, 0, 0, 0) - 1000, studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "Time(11, 59, 59, 0)",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, Time(12, 0, 1, 0) - Time(11, 59, 59, 0), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "2000",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, AddDays(Datetime(2018, 1, 1, 0, 0, 0, 0), 10), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "Datetime(2018, 1, 11, 0, 0, 0, 0)",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, AddDays(Date(2018, 1, 1), 10), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "Date(2018, 1, 11)",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, AddDays(null, 10), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, AddHours(Datetime(2018, 1, 1, 0, 0, 0, 0), 10), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "Datetime(2018, 1, 1, 10, 0, 0, 0)",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, AddHours(Time(12, 0, 0, 0), 10), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "Time(22, 0, 0, 0)",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, AddHours(null, 10), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, AddMilliseconds(Datetime(2018, 1, 1, 0, 0, 0, 0), 1000), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "Datetime(2018, 1, 1, 0, 0, 1, 0)",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, AddMilliseconds(Time(12, 0, 0, 0), 1000), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "Time(12, 0, 1, 0)",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, AddMilliseconds(null, 1000), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, AddMinutes(Datetime(2018, 1, 1, 0, 0, 0, 0), 10), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "Datetime(2018, 1, 1, 0, 10, 0, 0)",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, AddMinutes(Time(12, 0, 0, 0), 10), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "Time(12, 10, 0, 0)",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, AddMinutes(null, 10), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, AddMonths(Date(2018, 1, 1), 2), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "Date(2018, 3, 1)",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, AddSeconds(Datetime(2018, 1, 1, 0, 0, 0, 0), 10), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "Datetime(2018, 1, 1, 0, 0, 10, 0)",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, AddSeconds(Time(12, 0, 0, 0), 10), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "Time(12, 0, 10, 0)",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, AddSeconds(null, 10), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, AddYears(Date(2018, 1, 1), 2), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "Date(2020, 1, 1)",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, DateDiff(Date(2018, 1, 11), Date(2017, 12, 22)), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "20",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, DatetimeDiff(Datetime(2018, 1, 1, 0, 0, 1, 0), Datetime(2017, 12, 31, 23, 59, 59, 0)), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "2000",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, Day(Datetime(2018, 1, 1, 0, 0, 0, 0)), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "1",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, Day(Date(2018, 1, 1)), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "1",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, Day(null), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, Hour(Datetime(2018, 1, 1, 0, 0, 0, 0)), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "0",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, Hour(Time(12, 0, 0, 0)), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "12",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, Hour(null), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, Millisecond(Datetime(2018, 1, 1, 0, 0, 0, 0)), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "0",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, Millisecond(Time(12, 0, 0, 0)), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "0",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, Millisecond(null), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, Minute(Datetime(2018, 1, 1, 0, 0, 0, 0)), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "0",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, Minute(Time(12, 0, 0, 0)), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "0",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, Minute(null), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, Month(Datetime(2018, 1, 1, 0, 0, 0, 0)), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "1",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, Month(Date(2018, 1, 1)), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "1",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, Month(null), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, MonthText(Datetime(2018, 1, 1, 0, 0, 0, 0)), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "\"January\"",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, MonthText(Date(2018, 1, 1)), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "\"January\"",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, MonthText(null), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, Second(Datetime(2018, 1, 1, 0, 0, 0, 0)), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "0",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, Second(Time(12, 0, 0, 0)), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "0",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, Second(null), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, SubtractDays(Datetime(2018, 1, 1, 0, 0, 0, 0), 10), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "Datetime(2017, 12, 22, 0, 0, 0, 0)",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, SubtractDays(Date(2018, 1, 1), 10), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "Date(2017, 12, 22)",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, SubtractDays(null, 10), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, SubtractHours(Datetime(2018, 1, 1, 0, 0, 0, 0), 10), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "Datetime(2017, 12, 31, 14, 0, 0, 0)",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, SubtractHours(Time(12, 0, 0, 0), 10), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "Time(2, 0, 0, 0)",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, SubtractHours(null, 10), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, SubtractMilliseconds(Datetime(2018, 1, 1, 0, 0, 0, 0), 1000), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "Datetime(2017, 12, 31, 23, 59, 59, 0)",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, SubtractMilliseconds(Time(12, 0, 0, 0), 1000), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "Time(11, 59, 59, 0)",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, SubtractMilliseconds(null, 1000), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, SubtractMinutes(Datetime(2018, 1, 1, 0, 0, 0, 0), 10), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "Datetime(2017, 12, 31, 23, 50, 0, 0)",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, SubtractMinutes(Time(12, 0, 0, 0), 10), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "Time(11, 50, 0, 0)",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, SubtractMinutes(null, 10), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, SubtractSeconds(Datetime(2018, 1, 1, 0, 0, 0, 0), 10), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "Datetime(2017, 12, 31, 23, 59, 50, 0)",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, SubtractSeconds(Time(12, 0, 0, 0), 10), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "Time(11, 59, 50, 0)",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, SubtractSeconds(null, 10), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, TimeDiff(Time(12, 0, 1, 0), Time(11, 59, 59, 0)), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "2000",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, Week(Datetime(2018, 1, 1, 0, 0, 0, 0)), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "1",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, Week(Date(2018, 1, 1)), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "1",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, Week(null), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, WeekDay(Datetime(2018, 1, 1, 0, 0, 0, 0)), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "1",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, WeekDay(Date(2018, 1, 1)), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "1",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, WeekDay(null), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, WeekDayText(Datetime(2018, 1, 1, 0, 0, 0, 0)), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "\"Monday\"",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, WeekDayText(Date(2018, 1, 1)), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "\"Monday\"",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, WeekDayText(null), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, Year(Datetime(2018, 1, 1, 0, 0, 0, 0)), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "2018",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, Year(Date(2018, 1, 1)), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "2018",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, Year(null), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Set",
+        "expression": "Today()",
+        "variableName": "today"
+      },
+      {
+        "command": "Set",
+        "expression": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, Today(), studentId == ^studentId), studentId == ^studentId)",
+        "variableName": "todayRds"
+      },
+      {
+        "command": "Assert",
+        "expression1": "^today",
+        "expression2": "^todayRds",
+        "operator": "=="
+      },
+      {
+        "command": "Set",
+        "expression": "Now()",
+        "variableName": "now"
+      },
+      {
+        "command": "Set",
+        "expression": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, Now(), studentId == ^studentId), studentId == ^studentId)",
+        "variableName": "nowRds"
+      },
+      {
+        "command": "Set",
+        "expression": "^now - ^nowRds",
+        "variableName": "diffNow"
+      },
+      {
+        "command": "Assert",
+        "expression1": "^diffNow",
+        "expression2": "-10000",
+        "operator": ">="
+      },
+      {
+        "command": "Assert",
+        "expression1": "^diffNow",
+        "expression2": "10000",
+        "operator": "<="
+      }
+    ],
+    "typeReturn": "any",
+    "variables": [
+      {
+        "name": "studentId",
+        "type": "integer"
+      },
+      {
+        "name": "today",
+        "type": "date"
+      },
+      {
+        "name": "todayRds",
+        "type": "date"
+      },
+      {
+        "name": "now",
+        "type": "datetime"
+      },
+      {
+        "name": "nowRds",
+        "type": "datetime"
+      },
+      {
+        "name": "diffNow",
+        "type": "integer"
+      }
+    ]
+  }
+}

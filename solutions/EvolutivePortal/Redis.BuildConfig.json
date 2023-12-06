@@ -1,0 +1,55 @@
+{
+  "items": [
+    {
+      "systemName": "Main",
+      "action": "build",
+      "parameters": [
+        {
+          "configParameterName": "ParamBoolean",
+          "value": true
+        },
+        {
+          "configParameterName": "ParamCredentials",
+          "user": "john",
+          "password": "1234"
+        },
+        {
+          "configParameterName": "ParamNumeric",
+          "value": 100
+        },
+        {
+          "configParameterName": "ParamString",
+          "value": "Hello World"
+        },
+        {
+          "configParameterName": "UsingRdsMock",
+          "value": true
+        },
+        {
+          "configParameterName": "RealRds",
+          "value": false
+        },
+        {
+          "configParameterName": "RealHazelcast",
+          "value": false
+        },
+        {
+          "configParameterName": "RealMongodb",
+          "value": false
+        },
+        {
+          "configParameterName": "RealRedis",
+          "value": true
+        }
+      ]
+    },
+    {
+      "systemName": "RedisDefault",
+      "action": "connect",
+      "connectionData": {
+        "port": 6380,
+        "host": "127.0.0.1"
+      }
+    }
+  ]
+}

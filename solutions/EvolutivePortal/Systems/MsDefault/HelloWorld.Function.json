@@ -1,0 +1,18 @@
+{
+  "algorithm": {
+    "parameters": [],
+    "statements": [
+      {
+        "command": "Return",
+        "expression": "\"Hello world\""
+      }
+    ],
+    "typeReturn": "string",
+    "variables": []
+  },
+  "routing": {
+    "method": "GET",
+    "path": "/hello-world",
+    "remarks": "Returns \"Hello world\""
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "columns": [
+    {
+      "allowNull": false,
+      "name": "INSCRIPTION_ID",
+      "alias": "inscriptionId",
+      "primaryKey": true,
+      "type": "integer"
+    },
+    {
+      "allowNull": false,
+      "name": "STUDENT_ID",
+      "alias": "studentId",
+      "primaryKey": false,
+      "type": "integer"
+    },
+    {
+      "allowNull": false,
+      "name": "COURSE_ID",
+      "alias": "courseId",
+      "primaryKey": false,
+      "type": "integer"
+    },
+    {
+      "allowNull": false,
+      "name": "CREATION_DATETIME",
+      "alias": "creationDatetime",
+      "primaryKey": false,
+      "type": "datetime"
+    }
+  ],
+  "autoincrementalPrimaryKey": true,
+  "indexes": [],
+  "isView": false,
+  "primaryKeyName": "PK_INSCRIPTIONS",
+  "foreignKeys": [
+    {
+      "details": [
+        {
+          "columnName": "STUDENT_ID",
+          "relatedColumnName": "STUDENT_ID"
+        }
+      ],
+      "name": "FK_INSCRIPTIONS_1",
+      "alias": "student",
+      "rdsTableName": "TblStudents"
+    },
+    {
+      "details": [
+        {
+          "columnName": "COURSE_ID",
+          "relatedColumnName": "COURSE_ID"
+        }
+      ],
+      "name": "FK_INSCRIPTIONS_2",
+      "alias": "course",
+      "rdsTableName": "TblCourses"
+    }
+  ],
+  "sequenceName": "SQ_INSCRIPTIONS",
+  "tableName": "TBL_INSCRIPTIONS",
+  "uniqueKeys": [
+    {
+      "columnsNames": [
+        "STUDENT_ID",
+        "COURSE_ID"
+      ],
+      "name": "UK_INSCRIPTIONS_1"
+    }
+  ]
+}

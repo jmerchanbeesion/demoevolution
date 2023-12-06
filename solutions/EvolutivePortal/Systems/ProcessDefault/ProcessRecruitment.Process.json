@@ -1,0 +1,1268 @@
+{
+  "eventsAndFunctions": [
+    {
+      "algorithm": {
+        "parameters": [
+          {
+            "name": "instanceId",
+            "type": "string"
+          },
+          {
+            "name": "tokenId",
+            "type": "string"
+          }
+        ],
+        "statements": [
+          {
+            "command": "Execute",
+            "expression": "updateCandidate({ result: \"Approved\" })"
+          },
+          {
+            "command": "Return",
+            "expression": "{ moveForward: true }"
+          }
+        ],
+        "typeReturn": "obj(moveForward:boolean)",
+        "variables": []
+      },
+      "name": "actApproveCandidate_execute"
+    },
+    {
+      "algorithm": {
+        "parameters": [
+          {
+            "name": "instanceId",
+            "type": "string"
+          },
+          {
+            "name": "tokenId",
+            "type": "string"
+          }
+        ],
+        "statements": [
+          {
+            "command": "Set",
+            "expression": "readCandidate()",
+            "variableName": "candidate"
+          },
+          {
+            "children": [
+              {
+                "command": "Execute",
+                "expression": "updateCandidate({ criminalRecordsFail: true })"
+              }
+            ],
+            "command": "If",
+            "expression": "^candidate.additionalData == \"With Criminal Records\""
+          },
+          {
+            "command": "Return",
+            "expression": "{ moveForward: true }"
+          }
+        ],
+        "typeReturn": "obj(moveForward:boolean)",
+        "variables": [
+          {
+            "name": "candidate",
+            "type": "Candidate"
+          }
+        ]
+      },
+      "name": "actCheckCriminalRecords_execute"
+    },
+    {
+      "algorithm": {
+        "parameters": [
+          {
+            "name": "instanceId",
+            "type": "string"
+          },
+          {
+            "name": "tokenId",
+            "type": "string"
+          }
+        ],
+        "statements": [
+          {
+            "command": "Set",
+            "expression": "readCandidate()",
+            "variableName": "candidate"
+          },
+          {
+            "children": [
+              {
+                "command": "Execute",
+                "expression": "updateCandidate({ medicalConditionsFail: true })"
+              }
+            ],
+            "command": "If",
+            "expression": "^candidate.additionalData == \"With Medical Conditions\""
+          },
+          {
+            "command": "Return",
+            "expression": "{ moveForward: true }"
+          }
+        ],
+        "typeReturn": "obj(moveForward:boolean)",
+        "variables": [
+          {
+            "name": "candidate",
+            "type": "Candidate"
+          }
+        ]
+      },
+      "name": "actCheckMedicalConditions_execute"
+    },
+    {
+      "algorithm": {
+        "parameters": [
+          {
+            "name": "instanceId",
+            "type": "string"
+          },
+          {
+            "name": "tokenId",
+            "type": "string"
+          }
+        ],
+        "statements": [
+          {
+            "command": "Set",
+            "expression": "readCandidate()",
+            "variableName": "candidate"
+          },
+          {
+            "children": [
+              {
+                "command": "Execute",
+                "expression": "updateCandidate({ engineeringFail: true })"
+              }
+            ],
+            "command": "If",
+            "expression": "^candidate.scoreJavascript < 8"
+          },
+          {
+            "command": "Return",
+            "expression": "{ moveForward: true }"
+          }
+        ],
+        "typeReturn": "obj(moveForward:boolean)",
+        "variables": [
+          {
+            "name": "candidate",
+            "type": "Candidate"
+          }
+        ]
+      },
+      "name": "actEvaluateByEngineering_execute"
+    },
+    {
+      "algorithm": {
+        "parameters": [
+          {
+            "name": "instanceId",
+            "type": "string"
+          },
+          {
+            "name": "tokenId",
+            "type": "string"
+          }
+        ],
+        "statements": [
+          {
+            "command": "Set",
+            "expression": "readCandidate()",
+            "variableName": "candidate"
+          },
+          {
+            "children": [
+              {
+                "command": "Execute",
+                "expression": "updateCandidate({ rrhhFail: true })"
+              }
+            ],
+            "command": "If",
+            "expression": "^candidate.scoreCommunicationSkills < 8"
+          },
+          {
+            "command": "Return",
+            "expression": "{ moveForward: true }"
+          }
+        ],
+        "typeReturn": "obj(moveForward:boolean)",
+        "variables": [
+          {
+            "name": "candidate",
+            "type": "Candidate"
+          }
+        ]
+      },
+      "name": "actEvaluateByRrhh_execute"
+    },
+    {
+      "algorithm": {
+        "parameters": [
+          {
+            "name": "instanceId",
+            "type": "string"
+          },
+          {
+            "name": "tokenId",
+            "type": "string"
+          }
+        ],
+        "statements": [
+          {
+            "command": "Execute",
+            "expression": "updateCandidate({ latenessDetected: true })"
+          },
+          {
+            "command": "Return",
+            "expression": "{ moveForward: true }"
+          }
+        ],
+        "typeReturn": "obj(moveForward:boolean)",
+        "variables": []
+      },
+      "name": "actRecordLateness_execute"
+    },
+    {
+      "algorithm": {
+        "parameters": [
+          {
+            "name": "instanceId",
+            "type": "string"
+          },
+          {
+            "name": "tokenId",
+            "type": "string"
+          }
+        ],
+        "statements": [
+          {
+            "command": "Execute",
+            "expression": "updateCandidate({ result: \"Rejected\", resultReason: \"Rejected by Evaluation\" })"
+          },
+          {
+            "command": "Return",
+            "expression": "{ moveForward: true }"
+          }
+        ],
+        "typeReturn": "obj(moveForward:boolean)",
+        "variables": []
+      },
+      "name": "actRejectCandidateByEvaluation_execute"
+    },
+    {
+      "algorithm": {
+        "parameters": [
+          {
+            "name": "instanceId",
+            "type": "string"
+          },
+          {
+            "name": "tokenId",
+            "type": "string"
+          }
+        ],
+        "statements": [
+          {
+            "command": "Execute",
+            "expression": "updateCandidate({ result: \"Rejected\", resultReason: \"Rejected by Exam\" })"
+          },
+          {
+            "command": "Return",
+            "expression": "{ moveForward: true }"
+          }
+        ],
+        "typeReturn": "obj(moveForward:boolean)",
+        "variables": []
+      },
+      "name": "actRejectCandidateByExam_execute"
+    },
+    {
+      "algorithm": {
+        "parameters": [
+          {
+            "name": "instanceId",
+            "type": "string"
+          },
+          {
+            "name": "tokenId",
+            "type": "string"
+          }
+        ],
+        "statements": [
+          {
+            "command": "Execute",
+            "expression": "updateCandidate({ result: \"Rejected\", resultReason: \"Rejected by Lateness\" })"
+          },
+          {
+            "command": "Return",
+            "expression": "{ moveForward: true }"
+          }
+        ],
+        "typeReturn": "obj(moveForward:boolean)",
+        "variables": []
+      },
+      "name": "actRejectCandidateByLateness_execute"
+    },
+    {
+      "algorithm": {
+        "parameters": [
+          {
+            "name": "instanceId",
+            "type": "string"
+          },
+          {
+            "name": "tokenId",
+            "type": "string"
+          }
+        ],
+        "statements": [
+          {
+            "command": "Execute",
+            "expression": "updateCandidate({ result: \"Rejected\", resultReason: \"Rejected by Compensation\" })"
+          }
+        ],
+        "typeReturn": "any",
+        "variables": []
+      },
+      "name": "actReverseApprovation_compensate"
+    },
+    {
+      "algorithm": {
+        "parameters": [
+          {
+            "name": "instanceId",
+            "type": "string"
+          },
+          {
+            "name": "tokenId",
+            "type": "string"
+          },
+          {
+            "name": "callbackData",
+            "type": "any"
+          }
+        ],
+        "statements": [
+          {
+            "command": "Execute",
+            "expression": "updateCandidate({ scoreJavascript: ^callbackData.scoreJavascript, scoreNodejs: ^callbackData.scoreNodejs, scoreJava: ^callbackData.scoreJava, scoreCommunicationSkills: ^callbackData.scoreCommunicationSkills })"
+          },
+          {
+            "command": "Return",
+            "expression": "{ moveForward: true }"
+          }
+        ],
+        "typeReturn": "obj(moveForward:boolean)",
+        "variables": []
+      },
+      "name": "actTakeExam_callback_scoresReady"
+    },
+    {
+      "algorithm": {
+        "parameters": [
+          {
+            "name": "instanceId",
+            "type": "string"
+          },
+          {
+            "name": "tokenId",
+            "type": "string"
+          }
+        ],
+        "statements": [
+          {
+            "command": "Execute",
+            "expression": "updateCandidate({ instanceId: ^instanceId, callbackTokenId: ^tokenId })"
+          },
+          {
+            "command": "Return",
+            "expression": "{ moveForward: false }"
+          }
+        ],
+        "typeReturn": "obj(moveForward:boolean)",
+        "variables": []
+      },
+      "name": "actTakeExam_execute"
+    },
+    {
+      "algorithm": {
+        "parameters": [
+          {
+            "name": "instanceId",
+            "type": "string"
+          },
+          {
+            "name": "tokenId",
+            "type": "string"
+          }
+        ],
+        "statements": [
+          {
+            "command": "Return",
+            "expression": "AddSeconds(Now(), 30)"
+          }
+        ],
+        "typeReturn": "datetime",
+        "variables": []
+      },
+      "name": "catchTimerNonInterruptingTakeExam_schedule"
+    },
+    {
+      "algorithm": {
+        "parameters": [
+          {
+            "name": "instanceId",
+            "type": "string"
+          },
+          {
+            "name": "tokenId",
+            "type": "string"
+          }
+        ],
+        "statements": [
+          {
+            "command": "Return",
+            "expression": "AddSeconds(Now(), 60)"
+          }
+        ],
+        "typeReturn": "datetime",
+        "variables": []
+      },
+      "name": "catchTimerTakeExam_schedule"
+    },
+    {
+      "algorithm": {
+        "parameters": [
+          {
+            "name": "instanceId",
+            "type": "string"
+          },
+          {
+            "name": "tokenId",
+            "type": "string"
+          }
+        ],
+        "statements": [
+          {
+            "command": "Set",
+            "expression": "readCandidate()",
+            "variableName": "candidate"
+          },
+          {
+            "command": "Return",
+            "expression": "!Nvl(^candidate.criminalRecordsFail, false)"
+          }
+        ],
+        "typeReturn": "boolean",
+        "variables": [
+          {
+            "name": "candidate",
+            "type": "Candidate"
+          }
+        ]
+      },
+      "name": "gateCheckCriminalRecords_evaluate"
+    },
+    {
+      "algorithm": {
+        "parameters": [
+          {
+            "name": "instanceId",
+            "type": "string"
+          },
+          {
+            "name": "tokenId",
+            "type": "string"
+          }
+        ],
+        "statements": [
+          {
+            "command": "Set",
+            "expression": "readCandidate()",
+            "variableName": "candidate"
+          },
+          {
+            "command": "Return",
+            "expression": "!Nvl(^candidate.medicalConditionsFail, false)"
+          }
+        ],
+        "typeReturn": "boolean",
+        "variables": [
+          {
+            "name": "candidate",
+            "type": "Candidate"
+          }
+        ]
+      },
+      "name": "gateCheckMedicalConditions_evaluate"
+    },
+    {
+      "algorithm": {
+        "parameters": [
+          {
+            "name": "instanceId",
+            "type": "string"
+          },
+          {
+            "name": "tokenId",
+            "type": "string"
+          }
+        ],
+        "statements": [
+          {
+            "command": "Set",
+            "expression": "readCandidate()",
+            "variableName": "candidate"
+          },
+          {
+            "command": "Return",
+            "expression": "!Nvl(^candidate.engineeringFail, false)"
+          }
+        ],
+        "typeReturn": "boolean",
+        "variables": [
+          {
+            "name": "candidate",
+            "type": "Candidate"
+          }
+        ]
+      },
+      "name": "gateEvaluateByEngineering_evaluate"
+    },
+    {
+      "algorithm": {
+        "parameters": [
+          {
+            "name": "instanceId",
+            "type": "string"
+          },
+          {
+            "name": "tokenId",
+            "type": "string"
+          }
+        ],
+        "statements": [
+          {
+            "command": "Set",
+            "expression": "readCandidate()",
+            "variableName": "candidate"
+          },
+          {
+            "command": "Return",
+            "expression": "!Nvl(^candidate.rrhhFail, false)"
+          }
+        ],
+        "typeReturn": "boolean",
+        "variables": [
+          {
+            "name": "candidate",
+            "type": "Candidate"
+          }
+        ]
+      },
+      "name": "gateEvaluateByRrhh_evaluate"
+    },
+    {
+      "algorithm": {
+        "parameters": [
+          {
+            "name": "instanceId",
+            "type": "string"
+          },
+          {
+            "name": "tokenId",
+            "type": "string"
+          }
+        ],
+        "statements": [
+          {
+            "command": "Set",
+            "expression": "readCandidate()",
+            "variableName": "candidate"
+          },
+          {
+            "command": "Return",
+            "expression": "^candidate.possibleCriminalRecords || ^candidate.possibleMedicalConditions"
+          }
+        ],
+        "typeReturn": "boolean",
+        "variables": [
+          {
+            "name": "candidate",
+            "type": "Candidate"
+          }
+        ]
+      },
+      "name": "gateMoreToCheck_evaluate"
+    },
+    {
+      "algorithm": {
+        "parameters": [
+          {
+            "name": "instanceId",
+            "type": "string"
+          },
+          {
+            "name": "tokenId",
+            "type": "string"
+          }
+        ],
+        "statements": [
+          {
+            "command": "Set",
+            "expression": "readCandidate()",
+            "variableName": "candidate"
+          },
+          {
+            "command": "Set",
+            "expression": "^candidate.scoreJavascript + ^candidate.scoreNodejs + ^candidate.scoreJava + ^candidate.scoreCommunicationSkills",
+            "variableName": "scoreTotal"
+          },
+          {
+            "command": "Return",
+            "expression": "^scoreTotal >=  28"
+          }
+        ],
+        "typeReturn": "boolean",
+        "variables": [
+          {
+            "name": "candidate",
+            "type": "Candidate"
+          },
+          {
+            "name": "scoreTotal",
+            "type": "decimal"
+          }
+        ]
+      },
+      "name": "gateQualify_evaluate"
+    },
+    {
+      "algorithm": {
+        "parameters": [
+          {
+            "name": "instanceId",
+            "type": "string"
+          },
+          {
+            "name": "tokenId",
+            "type": "string"
+          }
+        ],
+        "statements": [
+          {
+            "command": "Set",
+            "expression": "readCandidate()",
+            "variableName": "candidate"
+          },
+          {
+            "command": "Return",
+            "expression": "^candidate.possibleCriminalRecords"
+          }
+        ],
+        "typeReturn": "boolean",
+        "variables": [
+          {
+            "name": "candidate",
+            "type": "Candidate"
+          }
+        ]
+      },
+      "name": "transitionToCheckCriminalRecords_evaluate"
+    },
+    {
+      "algorithm": {
+        "parameters": [
+          {
+            "name": "instanceId",
+            "type": "string"
+          },
+          {
+            "name": "tokenId",
+            "type": "string"
+          }
+        ],
+        "statements": [
+          {
+            "command": "Set",
+            "expression": "readCandidate()",
+            "variableName": "candidate"
+          },
+          {
+            "command": "Return",
+            "expression": "^candidate.possibleMedicalConditions"
+          }
+        ],
+        "typeReturn": "boolean",
+        "variables": [
+          {
+            "name": "candidate",
+            "type": "Candidate"
+          }
+        ]
+      },
+      "name": "transitionToCheckMedicalConditions_evaluate"
+    },
+    {
+      "algorithm": {
+        "parameters": [
+          {
+            "name": "set",
+            "type": "any"
+          }
+        ],
+        "statements": [
+          {
+            "command": "ReadModel",
+            "modelVariableName": "candidateId",
+            "variableName": "candidateId"
+          },
+          {
+            "command": "Execute",
+            "expression": "MongodbUpdateOne(MongoDefault, \"candidates\", { _id: { $eq: { $oid: ^candidateId } } }, { $set: ^set })"
+          }
+        ],
+        "typeReturn": "any",
+        "variables": [
+          {
+            "name": "candidateId",
+            "type": "string"
+          }
+        ]
+      },
+      "name": "updateCandidate"
+    },
+    {
+      "algorithm": {
+        "parameters": [],
+        "statements": [
+          {
+            "command": "ReadModel",
+            "modelVariableName": "candidateId",
+            "variableName": "candidateId"
+          },
+          {
+            "command": "Return",
+            "expression": "MongodbFindOne(MongoDefault, \"candidates\", { _id: { $eq: { $oid: ^candidateId } } })"
+          }
+        ],
+        "typeReturn": "Candidate",
+        "variables": [
+          {
+            "name": "candidateId",
+            "type": "string"
+          }
+        ]
+      },
+      "name": "readCandidate"
+    }
+  ],
+  "model": [
+    {
+      "name": "candidateId",
+      "required": true,
+      "type": "string"
+    }
+  ],
+  "nodes": [
+    {
+      "name": "subEvaluateCandidate",
+      "nodeType": "SubProcess",
+      "remark": "Evaluate Candidate",
+      "x": 539,
+      "y": 49
+    },
+    {
+      "name": "actCheckCriminalRecords",
+      "nodeType": "Activity",
+      "parentNodeName": "subEvaluateCandidate",
+      "remark": "Check Criminal Records",
+      "x": 967.5999994277954,
+      "y": 20
+    },
+    {
+      "name": "actCheckMedicalConditions",
+      "nodeType": "Activity",
+      "parentNodeName": "subEvaluateCandidate",
+      "remark": "Check Medical Conditions",
+      "x": 967.1999969482422,
+      "y": 206
+    },
+    {
+      "name": "actEvaluateByEngineering",
+      "nodeType": "Activity",
+      "parentNodeName": "subEvaluateCandidate",
+      "remark": "Evaluate by Engineering",
+      "x": 302,
+      "y": 192
+    },
+    {
+      "name": "actEvaluateByRrhh",
+      "nodeType": "Activity",
+      "parentNodeName": "subEvaluateCandidate",
+      "remark": "Evaluate by RRHH",
+      "x": 301,
+      "y": 19
+    },
+    {
+      "name": "endSub",
+      "nodeType": "End",
+      "parentNodeName": "subEvaluateCandidate",
+      "x": 1394.6000061035156,
+      "y": 136
+    },
+    {
+      "name": "endSubQuick",
+      "nodeType": "End",
+      "parentNodeName": "subEvaluateCandidate",
+      "x": 733.1999969482422,
+      "y": 232
+    },
+    {
+      "errorName": "FailEvaluation",
+      "name": "errorCheckCriminalRecords",
+      "nodeType": "EndError",
+      "parentNodeName": "subEvaluateCandidate",
+      "x": 1153.400001525879,
+      "y": 140
+    },
+    {
+      "errorName": "FailEvaluation",
+      "name": "errorCheckMedicalHistory",
+      "nodeType": "EndError",
+      "parentNodeName": "subEvaluateCandidate",
+      "x": 1150.400001525879,
+      "y": 329
+    },
+    {
+      "errorName": "FailEvaluation",
+      "name": "errorEvaluateByEngineering",
+      "nodeType": "EndError",
+      "parentNodeName": "subEvaluateCandidate",
+      "x": 504,
+      "y": 324
+    },
+    {
+      "errorName": "FailEvaluation",
+      "name": "errorEvaluateByRrhh",
+      "nodeType": "EndError",
+      "parentNodeName": "subEvaluateCandidate",
+      "x": 506,
+      "y": 143
+    },
+    {
+      "name": "gateCheckCriminalRecords",
+      "nodeType": "ExclusiveGateway",
+      "parentNodeName": "subEvaluateCandidate",
+      "remark": "Ok?",
+      "x": 1150.400001525879,
+      "y": 41
+    },
+    {
+      "name": "gateCheckMedicalConditions",
+      "nodeType": "ExclusiveGateway",
+      "parentNodeName": "subEvaluateCandidate",
+      "remark": "Ok?",
+      "x": 1147.400001525879,
+      "y": 227
+    },
+    {
+      "name": "gateEvaluateByEngineering",
+      "nodeType": "ExclusiveGateway",
+      "parentNodeName": "subEvaluateCandidate",
+      "remark": "Approve?",
+      "x": 503,
+      "y": 212
+    },
+    {
+      "name": "gateEvaluateByRrhh",
+      "nodeType": "ExclusiveGateway",
+      "parentNodeName": "subEvaluateCandidate",
+      "remark": "Approve?",
+      "x": 504,
+      "y": 39
+    },
+    {
+      "name": "gateMoreToCheck",
+      "nodeType": "ExclusiveGateway",
+      "parentNodeName": "subEvaluateCandidate",
+      "remark": "More to check?",
+      "x": 723.2000045776367,
+      "y": 125
+    },
+    {
+      "name": "inclusiveJoin",
+      "nodeType": "InclusiveGateway",
+      "parentNodeName": "subEvaluateCandidate",
+      "x": 1304.599998474121,
+      "y": 135
+    },
+    {
+      "name": "inclusiveSplit",
+      "nodeType": "InclusiveGateway",
+      "parentNodeName": "subEvaluateCandidate",
+      "x": 825,
+      "y": 124
+    },
+    {
+      "name": "parallelSplit",
+      "nodeType": "ParallelGateway",
+      "parentNodeName": "subEvaluateCandidate",
+      "x": 153,
+      "y": 128
+    },
+    {
+      "name": "parallelgateway1",
+      "nodeType": "ParallelGateway",
+      "parentNodeName": "subEvaluateCandidate",
+      "x": 649.1999969482422,
+      "y": 123
+    },
+    {
+      "name": "startSub",
+      "nodeType": "Start",
+      "parentNodeName": "subEvaluateCandidate",
+      "x": 54,
+      "y": 128
+    },
+    {
+      "name": "actApproveCandidate",
+      "nodeType": "Activity",
+      "remark": "Approve Candidate",
+      "x": 764,
+      "y": 49
+    },
+    {
+      "compensationKey": "reject",
+      "name": "catchCompensation",
+      "nodeType": "CatchCompensation",
+      "primaryNodeName": "actApproveCandidate",
+      "x": 104,
+      "y": 64.8
+    },
+    {
+      "name": "actRecordLateness",
+      "nodeType": "Activity",
+      "remark": "Record Lateness",
+      "x": 43,
+      "y": 306
+    },
+    {
+      "name": "actRejectCandidateByEvaluation",
+      "nodeType": "Activity",
+      "remark": "Reject Candidate by Evaluation",
+      "x": 526,
+      "y": 308
+    },
+    {
+      "name": "actRejectCandidateByExam",
+      "nodeType": "Activity",
+      "remark": "Reject Candidate by Exam",
+      "x": 371,
+      "y": 309
+    },
+    {
+      "name": "actRejectCandidateByLateness",
+      "nodeType": "Activity",
+      "remark": "Reject Candidate by Lateness",
+      "x": 217,
+      "y": 308.99999999999994
+    },
+    {
+      "name": "actReverseApprovation",
+      "nodeType": "CompensationActivity",
+      "remark": "Reverse Approvation",
+      "x": 814.4000015258789,
+      "y": 183
+    },
+    {
+      "callbacks": [
+        {
+          "key": "scoresReady"
+        }
+      ],
+      "name": "actTakeExam",
+      "nodeType": "Activity",
+      "remark": "Take Exam Online",
+      "x": 146,
+      "y": 49.000000000000014
+    },
+    {
+      "name": "catchTimerNonInterruptingTakeExam",
+      "nodeType": "CatchTimerNonInterrupting",
+      "primaryNodeName": "actTakeExam",
+      "x": 80,
+      "y": 64.8
+    },
+    {
+      "name": "catchTimerTakeExam",
+      "nodeType": "CatchTimer",
+      "primaryNodeName": "actTakeExam",
+      "x": 104,
+      "y": 64.8
+    },
+    {
+      "messageKey": "accept",
+      "name": "catchMessageAccept",
+      "nodeType": "CatchMessage",
+      "remark": "Candidate Accept",
+      "x": 1070.400001525879,
+      "y": 9
+    },
+    {
+      "messageKey": "reject",
+      "name": "catchMessageReject",
+      "nodeType": "CatchMessage",
+      "remark": "Candidate Reject",
+      "x": 1071.3999938964844,
+      "y": 129
+    },
+    {
+      "name": "endReject",
+      "nodeType": "End",
+      "x": 418,
+      "y": 577
+    },
+    {
+      "name": "endSuccess",
+      "nodeType": "End",
+      "x": 1177.400001525879,
+      "y": 9
+    },
+    {
+      "compensationKey": "reject",
+      "name": "endWithCompensation",
+      "nodeType": "EndCompensation",
+      "x": 1179.400001525879,
+      "y": 129
+    },
+    {
+      "name": "gateEvents",
+      "nodeType": "EventGateway",
+      "x": 953.4000015258789,
+      "y": 69
+    },
+    {
+      "name": "gateQualify",
+      "nodeType": "ExclusiveGateway",
+      "remark": "Qualify?",
+      "x": 402,
+      "y": 69
+    },
+    {
+      "name": "start",
+      "nodeType": "Start",
+      "remark": "Start",
+      "x": 37,
+      "y": 70
+    },
+    {
+      "errorName": "FailEvaluation",
+      "name": "catchErrorEvaluateCandidate",
+      "nodeType": "CatchError",
+      "primaryNodeName": "subEvaluateCandidate",
+      "x": 104,
+      "y": 64.8
+    }
+  ],
+  "transitions": [
+    {
+      "fromNodeName": "actApproveCandidate",
+      "toNodeName": "gateEvents"
+    },
+    {
+      "fromNodeName": "actCheckCriminalRecords",
+      "toNodeName": "gateCheckCriminalRecords"
+    },
+    {
+      "fromNodeName": "actCheckMedicalConditions",
+      "toNodeName": "gateCheckMedicalConditions"
+    },
+    {
+      "fromNodeName": "actEvaluateByEngineering",
+      "toNodeName": "gateEvaluateByEngineering"
+    },
+    {
+      "fromNodeName": "actEvaluateByRrhh",
+      "toNodeName": "gateEvaluateByRrhh"
+    },
+    {
+      "fromNodeName": "actRejectCandidateByEvaluation",
+      "toNodeName": "endReject"
+    },
+    {
+      "fromNodeName": "actRejectCandidateByExam",
+      "toNodeName": "endReject"
+    },
+    {
+      "fromNodeName": "actRejectCandidateByLateness",
+      "toNodeName": "endReject"
+    },
+    {
+      "fromNodeName": "actTakeExam",
+      "toNodeName": "gateQualify"
+    },
+    {
+      "fromNodeName": "catchCompensation",
+      "toNodeName": "actReverseApprovation"
+    },
+    {
+      "fromNodeName": "catchErrorEvaluateCandidate",
+      "toNodeName": "actRejectCandidateByEvaluation"
+    },
+    {
+      "fromNodeName": "catchMessageAccept",
+      "toNodeName": "endSuccess"
+    },
+    {
+      "fromNodeName": "catchMessageReject",
+      "toNodeName": "endWithCompensation"
+    },
+    {
+      "fromNodeName": "catchTimerNonInterruptingTakeExam",
+      "toNodeName": "actRecordLateness"
+    },
+    {
+      "fromNodeName": "catchTimerTakeExam",
+      "toNodeName": "actRejectCandidateByLateness"
+    },
+    {
+      "forkType": "no",
+      "fromNodeName": "gateCheckCriminalRecords",
+      "name": "connection1",
+      "nodeType": "ExclusiveGatewayEdge",
+      "toNodeName": "errorCheckCriminalRecords"
+    },
+    {
+      "forkType": "yes",
+      "fromNodeName": "gateCheckCriminalRecords",
+      "name": "connection0",
+      "nodeType": "ExclusiveGatewayEdge",
+      "toNodeName": "inclusiveJoin"
+    },
+    {
+      "forkType": "no",
+      "fromNodeName": "gateCheckMedicalConditions",
+      "name": "connection2",
+      "nodeType": "ExclusiveGatewayEdge",
+      "toNodeName": "errorCheckMedicalHistory"
+    },
+    {
+      "forkType": "yes",
+      "fromNodeName": "gateCheckMedicalConditions",
+      "name": "connection3",
+      "nodeType": "ExclusiveGatewayEdge",
+      "toNodeName": "inclusiveJoin"
+    },
+    {
+      "forkType": "no",
+      "fromNodeName": "gateEvaluateByEngineering",
+      "name": "connection6",
+      "nodeType": "ExclusiveGatewayEdge",
+      "toNodeName": "errorEvaluateByEngineering"
+    },
+    {
+      "forkType": "yes",
+      "fromNodeName": "gateEvaluateByEngineering",
+      "name": "connection7",
+      "nodeType": "ExclusiveGatewayEdge",
+      "toNodeName": "parallelgateway1"
+    },
+    {
+      "forkType": "no",
+      "fromNodeName": "gateEvaluateByRrhh",
+      "name": "connection4",
+      "nodeType": "ExclusiveGatewayEdge",
+      "toNodeName": "errorEvaluateByRrhh"
+    },
+    {
+      "forkType": "yes",
+      "fromNodeName": "gateEvaluateByRrhh",
+      "name": "connection5",
+      "nodeType": "ExclusiveGatewayEdge",
+      "toNodeName": "parallelgateway1"
+    },
+    {
+      "fromNodeName": "gateEvents",
+      "toNodeName": "catchMessageAccept"
+    },
+    {
+      "fromNodeName": "gateEvents",
+      "toNodeName": "catchMessageReject"
+    },
+    {
+      "forkType": "no",
+      "fromNodeName": "gateMoreToCheck",
+      "name": "connection9",
+      "nodeType": "ExclusiveGatewayEdge",
+      "toNodeName": "endSubQuick"
+    },
+    {
+      "forkType": "yes",
+      "fromNodeName": "gateMoreToCheck",
+      "name": "connection8",
+      "nodeType": "ExclusiveGatewayEdge",
+      "toNodeName": "inclusiveSplit"
+    },
+    {
+      "forkType": "no",
+      "fromNodeName": "gateQualify",
+      "name": "connection1",
+      "nodeType": "ExclusiveGatewayEdge",
+      "toNodeName": "actRejectCandidateByExam"
+    },
+    {
+      "forkType": "yes",
+      "fromNodeName": "gateQualify",
+      "name": "connection0",
+      "nodeType": "ExclusiveGatewayEdge",
+      "toNodeName": "subEvaluateCandidate"
+    },
+    {
+      "fromNodeName": "inclusiveJoin",
+      "name": "connection12",
+      "nodeType": "InclusiveGatewayEdge",
+      "toNodeName": "endSub"
+    },
+    {
+      "fromNodeName": "inclusiveSplit",
+      "name": "transitionToCheckCriminalRecords",
+      "nodeType": "InclusiveGatewayEdge",
+      "toNodeName": "actCheckCriminalRecords"
+    },
+    {
+      "fromNodeName": "inclusiveSplit",
+      "name": "transitionToCheckMedicalConditions",
+      "nodeType": "InclusiveGatewayEdge",
+      "toNodeName": "actCheckMedicalConditions"
+    },
+    {
+      "fromNodeName": "parallelSplit",
+      "toNodeName": "actEvaluateByEngineering"
+    },
+    {
+      "fromNodeName": "parallelSplit",
+      "toNodeName": "actEvaluateByRrhh"
+    },
+    {
+      "fromNodeName": "parallelgateway1",
+      "toNodeName": "gateMoreToCheck"
+    },
+    {
+      "fromNodeName": "start",
+      "toNodeName": "actTakeExam"
+    },
+    {
+      "fromNodeName": "startSub",
+      "toNodeName": "parallelSplit"
+    },
+    {
+      "fromNodeName": "subEvaluateCandidate",
+      "toNodeName": "actApproveCandidate"
+    }
+  ]
+}

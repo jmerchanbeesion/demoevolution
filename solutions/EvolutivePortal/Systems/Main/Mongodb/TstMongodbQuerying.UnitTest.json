@@ -1,0 +1,89 @@
+{
+  "algorithm": {
+    "parameters": [],
+    "statements": [
+      {
+        "command": "ReadConfigParameter",
+        "configParameterName": "RealMongodb",
+        "variableName": "realMongodb"
+      },
+      {
+        "children": [
+          {
+            "command": "Execute",
+            "expression": "InitMongodb()"
+          },
+          {
+            "command": "Assert",
+            "expression1": "MongodbAggregate(MongoDefault, \"lost-pets\", [{ $group: { _id: \"$color\", totalReward: { $sum: \"$reward\" } } }, { $sort: { totalReward: -1 } } ])",
+            "expression2": "[{ _id: \"white\", totalReward: 1000 }, { _id: \"brown\", totalReward: 800 }, { _id: \"black\", totalReward: 600 }]",
+            "operator": "=="
+          },
+          {
+            "command": "Assert",
+            "expression1": "Sort(MongodbDistinct(MongoDefault, \"lost-pets\", \"color\", { reward: { $lt: 500 } }))",
+            "expression2": "[\"black\", \"brown\", \"white\"]",
+            "operator": "=="
+          },
+          {
+            "command": "Assert",
+            "expression1": "Sort(MongodbDistinct(MongoDefault, \"lost-pets\", \"color\", { reward: { $lt: 200 } }))",
+            "expression2": "[\"black\", \"white\"]",
+            "operator": "=="
+          },
+          {
+            "command": "Assert",
+            "expression1": "MongodbCountDocuments(MongoDefault, \"lost-pets\", { reward: { $lt: 500 } })",
+            "expression2": "6",
+            "operator": "=="
+          },
+          {
+            "command": "Assert",
+            "expression1": "Map(MongodbFind(MongoDefault, \"lost-pets\", { reward: { $lt: 500 } }), name)",
+            "expression2": "[\"Charlie\", \"Max\", \"Milo\", \"Toby\", \"Coco\", \"Thor\"]",
+            "operator": "=="
+          },
+          {
+            "command": "Assert",
+            "expression1": "Map(MongodbFind(MongoDefault, \"lost-pets\", { reward: { $gt: 1000 } }), name)",
+            "expression2": "[]",
+            "operator": "=="
+          },
+          {
+            "command": "Assert",
+            "expression1": "Map(MongodbFindOne(MongoDefault, \"lost-pets\", { name: { $eq: \"Archie\" } }), race)",
+            "expression2": "\"Border Collie\"",
+            "operator": "=="
+          },
+          {
+            "command": "Assert",
+            "expression1": "Map(MongodbFindOne(MongoDefault, \"lost-pets\", { name: { $eq: \"Nash\" } }), race)",
+            "expression2": "null",
+            "operator": "=="
+          },
+          {
+            "command": "Assert",
+            "expression1": "Sort(Map(MongodbGeoHaystackSearch(MongoDefault, \"lost-pets\", 1, 1, { search: {}, maxDistance: 1 }), name))",
+            "expression2": "[\"Buddy\", \"Charlie\", \"Coco\", \"Milo\", \"Thor\"]",
+            "operator": "=="
+          },
+          {
+            "command": "Assert",
+            "expression1": "Sort(Map(MongodbGeoHaystackSearch(MongoDefault, \"lost-pets\", 1, 1, { search: {}, maxDistance: 0.2 }), name))",
+            "expression2": "[\"Charlie\"]",
+            "operator": "=="
+          }
+        ],
+        "command": "If",
+        "expression": "^realMongodb"
+      }
+    ],
+    "typeReturn": "any",
+    "variables": [
+      {
+        "name": "realMongodb",
+        "type": "boolean"
+      }
+    ]
+  }
+}

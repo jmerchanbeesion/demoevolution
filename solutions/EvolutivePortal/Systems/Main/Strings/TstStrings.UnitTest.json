@@ -1,0 +1,454 @@
+{
+  "algorithm": {
+    "parameters": [],
+    "statements": [
+      {
+        "command": "Set",
+        "expression": "\"&amp;&lt;&gt;&quot;&#39;/\"",
+        "variableName": "escaped"
+      },
+      {
+        "command": "Set",
+        "expression": "\"&<>\\\"'/\"",
+        "variableName": "unescaped"
+      },
+      {
+        "command": "Assert",
+        "expression1": "\"Hello\" + \" \" + \"World\"",
+        "expression2": "\"Hello World\"",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "\"Hello\" + null + \"World\"",
+        "expression2": "\"HelloWorld\"",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Concat(\"Hello\", \" \", \"World\")",
+        "expression2": "\"Hello World\"",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Concat(\"Hello\", null, \"World\")",
+        "expression2": "\"HelloWorld\"",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Contains(\"Hello World\", \"World\")",
+        "expression2": "true",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Contains(\"Hello World\", \"Bye\")",
+        "expression2": "false",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Contains(null, \"World\")",
+        "expression2": "false",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "EndsWith(\"Hello World\", \"Hello\")",
+        "expression2": "false",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "EndsWith(\"Hello World\", \"Hello\")",
+        "expression2": "false",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "EndsWith(null, \"World\")",
+        "expression2": "false",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "EscapeHtml(unescaped)",
+        "expression2": "escaped",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "EscapeHtml(\"abc\")",
+        "expression2": "\"abc\"",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "EscapeHtml(UnescapeHtml(escaped))",
+        "expression2": "escaped",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "EscapeHtml(\"`\")",
+        "expression2": "\"`\"",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "EscapeHtml(\"/\")",
+        "expression2": "\"/\"",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "IndexOf(\"Hello World World\", \"World\")",
+        "expression2": "6",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "IndexOf(\"Hello World World\", \"Bye\")",
+        "expression2": "-1",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "IndexOf(null, \"World\")",
+        "expression2": "-1",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "IsNullOrEmpty(\"Hello World\")",
+        "expression2": "false",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "IsNullOrEmpty(\" \")",
+        "expression2": "false",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "IsNullOrEmpty(\"\")",
+        "expression2": "true",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "IsNullOrEmpty(null)",
+        "expression2": "true",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "IsNullOrWhiteSpace(\"Hello World\")",
+        "expression2": "false",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "IsNullOrWhiteSpace(\" \")",
+        "expression2": "true",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "IsNullOrWhiteSpace(\"\")",
+        "expression2": "true",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "IsNullOrWhiteSpace(null)",
+        "expression2": "true",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Join([\"Hello\", \"World\"], \" \")",
+        "expression2": "\"Hello World\"",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Join([\"Hello\", null, \"World\"], \" \")",
+        "expression2": "\"Hello  World\"",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "LastIndexOf(\"Hello World World\", \"World\")",
+        "expression2": "12",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "LastIndexOf(\"Hello World World\", \"Bye\")",
+        "expression2": "-1",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "LastIndexOf(null, \"World\")",
+        "expression2": "-1",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Length(\"Hello World\")",
+        "expression2": "11",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Length(null)",
+        "expression2": "0",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "PadLeft(\"Hello World\", 16)",
+        "expression2": "\"     Hello World\"",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "PadLeft(\"Hello World\", 16, \"-\")",
+        "expression2": "\"-----Hello World\"",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "PadLeft(null, 16)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "PadRight(\"Hello World\", 16)",
+        "expression2": "\"Hello World     \"",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "PadRight(\"Hello World\", 16, \"-\")",
+        "expression2": "\"Hello World-----\"",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "PadRight(null, 16)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Replace(\"Hello World World\", \"World\", \"Planet\")",
+        "expression2": "\"Hello Planet Planet\"",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Replace(null, \"World\", \"Planet\")",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Split(\"Hello World\", \" \")",
+        "expression2": "[\"Hello\", \"World\"]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Split(\"Hello World\", \"\")",
+        "expression2": "[\"H\", \"e\", \"l\", \"l\", \"o\", \" \", \"W\", \"o\", \"r\", \"l\", \"d\"]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Split(\"Hello World\", null)",
+        "expression2": "[\"Hello World\"]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Split(\"\", null)",
+        "expression2": "[\"\"]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Split(\"\", \"\")",
+        "expression2": "[]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Split(null, \" \")",
+        "expression2": "[]",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "StartsWith(\"Hello World\", \"Hello\")",
+        "expression2": "true",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "StartsWith(\"Hello World\", \"World\")",
+        "expression2": "false",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "StartsWith(null, \"World\")",
+        "expression2": "false",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Substring(\"Hello World\", 4, 3)",
+        "expression2": "\"o W\"",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Substring(null, 4, 3)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "ToLower(\"Hello World\")",
+        "expression2": "\"hello world\"",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "ToLower(null)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "ToUpper(\"Hello World\")",
+        "expression2": "\"HELLO WORLD\"",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "ToUpper(null)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Trim(\"  Hello World  \")",
+        "expression2": "\"Hello World\"",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "Trim(null)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "TrimEnd(\"  Hello World  \")",
+        "expression2": "\"  Hello World\"",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "TrimEnd(null)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "TrimStart(\"  Hello World  \")",
+        "expression2": "\"Hello World  \"",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "TrimStart(null)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "UnescapeHtml(\"&amp;lt;\")",
+        "expression2": "\"&lt;\"",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "UnescapeHtml(escaped)",
+        "expression2": "unescaped",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "UnescapeHtml(\"abc\")",
+        "expression2": "\"abc\"",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "UnescapeHtml(EscapeHtml(unescaped))",
+        "expression2": "unescaped",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "UnescapeHtml(\"&#39;\")",
+        "expression2": "\"'\"",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "UnescapeHtml(\"&#039;\")",
+        "expression2": "\"'\"",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "UnescapeHtml(\"&#000039;\")",
+        "expression2": "\"'\"",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "UnescapeHtml(\"&#96;\")",
+        "expression2": "\"&#96;\"",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "UnescapeHtml(\"&#x2F;\")",
+        "expression2": "\"&#x2F;\"",
+        "operator": "=="
+      }
+    ],
+    "typeReturn": "any",
+    "variables": [
+      {
+        "name": "escaped",
+        "type": "string"
+      },
+      {
+        "name": "unescaped",
+        "type": "string"
+      }
+    ]
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "algorithm": {
+    "parameters": [
+      {
+        "name": "candidate",
+        "type": "ProcessDefault.Candidate"
+      }
+    ],
+    "statements": [
+      {
+        "command": "Set",
+        "expression": "Map(MongodbInsertOne(MongoDefault, \"candidates\", ^candidate), $oid)",
+        "variableName": "candidateId"
+      },
+      {
+        "command": "Execute",
+        "expression": "ProcessStart(ProcessDefault.ProcessRecruitment, { candidateId: ^candidateId })"
+      },
+      {
+        "command": "Return",
+        "expression": "^candidateId"
+      }
+    ],
+    "typeReturn": "string",
+    "variables": [
+      {
+        "name": "candidateId",
+        "type": "string"
+      }
+    ]
+  },
+  "routing": null
+}

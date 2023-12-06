@@ -1,0 +1,25 @@
+{
+  "ddl": "CREATE OR REPLACE SP_STUDENTS_INFO AS\nBEGIN\nSELECT CODE FROM TBL_STUDENTS WHERE AVERAGE > @MaxAverage",
+  "parameters": [
+    {
+      "direction": "in",
+      "isExplicitParameter": false,
+      "isResultSet": false,
+      "name": "MaxAverage",
+      "type": "decimal"
+    },
+    {
+      "attributes": [
+        {
+          "name": "Code",
+          "type": "string"
+        }
+      ],
+      "direction": "out",
+      "isExplicitParameter": true,
+      "isResultSet": true,
+      "name": "RsStudents"
+    }
+  ],
+  "storedProcedureName": "SP_STUDENTS_INFO"
+}

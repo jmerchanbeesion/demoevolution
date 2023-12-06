@@ -1,0 +1,28 @@
+{
+  "algorithm": {
+    "parameters": [],
+    "statements": [
+      {
+        "command": "Return",
+        "expression": "\"Hello World\""
+      }
+    ],
+    "typeReturn": "string",
+    "variables": []
+  },
+  "routing": {
+    "method": "GET",
+    "path": "/hello-world-with-api-key-header",
+    "remarks": "Hello World with Api Key Header",
+    "security": [
+      {
+        "condition": [
+          {
+            "securitySchemeName": "ApiKeyHeader"
+          }
+        ],
+        "remarks": ""
+      }
+    ]
+  }
+}

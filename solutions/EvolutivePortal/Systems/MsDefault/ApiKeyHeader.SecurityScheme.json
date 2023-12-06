@@ -1,0 +1,29 @@
+{
+  "algorithm": {
+    "parameters": [
+      {
+        "name": "key",
+        "type": "string"
+      }
+    ],
+    "statements": [
+      {
+        "children": [
+          {
+            "command": "Throw",
+            "errorName": "Unauthorized",
+            "expressionData": "null",
+            "expressionInnerError": "null"
+          }
+        ],
+        "command": "If",
+        "expression": "^key != \"my_key\""
+      }
+    ],
+    "typeReturn": "any",
+    "variables": []
+  },
+  "apiKeyIn": "Header",
+  "apiKeyName": "security_key",
+  "securityType": "ApiKey"
+}

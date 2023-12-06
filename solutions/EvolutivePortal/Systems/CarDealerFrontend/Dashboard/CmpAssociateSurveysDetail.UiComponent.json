@@ -1,0 +1,244 @@
+{
+  "eventsAndFunctions": [
+    {
+      "algorithm": {
+        "parameters": [],
+        "statements": [
+          {
+            "command": "ReadModel",
+            "modelVariableName": "data",
+            "variableName": "data"
+          },
+          {
+            "children": [
+              {
+                "command": "SetIcon",
+                "expression": "\"woman1.svg\"",
+                "widgetName": "associateIcon"
+              }
+            ],
+            "command": "If",
+            "expression": "^data.gender == \"Female\""
+          },
+          {
+            "children": [
+              {
+                "command": "SetIcon",
+                "expression": "\"man1.svg\"",
+                "widgetName": "associateIcon"
+              }
+            ],
+            "command": "Else"
+          },
+          {
+            "command": "Load",
+            "expression": "[\"Information\", \"Surveys\"]",
+            "widgetName": "infoSwitcher"
+          },
+          {
+            "command": "SetValue",
+            "expression": "\"Information\"",
+            "widgetName": "infoSwitcher"
+          },
+          {
+            "command": "SetValue",
+            "expression": "^data.surveys",
+            "widgetName": "surveysGrid"
+          },
+          {
+            "command": "Hide",
+            "widgetName": "surveysGrid"
+          }
+        ],
+        "typeReturn": "any",
+        "variables": [
+          {
+            "name": "data",
+            "type": "Associate"
+          }
+        ]
+      },
+      "name": "main_init"
+    },
+    {
+      "algorithm": {
+        "parameters": [
+          {
+            "name": "oldValue",
+            "type": "any"
+          },
+          {
+            "name": "newValue",
+            "type": "any"
+          }
+        ],
+        "statements": [
+          {
+            "children": [
+              {
+                "command": "Show",
+                "widgetName": "infoContainer"
+              },
+              {
+                "command": "Hide",
+                "widgetName": "surveysGrid"
+              }
+            ],
+            "command": "If",
+            "expression": "^newValue == \"Information\""
+          },
+          {
+            "children": [
+              {
+                "command": "Show",
+                "widgetName": "surveysGrid"
+              },
+              {
+                "command": "Hide",
+                "widgetName": "infoContainer"
+              }
+            ],
+            "command": "Else"
+          }
+        ],
+        "typeReturn": "any",
+        "variables": []
+      },
+      "name": "infoSwitcher_change"
+    }
+  ],
+  "model": [
+    {
+      "name": "data",
+      "required": true,
+      "type": "Associate"
+    }
+  ],
+  "root": {
+    "children": [
+      {
+        "cssClass": "blz-area-default",
+        "dataFormat": "plain",
+        "display": "toggle",
+        "mode": "single",
+        "name": "infoSwitcher",
+        "widget": "OptionGroup"
+      },
+      {
+        "children": [
+          {
+            "align": "left",
+            "color": "default",
+            "dock": "next",
+            "name": "associateIcon",
+            "size": "xx-large",
+            "widget": "Icon"
+          },
+          {
+            "children": [
+              {
+                "align": "left",
+                "bold": true,
+                "color": "default",
+                "name": "nameLabel",
+                "size": "small",
+                "text": "Name:",
+                "widget": "Label"
+              },
+              {
+                "align": "left",
+                "binding": "data.name",
+                "color": "default",
+                "dock": "previous",
+                "name": "nameField",
+                "size": "small",
+                "widget": "Field"
+              },
+              {
+                "align": "left",
+                "bold": true,
+                "color": "default",
+                "name": "surnameLabel",
+                "size": "small",
+                "text": "Surname:",
+                "widget": "Label"
+              },
+              {
+                "align": "left",
+                "binding": "data.surname",
+                "color": "default",
+                "dock": "previous",
+                "name": "surnameField",
+                "size": "small",
+                "widget": "Field"
+              },
+              {
+                "align": "left",
+                "bold": true,
+                "color": "default",
+                "name": "totalScoreLabel",
+                "size": "small",
+                "text": "Total Score:",
+                "widget": "Label"
+              },
+              {
+                "align": "left",
+                "binding": "data.totalScore",
+                "color": "default",
+                "dock": "previous",
+                "name": "totalScoreField",
+                "size": "small",
+                "widget": "Field"
+              },
+              {
+                "align": "left",
+                "bold": true,
+                "color": "default",
+                "name": "dateJoinedLabel",
+                "size": "small",
+                "text": "Date Joined",
+                "widget": "Label"
+              },
+              {
+                "align": "left",
+                "binding": "data.since",
+                "color": "default",
+                "dock": "previous",
+                "name": "dateJoinedField",
+                "size": "small",
+                "widget": "Field"
+              }
+            ],
+            "layout": "container"
+          }
+        ],
+        "layout": "container",
+        "name": "infoContainer"
+      },
+      {
+        "columns": [
+          {
+            "align": "left",
+            "bindText": "date",
+            "format": "DateTime",
+            "header": "Date Taken"
+          },
+          {
+            "align": "right",
+            "bindText": "score",
+            "header": "Score"
+          }
+        ],
+        "cssClass": "blz-area-default",
+        "name": "surveysGrid",
+        "widget": "Grid"
+      }
+    ],
+    "cssClass": "blz-padding-top-large blz-padding-right-large blz-padding-left-large blz-padding-bottom-large blz-area-default",
+    "horizontalSeparation": "large",
+    "layout": "container",
+    "verticalSeparation": "large"
+  },
+  "routing": null,
+  "unused": []
+}

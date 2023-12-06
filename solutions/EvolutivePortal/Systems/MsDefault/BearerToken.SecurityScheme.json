@@ -1,0 +1,29 @@
+{
+  "algorithm": {
+    "parameters": [
+      {
+        "name": "token",
+        "type": "string"
+      }
+    ],
+    "statements": [
+      {
+        "children": [
+          {
+            "command": "Throw",
+            "errorName": "Unauthorized",
+            "expressionData": "null",
+            "expressionInnerError": "null"
+          }
+        ],
+        "command": "If",
+        "expression": "^token != \"my_token\""
+      }
+    ],
+    "typeReturn": "any",
+    "variables": []
+  },
+  "apiKeyIn": null,
+  "apiKeyName": "",
+  "securityType": "BearerToken"
+}

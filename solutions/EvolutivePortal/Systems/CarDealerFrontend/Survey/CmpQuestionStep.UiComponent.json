@@ -1,0 +1,152 @@
+{
+  "eventsAndFunctions": [
+    {
+      "algorithm": {
+        "parameters": [],
+        "statements": [
+          {
+            "command": "ReadModel",
+            "modelVariableName": "index",
+            "variableName": "index"
+          },
+          {
+            "children": [
+              {
+                "command": "ReadModel",
+                "modelVariableName": "survey",
+                "variableName": "survey"
+              },
+              {
+                "command": "SetValue",
+                "expression": "ElementAt(^survey.questions, 0)",
+                "widgetName": "questionField"
+              }
+            ],
+            "command": "If",
+            "expression": "^index==0"
+          },
+          {
+            "command": "Load",
+            "expression": "[\"1\", \"2\", \"3\", \"4\", \"5\"]",
+            "widgetName": "answersOptionGroup"
+          }
+        ],
+        "typeReturn": "any",
+        "variables": [
+          {
+            "name": "survey",
+            "type": "SurveyQuestions"
+          },
+          {
+            "name": "index",
+            "type": "integer"
+          }
+        ]
+      },
+      "name": "main_init"
+    },
+    {
+      "algorithm": {
+        "parameters": [],
+        "statements": [
+          {
+            "command": "ReadModel",
+            "modelVariableName": "index",
+            "variableName": "index"
+          },
+          {
+            "command": "ReadModel",
+            "modelVariableName": "survey",
+            "variableName": "survey"
+          },
+          {
+            "command": "SetValue",
+            "expression": "ElementAt(^survey.questions, ^index)",
+            "widgetName": "questionField"
+          }
+        ],
+        "typeReturn": "any",
+        "variables": [
+          {
+            "name": "survey",
+            "type": "SurveyQuestions"
+          },
+          {
+            "name": "index",
+            "type": "integer"
+          }
+        ]
+      },
+      "name": "main_activate"
+    },
+    {
+      "algorithm": {
+        "parameters": [
+          {
+            "name": "oldValue",
+            "type": "any"
+          },
+          {
+            "name": "newValue",
+            "type": "any"
+          }
+        ],
+        "statements": [
+          {
+            "command": "SendDataToParent",
+            "expressionData": "{answer: ConvertToInteger(^newValue)}"
+          }
+        ],
+        "typeReturn": "any",
+        "variables": []
+      },
+      "name": "answersOptionGroup_change"
+    }
+  ],
+  "model": [
+    {
+      "name": "survey",
+      "required": true,
+      "type": "SurveyQuestions"
+    },
+    {
+      "name": "index",
+      "required": true,
+      "type": "integer"
+    }
+  ],
+  "root": {
+    "children": [
+      {
+        "alignItems": "center",
+        "children": [
+          {
+            "align": "left",
+            "color": "default",
+            "cssClass": "blz-padding-top-large blz-padding-bottom-large",
+            "name": "questionField",
+            "size": "large",
+            "widget": "Field"
+          },
+          {
+            "cssClass": "blz-padding-bottom-large",
+            "dataFormat": "plain",
+            "display": "normal-inline",
+            "mandatory": true,
+            "mode": "single",
+            "name": "answersOptionGroup",
+            "size": "auto",
+            "widget": "OptionGroup"
+          }
+        ],
+        "cssClass": "blz-area-default",
+        "layout": "container",
+        "name": "questionContainer"
+      }
+    ],
+    "cssClass": "blz-padding-top-large blz-padding-right-large blz-padding-left-large blz-padding-bottom-large blz-area-default",
+    "layout": "container"
+  },
+  "routing": null,
+  "unused": []
+}

@@ -1,0 +1,15 @@
+{
+  "algorithm": {
+    "parameters": [],
+    "statements": [
+      {
+        "command": "Assert",
+        "expression1": "Length(Uuid())",
+        "expression2": "36",
+        "operator": "=="
+      }
+    ],
+    "typeReturn": "any",
+    "variables": []
+  }
+}

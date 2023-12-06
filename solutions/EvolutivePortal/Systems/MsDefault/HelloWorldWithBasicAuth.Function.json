@@ -1,0 +1,28 @@
+{
+  "algorithm": {
+    "parameters": [],
+    "statements": [
+      {
+        "command": "Return",
+        "expression": "\"Hello World\""
+      }
+    ],
+    "typeReturn": "string",
+    "variables": []
+  },
+  "routing": {
+    "method": "GET",
+    "path": "/hello-world-with-basic-auth",
+    "remarks": "Hello World with Basic Auth",
+    "security": [
+      {
+        "condition": [
+          {
+            "securitySchemeName": "BasicAuth"
+          }
+        ],
+        "remarks": ""
+      }
+    ]
+  }
+}

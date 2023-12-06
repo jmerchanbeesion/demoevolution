@@ -1,0 +1,18 @@
+{
+  "algorithm": {
+    "parameters": [],
+    "statements": [
+      {
+        "command": "Execute",
+        "expression": "RedisPing(RedisDefault)"
+      },
+      {
+        "command": "Execute",
+        "expression": "RedisFlushdb(RedisDefault)"
+      }
+    ],
+    "typeReturn": "any",
+    "variables": []
+  },
+  "routing": null
+}

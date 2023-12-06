@@ -1,0 +1,66 @@
+{
+  "algorithm": {
+    "parameters": [],
+    "statements": [
+      {
+        "callVariableName": "basic_auth",
+        "command": "WriteCallVariable",
+        "expression": "{ user: \"john\", password: \"1234\" }"
+      },
+      {
+        "command": "Assert",
+        "expression1": "MsDefault.HelloWorldWithBasicAuth()",
+        "expression2": "\"Hello World\"",
+        "operator": "=="
+      },
+      {
+        "command": "Set",
+        "expression": "false",
+        "variableName": "wasUnauthorized"
+      },
+      {
+        "children": [
+          {
+            "callVariableName": "basic_auth",
+            "command": "WriteCallVariable",
+            "expression": "{ user: \"john\", password: \"4321\" }"
+          },
+          {
+            "command": "Execute",
+            "expression": "MsDefault.HelloWorldWithBasicAuth()"
+          }
+        ],
+        "command": "Try"
+      },
+      {
+        "children": [
+          {
+            "command": "Set",
+            "expression": "true",
+            "variableName": "wasUnauthorized"
+          }
+        ],
+        "command": "Catch",
+        "errorName": "Unauthorized",
+        "variableName": "err"
+      },
+      {
+        "command": "Assert",
+        "expression1": "^wasUnauthorized",
+        "expression2": "true",
+        "operator": "=="
+      }
+    ],
+    "typeReturn": "any",
+    "variables": [
+      {
+        "name": "wasUnauthorized",
+        "type": "boolean"
+      },
+      {
+        "name": "err",
+        "type": "Error"
+      }
+    ]
+  }
+}

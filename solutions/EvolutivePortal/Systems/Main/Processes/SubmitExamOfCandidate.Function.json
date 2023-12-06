@@ -1,0 +1,33 @@
+{
+  "algorithm": {
+    "parameters": [
+      {
+        "name": "candidateId",
+        "type": "string"
+      },
+      {
+        "name": "scores",
+        "type": "any"
+      }
+    ],
+    "statements": [
+      {
+        "command": "Set",
+        "expression": "MongodbFindOne(MongoDefault, \"candidates\", { _id: { $eq: { $oid: ^candidateId } } })",
+        "variableName": "candidate"
+      },
+      {
+        "command": "Execute",
+        "expression": "ProcessCallback(ProcessDefault.ProcessRecruitment, ^candidate.instanceId, ^candidate.callbackTokenId, \"scoresReady\", ^scores)"
+      }
+    ],
+    "typeReturn": "any",
+    "variables": [
+      {
+        "name": "candidate",
+        "type": "ProcessDefault.Candidate"
+      }
+    ]
+  },
+  "routing": null
+}

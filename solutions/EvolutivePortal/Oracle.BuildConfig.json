@@ -1,0 +1,58 @@
+{
+  "items": [
+    {
+      "systemName": "Main",
+      "action": "build",
+      "parameters": [
+        {
+          "configParameterName": "UsingRdsMock",
+          "value": false
+        },
+        {
+          "configParameterName": "RealMongodb",
+          "value": false
+        },
+        {
+          "configParameterName": "RealRds",
+          "value": true
+        },
+        {
+          "configParameterName": "ParamString",
+          "value": "Hello World"
+        },
+        {
+          "configParameterName": "ParamNumeric",
+          "value": 100
+        },
+        {
+          "configParameterName": "ParamCredentials",
+          "user": "john",
+          "password": "1234"
+        },
+        {
+          "configParameterName": "ParamBoolean",
+          "value": true
+        },
+        {
+          "configParameterName": "RealHazelcast",
+          "value": false
+        },
+        {
+          "configParameterName": "RealRedis",
+          "value": false
+        }
+      ]
+    },
+    {
+      "systemName": "RdsDefault",
+      "action": "connect",
+      "connectionData": {
+        "dataSource": "(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=192.168.102.20)(PORT=1521)))(CONNECT_DATA=(SERVICE_NAME=ORASWARM)))",
+        "database": "",
+        "user": "SUITE_DEV_ORACLE",
+        "password": "SUITE_DEV_ORACLE",
+        "providerName": "Oracle"
+      }
+    }
+  ]
+}

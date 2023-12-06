@@ -1,0 +1,124 @@
+{
+  "eventsAndFunctions": [
+    {
+      "algorithm": {
+        "parameters": [],
+        "statements": [
+          {
+            "command": "ReadModel",
+            "modelVariableName": "associate",
+            "variableName": "associate"
+          },
+          {
+            "children": [
+              {
+                "command": "SetIcon",
+                "expression": "\"woman1.svg\"",
+                "widgetName": "associateIcon"
+              }
+            ],
+            "command": "If",
+            "expression": "^associate.icon == \"woman1\""
+          },
+          {
+            "children": [
+              {
+                "command": "SetIcon",
+                "expression": "\"man1.svg\"",
+                "widgetName": "associateIcon"
+              }
+            ],
+            "command": "Else"
+          }
+        ],
+        "typeReturn": "any",
+        "variables": [
+          {
+            "name": "associate",
+            "type": "Associate"
+          }
+        ]
+      },
+      "name": "main_init"
+    }
+  ],
+  "model": [
+    {
+      "name": "associate",
+      "required": false,
+      "type": "Associate"
+    }
+  ],
+  "root": {
+    "children": [
+      {
+        "align": "left",
+        "color": "default",
+        "dock": "next",
+        "name": "associateIcon",
+        "size": "large",
+        "widget": "Icon"
+      },
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "binding": "associate.name",
+                "color": "default",
+                "name": "nameField",
+                "widget": "Field"
+              },
+              {
+                "align": "left",
+                "binding": "associate.surname",
+                "color": "default",
+                "dock": "previous",
+                "name": "surnameField",
+                "widget": "Field"
+              },
+              {
+                "align": "left",
+                "binding": "associate.branchName",
+                "color": "default",
+                "name": "branchField",
+                "size": "small",
+                "widget": "Field"
+              }
+            ],
+            "layout": "container",
+            "size": "half"
+          },
+          {
+            "children": [
+              {
+                "bold": true,
+                "color": "default",
+                "name": "scoreLabel",
+                "text": "Score:",
+                "widget": "Label"
+              },
+              {
+                "align": "left",
+                "binding": "associate.totalScore",
+                "bold": true,
+                "color": "default",
+                "dock": "previous",
+                "name": "scoreField",
+                "widget": "Field"
+              }
+            ],
+            "layout": "container",
+            "size": "half"
+          }
+        ],
+        "layout": "container",
+        "size": "12/12"
+      }
+    ],
+    "cssClass": "blz-padding-top-large blz-padding-right-large blz-padding-left-large blz-padding-bottom-large blz-border-bottom blz-area-default",
+    "layout": "container"
+  },
+  "routing": null,
+  "unused": []
+}

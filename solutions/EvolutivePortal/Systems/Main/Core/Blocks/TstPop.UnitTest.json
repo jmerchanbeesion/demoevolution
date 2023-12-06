@@ -1,0 +1,206 @@
+{
+  "algorithm": {
+    "parameters": [],
+    "statements": [
+      {
+        "command": "Set",
+        "expression": "[ 1, 2, 3, 4, 5 ]",
+        "variableName": "list"
+      },
+      {
+        "command": "Pop",
+        "variableNameItem": "elementRemoved",
+        "variableNameList": "list"
+      },
+      {
+        "command": "Assert",
+        "expression1": "elementRemoved",
+        "expression2": "5",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "list",
+        "expression2": "[ 1, 2, 3, 4 ]",
+        "operator": "=="
+      },
+      {
+        "command": "Set",
+        "expression": "[]",
+        "variableName": "list"
+      },
+      {
+        "command": "Pop",
+        "variableNameItem": "elementRemoved",
+        "variableNameList": "list"
+      },
+      {
+        "command": "Assert",
+        "expression1": "elementRemoved",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "list",
+        "expression2": "[]",
+        "operator": "=="
+      },
+      {
+        "children": [
+          {
+            "command": "Set",
+            "expression": "null",
+            "variableName": "list"
+          },
+          {
+            "command": "Pop",
+            "variableNameItem": "elementRemoved",
+            "variableNameList": "list"
+          },
+          {
+            "command": "Assert",
+            "expression1": "\"Not reachable\"",
+            "expression2": "false",
+            "operator": "=="
+          }
+        ],
+        "command": "Try"
+      },
+      {
+        "children": [
+          {
+            "command": "Assert",
+            "expression1": "\"Exception when pop null list\"",
+            "expression2": "true",
+            "operator": "!="
+          }
+        ],
+        "command": "Catch",
+        "errorName": "Error",
+        "variableName": "error"
+      },
+      {
+        "children": [
+          {
+            "command": "Set",
+            "expression": "10",
+            "variableName": "any"
+          },
+          {
+            "command": "Pop",
+            "variableNameItem": "elementRemoved",
+            "variableNameList": "any"
+          },
+          {
+            "command": "Assert",
+            "expression1": "\"Not reachable\"",
+            "expression2": "false",
+            "operator": "=="
+          }
+        ],
+        "command": "Try"
+      },
+      {
+        "children": [
+          {
+            "command": "Assert",
+            "expression1": "\"Exception when pop with numbers\"",
+            "expression2": "true",
+            "operator": "!="
+          }
+        ],
+        "command": "Catch",
+        "errorName": "Error",
+        "variableName": "error"
+      },
+      {
+        "children": [
+          {
+            "command": "Set",
+            "expression": "\"string\"",
+            "variableName": "any"
+          },
+          {
+            "command": "Pop",
+            "variableNameItem": "elementRemoved",
+            "variableNameList": "any"
+          },
+          {
+            "command": "Assert",
+            "expression1": "\"Not reachable\"",
+            "expression2": "false",
+            "operator": "=="
+          }
+        ],
+        "command": "Try"
+      },
+      {
+        "children": [
+          {
+            "command": "Assert",
+            "expression1": "\"Exception when pop with strings\"",
+            "expression2": "true",
+            "operator": "!="
+          }
+        ],
+        "command": "Catch",
+        "errorName": "Error",
+        "variableName": "error"
+      },
+      {
+        "children": [
+          {
+            "command": "Set",
+            "expression": "{ key: 123 }",
+            "variableName": "any"
+          },
+          {
+            "command": "Pop",
+            "variableNameItem": "elementRemoved",
+            "variableNameList": "any"
+          },
+          {
+            "command": "Assert",
+            "expression1": "\"Not reachable\"",
+            "expression2": "false",
+            "operator": "=="
+          }
+        ],
+        "command": "Try"
+      },
+      {
+        "children": [
+          {
+            "command": "Assert",
+            "expression1": "\"Exception when pop with objects\"",
+            "expression2": "true",
+            "operator": "!="
+          }
+        ],
+        "command": "Catch",
+        "errorName": "Error",
+        "variableName": "error"
+      }
+    ],
+    "typeReturn": "any",
+    "variables": [
+      {
+        "name": "list",
+        "type": "list( integer )"
+      },
+      {
+        "name": "elementRemoved",
+        "type": "integer"
+      },
+      {
+        "name": "error",
+        "type": "any"
+      },
+      {
+        "name": "any",
+        "type": "any"
+      }
+    ]
+  }
+}

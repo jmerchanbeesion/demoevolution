@@ -1,0 +1,50 @@
+{
+  "parameters": [
+    {
+      "direction": "in",
+      "isExplicitParameter": false,
+      "isResultSet": false,
+      "name": "MinAverage",
+      "type": "integer"
+    },
+    {
+      "direction": "in/out",
+      "isExplicitParameter": false,
+      "isResultSet": false,
+      "name": "CalcSeed",
+      "type": "integer"
+    },
+    {
+      "direction": "out",
+      "isExplicitParameter": false,
+      "isResultSet": false,
+      "name": "StudentsAvg",
+      "type": "decimal"
+    },
+    {
+      "attributes": [
+        {
+          "name": "Code",
+          "type": "string"
+        }
+      ],
+      "direction": "out",
+      "isExplicitParameter": true,
+      "isResultSet": true,
+      "name": "RsStudents"
+    },
+    {
+      "attributes": [
+        {
+          "name": "Code",
+          "type": "string"
+        }
+      ],
+      "direction": "out",
+      "isExplicitParameter": true,
+      "isResultSet": true,
+      "name": "RsInscriptions"
+    }
+  ],
+  "storedProcedureName": "SP_INSCRIPTIONS_INFO"
+}

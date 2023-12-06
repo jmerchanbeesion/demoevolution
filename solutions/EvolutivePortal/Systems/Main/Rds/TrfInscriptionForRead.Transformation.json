@@ -1,0 +1,136 @@
+{
+  "betweens": [
+    {
+      "betweenType": "Function",
+      "functionName": "Concat",
+      "outputConnections": [
+        "c6"
+      ],
+      "parameters": [
+        {
+          "inputConnection": "c11"
+        },
+        {
+          "inputConnection": "c5"
+        },
+        {
+          "inputConnection": "c12"
+        }
+      ],
+      "x": 757,
+      "y": 298
+    },
+    {
+      "betweenType": "Value",
+      "outputConnections": [
+        "c5"
+      ],
+      "type": "string",
+      "value": " ",
+      "x": 674,
+      "y": 341
+    }
+  ],
+  "source": {
+    "elementType": "RdsTable",
+    "outputs": [
+      {
+        "codePath": "inscriptionId",
+        "outputConnections": [
+          "c16"
+        ]
+      },
+      {
+        "codePath": "studentId",
+        "outputConnections": [
+          "c1"
+        ]
+      },
+      {
+        "codePath": "courseId",
+        "outputConnections": [
+          "c7"
+        ]
+      },
+      {
+        "codePath": "creationDatetime",
+        "outputConnections": [
+          "c10"
+        ]
+      },
+      {
+        "codePath": "student.code",
+        "outputConnections": [
+          "c13"
+        ]
+      },
+      {
+        "codePath": "student.name",
+        "outputConnections": [
+          "c11"
+        ]
+      },
+      {
+        "codePath": "student.surname",
+        "outputConnections": [
+          "c12"
+        ]
+      },
+      {
+        "codePath": "course.code",
+        "outputConnections": [
+          "c14"
+        ]
+      },
+      {
+        "codePath": "course.name",
+        "outputConnections": [
+          "c15"
+        ]
+      }
+    ],
+    "rdsTableName": "RdsDefault.TblInscriptions",
+    "x": 60,
+    "y": 60
+  },
+  "target": {
+    "elementType": "Type",
+    "inputs": [
+      {
+        "codePath": "courseCode",
+        "inputConnection": "c14"
+      },
+      {
+        "codePath": "courseId",
+        "inputConnection": "c7"
+      },
+      {
+        "codePath": "courseName",
+        "inputConnection": "c15"
+      },
+      {
+        "codePath": "creationDatetime",
+        "inputConnection": "c10"
+      },
+      {
+        "codePath": "inscriptionId",
+        "inputConnection": "c16"
+      },
+      {
+        "codePath": "studentCode",
+        "inputConnection": "c13"
+      },
+      {
+        "codePath": "studentFullName",
+        "inputConnection": "c6"
+      },
+      {
+        "codePath": "studentId",
+        "inputConnection": "c1"
+      }
+    ],
+    "typeName": "Inscription",
+    "x": 967,
+    "y": 67
+  }
+}

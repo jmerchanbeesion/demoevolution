@@ -1,0 +1,347 @@
+{
+  "algorithm": {
+    "parameters": [],
+    "statements": [
+      {
+        "command": "Execute",
+        "expression": "InitRds()"
+      },
+      {
+        "command": "Set",
+        "expression": "RdsSelectOne(RdsDefault.TblStudents, studentId, code == \"ST001\")",
+        "variableName": "studentId"
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, 5 + 2, studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "7",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, 5 - 2, studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "3",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, 5 * 2, studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "10",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, 5 / 2, studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "2.5",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, 5 % 2, studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "1",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, Abs(0.5), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "0.5",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, Abs(-0.5), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "0.5",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, Abs(null), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, Trunc(Acos(0.5), 6), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "1.047197",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, Acos(null), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, Trunc(Asin(0.5), 6), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "0.523598",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, Asin(null), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, Trunc(Atan(0.5), 6), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "0.463647",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, Atan(null), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, Trunc(Atan2(1, 2), 6), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "1.107148",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, Atan2(1, null), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, Atan2(null, 2), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, Ceil(0.5), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "1",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, Ceil(null), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, Trunc(Cos(0.5), 6), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "0.877582",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, Cos(null), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, Trunc(Cosh(0.5), 6), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "1.127625",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, Cosh(null), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, Trunc(Exp(3), 6), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "20.085536",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, Exp(null), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, Floor(0.5), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "0",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, Floor(null), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, Trunc(Log(0.5, 3), 6), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "-0.630929",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, Log(null, 3), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, Trunc(Log10(0.5), 6), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "-0.301029",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, Log10(null), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, Pow(0.5, 3), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "0.125",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, Pow(null, 3), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, Round(0.123456789), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "0",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, Round(0.123456789, 6), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "0.123457",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, Round(null), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, Sign(0.5), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "1",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, Sign(-0.5), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "-1",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, Sign(null), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, Trunc(Sin(0.5), 6), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "0.479425",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, Sin(null), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, Trunc(Sinh(0.5), 6), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "0.521095",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, Sinh(null), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, Trunc(Sqrt(0.5), 6), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "0.707106",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, Sqrt(null), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, Trunc(Tan(0.5), 6), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "0.546302",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, Tan(null), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, Trunc(Tanh(0.5), 6), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "0.462117",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, Tanh(null), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, Trunc(0.123456789), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "0",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, Trunc(0.123456789, 6), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "0.123456",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, Trunc(null), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "null",
+        "operator": "=="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, Random(), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "0",
+        "operator": ">="
+      },
+      {
+        "command": "Assert",
+        "expression1": "RdsSelectOne(RdsDefault.TblStudents, RdsSelectOne(RdsDefault.TblStudents, Random(), studentId == ^studentId), studentId == ^studentId)",
+        "expression2": "1",
+        "operator": "<="
+      }
+    ],
+    "typeReturn": "any",
+    "variables": [
+      {
+        "name": "studentId",
+        "type": "integer"
+      }
+    ]
+  }
+}
