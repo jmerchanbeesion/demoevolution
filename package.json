@@ -1,7 +1,7 @@
 {
   "version": "1.0.0",
   "blazedpath": {
-    "version": "2023.09.06.beta\n"
+    "version": "2023.09.06.beta"
   },
   "publishConfig": {
     "registry": "https://blz-nexus.beesion.team/repository/bee-npm",
