@@ -1,0 +1,18 @@
+{
+  "eventsAndFunctions": [],
+  "model": [],
+  "root": {
+    "children": [
+      {
+        "name": "button1",
+        "widget": "Button"
+      }
+    ],
+    "cssClass": "blz-area-default",
+    "layout": "container"
+  },
+  "routing": {
+    "path": "/petstore"
+  },
+  "unused": []
+}

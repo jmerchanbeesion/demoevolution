@@ -16,5 +16,11 @@
     "icon": "menu-dashboard.svg",
     "text": "Dashboard",
     "uiComponentName": "CmpDealerDashboard"
+  },
+  {
+    "children": [],
+    "icon": "logo.svg",
+    "text": "PetStore",
+    "uiComponentName": "CmpPetStore"
   }
 ]

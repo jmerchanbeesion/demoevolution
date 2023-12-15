@@ -7,12 +7,6 @@
       "y": 244.00852584838867
     },
     {
-      "name": "HazelcastDefault",
-      "type": "Hazelcast",
-      "x": 854,
-      "y": 611
-    },
-    {
       "name": "Main",
       "type": "Microservice",
       "x": 455,
@@ -41,22 +35,12 @@
       "type": "RelationalDatabase",
       "x": 457,
       "y": 400
-    },
-    {
-      "name": "RedisDefault",
-      "type": "Redis",
-      "x": 659,
-      "y": 611
     }
   ],
   "references": [
     {
       "fromSystemName": "CarDealerFrontend",
       "toSystemName": "Main"
-    },
-    {
-      "fromSystemName": "Main",
-      "toSystemName": "HazelcastDefault"
     },
     {
       "fromSystemName": "Main",
@@ -73,10 +57,6 @@
     {
       "fromSystemName": "Main",
       "toSystemName": "RdsDefault"
-    },
-    {
-      "fromSystemName": "Main",
-      "toSystemName": "RedisDefault"
     },
     {
       "fromSystemName": "ProcessDefault",
