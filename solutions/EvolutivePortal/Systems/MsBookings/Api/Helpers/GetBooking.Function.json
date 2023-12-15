@@ -1,0 +1,19 @@
+{
+  "algorithm": {
+    "parameters": [
+      {
+        "name": "userId",
+        "type": "string"
+      }
+    ],
+    "statements": [
+      {
+        "command": "Return",
+        "expression": "RdsSelectOne( DbBookings.Booking, This(), userId == ^userId )"
+      }
+    ],
+    "typeReturn": "Booking",
+    "variables": []
+  },
+  "routing": null
+}

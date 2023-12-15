@@ -1,0 +1,496 @@
+{
+  "eventsAndFunctions": [
+    {
+      "algorithm": {
+        "parameters": [
+          {
+            "name": "instanceId",
+            "type": "string"
+          },
+          {
+            "name": "tokenId",
+            "type": "string"
+          }
+        ],
+        "statements": [
+          {
+            "command": "ConsoleLog",
+            "expression": "\"[BOOK ACTIVITY] Enter\""
+          },
+          {
+            "command": "ReadModel",
+            "modelVariableName": "userId",
+            "variableName": "userId"
+          },
+          {
+            "command": "Set",
+            "expression": "MsBookings.Book( userId )",
+            "variableName": "booking"
+          },
+          {
+            "command": "WriteModel",
+            "expression": "booking",
+            "modelVariableName": "booking"
+          },
+          {
+            "command": "ConsoleLog",
+            "expression": "[ \"[BOOK ACTIVITY] BOOKING DONE: \", booking ]"
+          },
+          {
+            "command": "Return",
+            "expression": "{ moveForward: true }"
+          }
+        ],
+        "typeReturn": "obj(moveForward:boolean)",
+        "variables": [
+          {
+            "name": "userId",
+            "type": "string"
+          },
+          {
+            "name": "booking",
+            "type": "MsBookings.Booking"
+          }
+        ]
+      },
+      "name": "actBook_execute"
+    },
+    {
+      "algorithm": {
+        "parameters": [
+          {
+            "name": "instanceId",
+            "type": "string"
+          },
+          {
+            "name": "tokenId",
+            "type": "string"
+          }
+        ],
+        "statements": [
+          {
+            "command": "ReadModel",
+            "modelVariableName": "userId",
+            "variableName": "userId"
+          },
+          {
+            "command": "ConsoleLog",
+            "expression": "\"[LOG NO AVAILABLE SLOTS ACTIVITY] No available slots: \" + userId"
+          },
+          {
+            "command": "Return",
+            "expression": "{ moveForward: true }"
+          }
+        ],
+        "typeReturn": "obj(moveForward:boolean)",
+        "variables": [
+          {
+            "name": "userId",
+            "type": "string"
+          }
+        ]
+      },
+      "name": "actLogNoAvailableSlots_execute"
+    },
+    {
+      "algorithm": {
+        "parameters": [
+          {
+            "name": "instanceId",
+            "type": "string"
+          },
+          {
+            "name": "tokenId",
+            "type": "string"
+          }
+        ],
+        "statements": [
+          {
+            "command": "ReadModel",
+            "modelVariableName": "userId",
+            "variableName": "userId"
+          },
+          {
+            "command": "ConsoleLog",
+            "expression": "\"[LOG NO VALID USER ACTIVITY] No valid userId: \" + userId"
+          },
+          {
+            "command": "Return",
+            "expression": "{ moveForward: true }"
+          }
+        ],
+        "typeReturn": "obj(moveForward:boolean)",
+        "variables": [
+          {
+            "name": "userId",
+            "type": "string"
+          }
+        ]
+      },
+      "name": "actLogNoValidUserId_execute"
+    },
+    {
+      "algorithm": {
+        "parameters": [
+          {
+            "name": "instanceId",
+            "type": "string"
+          },
+          {
+            "name": "tokenId",
+            "type": "string"
+          }
+        ],
+        "statements": [
+          {
+            "command": "ReadModel",
+            "modelVariableName": "userId",
+            "variableName": "userId"
+          },
+          {
+            "command": "ConsoleLog",
+            "expression": "\"[LOG USER ALREADY WITH BOOKING ACTIVITY] User with other booking: \" + userId"
+          },
+          {
+            "command": "Return",
+            "expression": "{ moveForward: true }"
+          }
+        ],
+        "typeReturn": "obj(moveForward:boolean)",
+        "variables": [
+          {
+            "name": "userId",
+            "type": "string"
+          }
+        ]
+      },
+      "name": "actLogUserAlreadyWithBooking_execute"
+    },
+    {
+      "algorithm": {
+        "parameters": [
+          {
+            "name": "instanceId",
+            "type": "string"
+          },
+          {
+            "name": "tokenId",
+            "type": "string"
+          }
+        ],
+        "statements": [
+          {
+            "command": "ConsoleLog",
+            "expression": "\"[PRINT BOOKING ACTIVITY] Enter\""
+          },
+          {
+            "command": "ReadModel",
+            "modelVariableName": "booking",
+            "variableName": "booking"
+          },
+          {
+            "command": "ReadModel",
+            "modelVariableName": "hasPrinterError",
+            "variableName": "hasPrinterError"
+          },
+          {
+            "children": [
+              {
+                "command": "ConsoleLog",
+                "expression": "[ \"[PRINT BOOKING ACTIVITY] Printer Error: \", booking ]"
+              },
+              {
+                "command": "Throw",
+                "errorName": "PrinterError",
+                "expressionData": "null",
+                "expressionInnerError": "null"
+              }
+            ],
+            "command": "If",
+            "expression": "hasPrinterError"
+          },
+          {
+            "command": "ConsoleLog",
+            "expression": "[ \"[PRINT BOOKING ACTIVITY] Printed OK: \", booking ]"
+          },
+          {
+            "command": "Return",
+            "expression": "{ moveForward: true }"
+          }
+        ],
+        "typeReturn": "obj(moveForward:boolean)",
+        "variables": [
+          {
+            "name": "booking",
+            "type": "MsBookings.Booking"
+          },
+          {
+            "name": "hasPrinterError",
+            "type": "boolean"
+          }
+        ]
+      },
+      "name": "actPrintTicket_execute"
+    },
+    {
+      "algorithm": {
+        "parameters": [
+          {
+            "name": "instanceId",
+            "type": "string"
+          },
+          {
+            "name": "tokenId",
+            "type": "string"
+          }
+        ],
+        "statements": [
+          {
+            "command": "ReadModel",
+            "modelVariableName": "booking",
+            "variableName": "booking"
+          },
+          {
+            "command": "ConsoleLog",
+            "expression": "[ \"[CANCEL BOOKING COMPENSATE ACTIVITY] Cancel: \", booking ]"
+          },
+          {
+            "command": "Execute",
+            "expression": "MsBookings.CancelBooking( booking.ticketId )"
+          }
+        ],
+        "typeReturn": "any",
+        "variables": [
+          {
+            "name": "booking",
+            "type": "MsBookings.Booking"
+          }
+        ]
+      },
+      "name": "compensationactivityCancelBooking_compensate"
+    },
+    {
+      "algorithm": {
+        "parameters": [
+          {
+            "name": "instanceId",
+            "type": "string"
+          },
+          {
+            "name": "tokenId",
+            "type": "string"
+          }
+        ],
+        "statements": [
+          {
+            "command": "ReadModel",
+            "modelVariableName": "userId",
+            "variableName": "userId"
+          },
+          {
+            "command": "ConsoleLog",
+            "expression": "\"[EXCLUSIVE GATEWAY CHECK VALID USER EVALUATION] Check userId: \" + userId"
+          },
+          {
+            "command": "Return",
+            "expression": "MsBookings.IsValidUserId( userId )"
+          }
+        ],
+        "typeReturn": "boolean",
+        "variables": [
+          {
+            "name": "userId",
+            "type": "string"
+          }
+        ]
+      },
+      "name": "exclusivegatewayIsValidUserId_evaluate"
+    }
+  ],
+  "model": [
+    {
+      "name": "userId",
+      "required": false,
+      "type": "string"
+    },
+    {
+      "name": "booking",
+      "required": false,
+      "type": "MsBookings.Booking"
+    },
+    {
+      "name": "hasPrinterError",
+      "required": false,
+      "type": "boolean"
+    }
+  ],
+  "nodes": [
+    {
+      "name": "actBook",
+      "nodeType": "Activity",
+      "remark": "Book",
+      "x": 321,
+      "y": 121.00000000000001
+    },
+    {
+      "errorName": "MsBookings.UserWithBooking",
+      "name": "actLogUserAlreadeWithBooking",
+      "nodeType": "CatchError",
+      "primaryNodeName": "actBook",
+      "x": 56,
+      "y": 64.8
+    },
+    {
+      "compensationKey": "cancelBooking",
+      "name": "catchcompensation1",
+      "nodeType": "CatchCompensation",
+      "primaryNodeName": "actBook",
+      "x": 80,
+      "y": 64.8
+    },
+    {
+      "errorName": "MsBookings.NoAvailableSlots",
+      "name": "catcherrorNoAvialableSlots",
+      "nodeType": "CatchError",
+      "primaryNodeName": "actBook",
+      "x": 104,
+      "y": 64.8
+    },
+    {
+      "name": "actLogNoAvailableSlots",
+      "nodeType": "Activity",
+      "remark": "Log no available slots",
+      "x": 473,
+      "y": 509.99999999999994
+    },
+    {
+      "name": "actLogNoValidUserId",
+      "nodeType": "Activity",
+      "remark": "Log no valid userId",
+      "x": 47,
+      "y": 509.99999999999994
+    },
+    {
+      "name": "actLogUserAlreadyWithBooking",
+      "nodeType": "Activity",
+      "remark": "Log User already with booking",
+      "x": 200,
+      "y": 385.99999999999994
+    },
+    {
+      "name": "actPrintTicket",
+      "nodeType": "Activity",
+      "remark": "Print ticket",
+      "x": 562,
+      "y": 121.00000000000001
+    },
+    {
+      "errorName": "PrinterError",
+      "name": "catcherrorPrinterError",
+      "nodeType": "CatchError",
+      "primaryNodeName": "actPrintTicket",
+      "remark": "Printer Error",
+      "x": 104,
+      "y": 64.8
+    },
+    {
+      "name": "compensationactivityCancelBooking",
+      "nodeType": "CompensationActivity",
+      "remark": "Cancel Booking",
+      "x": 349,
+      "y": 405
+    },
+    {
+      "name": "end1",
+      "nodeType": "End",
+      "x": 246,
+      "y": 531
+    },
+    {
+      "name": "end2",
+      "nodeType": "End",
+      "x": 773,
+      "y": 142
+    },
+    {
+      "compensationKey": "cancelBooking",
+      "name": "endcompensationPrinterError",
+      "nodeType": "EndCompensation",
+      "x": 660,
+      "y": 274
+    },
+    {
+      "name": "exclusivegatewayIsValidUserId",
+      "nodeType": "ExclusiveGateway",
+      "remark": "Is UserId Valid?",
+      "x": 163,
+      "y": 142
+    },
+    {
+      "name": "start1",
+      "nodeType": "Start",
+      "x": 59,
+      "y": 142
+    }
+  ],
+  "transitions": [
+    {
+      "fromNodeName": "actBook",
+      "toNodeName": "actPrintTicket"
+    },
+    {
+      "fromNodeName": "actLogNoAvailableSlots",
+      "toNodeName": "end1"
+    },
+    {
+      "fromNodeName": "actLogNoValidUserId",
+      "toNodeName": "end1"
+    },
+    {
+      "fromNodeName": "actLogUserAlreadeWithBooking",
+      "toNodeName": "actLogUserAlreadyWithBooking"
+    },
+    {
+      "fromNodeName": "actLogUserAlreadyWithBooking",
+      "toNodeName": "end1"
+    },
+    {
+      "fromNodeName": "actPrintTicket",
+      "toNodeName": "end2"
+    },
+    {
+      "fromNodeName": "catchcompensation1",
+      "toNodeName": "compensationactivityCancelBooking"
+    },
+    {
+      "fromNodeName": "catcherrorNoAvialableSlots",
+      "toNodeName": "actLogNoAvailableSlots"
+    },
+    {
+      "fromNodeName": "catcherrorNoAvialableSlots",
+      "toNodeName": "actLogNoAvailableSlots"
+    },
+    {
+      "fromNodeName": "catcherrorPrinterError",
+      "toNodeName": "endcompensationPrinterError"
+    },
+    {
+      "forkType": "yes",
+      "fromNodeName": "exclusivegatewayIsValidUserId",
+      "name": "connection7",
+      "nodeType": "ExclusiveGatewayEdge",
+      "toNodeName": "actBook"
+    },
+    {
+      "forkType": "no",
+      "fromNodeName": "exclusivegatewayIsValidUserId",
+      "name": "connection6",
+      "nodeType": "ExclusiveGatewayEdge",
+      "toNodeName": "actLogNoValidUserId"
+    },
+    {
+      "fromNodeName": "start1",
+      "toNodeName": "exclusivegatewayIsValidUserId"
+    }
+  ]
+}

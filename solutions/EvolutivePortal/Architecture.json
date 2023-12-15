@@ -1,46 +1,89 @@
 {
   "systems": [
     {
+      "name": "BpmBookings",
+      "type": "ProcessEngine",
+      "x": 293.0198974609375,
+      "y": 483.0085258483887
+    },
+    {
+      "name": "BpmBookingsPersistence",
+      "type": "Mongodb",
+      "x": 460.0198974609375,
+      "y": 598.1903419494629
+    },
+    {
       "name": "CarDealerFrontend",
       "type": "WebFrontend",
-      "x": 191.0198974609375,
-      "y": 244.00852584838867
+      "x": 64.0198974609375,
+      "y": 178.00852584838867
+    },
+    {
+      "name": "DbBookings",
+      "type": "RelationalDatabase",
+      "x": 709.0198974609375,
+      "y": 479.9176025390625
     },
     {
       "name": "Main",
       "type": "Microservice",
-      "x": 455,
-      "y": 242
+      "x": 328,
+      "y": 176
     },
     {
       "name": "MongoDefault",
       "type": "Mongodb",
-      "x": 854,
-      "y": 396
+      "x": 727,
+      "y": 330
+    },
+    {
+      "name": "MsBookings",
+      "type": "Microservice",
+      "x": 512.0198974609375,
+      "y": 481.0085258483887
     },
     {
       "name": "MsDefault",
       "type": "Microservice",
-      "x": 852,
-      "y": 100
+      "x": 725,
+      "y": 34
     },
     {
       "name": "ProcessDefault",
       "type": "ProcessEngine",
-      "x": 734,
-      "y": 236
+      "x": 607,
+      "y": 170
     },
     {
       "name": "RdsDefault",
       "type": "RelationalDatabase",
-      "x": 457,
-      "y": 400
+      "x": 330,
+      "y": 334
+    },
+    {
+      "name": "TestBpmBookings",
+      "type": "Microservice",
+      "x": 63.0198974609375,
+      "y": 486.0085258483887
     }
   ],
   "references": [
     {
+      "fromSystemName": "BpmBookings",
+      "toSystemName": "BpmBookingsPersistence",
+      "processPersistence": true
+    },
+    {
+      "fromSystemName": "BpmBookings",
+      "toSystemName": "MsBookings"
+    },
+    {
       "fromSystemName": "CarDealerFrontend",
       "toSystemName": "Main"
+    },
+    {
+      "fromSystemName": "CarDealerFrontend",
+      "toSystemName": "TestBpmBookings"
     },
     {
       "fromSystemName": "Main",
@@ -59,6 +102,10 @@
       "toSystemName": "RdsDefault"
     },
     {
+      "fromSystemName": "MsBookings",
+      "toSystemName": "DbBookings"
+    },
+    {
       "fromSystemName": "ProcessDefault",
       "toSystemName": "MongoDefault",
       "processPersistence": true
@@ -66,6 +113,10 @@
     {
       "fromSystemName": "ProcessDefault",
       "toSystemName": "MsDefault"
+    },
+    {
+      "fromSystemName": "TestBpmBookings",
+      "toSystemName": "BpmBookings"
     }
   ]
 }

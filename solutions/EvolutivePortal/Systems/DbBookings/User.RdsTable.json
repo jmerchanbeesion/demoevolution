@@ -1,0 +1,18 @@
+{
+  "autoincrementalPrimaryKey": false,
+  "columns": [
+    {
+      "alias": "userId",
+      "name": "USER_ID",
+      "primaryKey": true,
+      "type": "string"
+    }
+  ],
+  "foreignKeys": [],
+  "indexes": [],
+  "isView": false,
+  "primaryKeyName": "",
+  "sequenceName": "",
+  "tableName": "TBL_USER",
+  "uniqueKeys": []
+}

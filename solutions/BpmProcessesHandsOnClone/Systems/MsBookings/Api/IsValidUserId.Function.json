@@ -1,0 +1,33 @@
+{
+  "algorithm": {
+    "parameters": [
+      {
+        "name": "userId",
+        "type": "string"
+      }
+    ],
+    "statements": [
+      {
+        "command": "ConsoleLog",
+        "expression": "\"IsValidUserId: \" + userId"
+      },
+      {
+        "command": "Return",
+        "expression": "IsNotNull( RdsSelectOne( DbBookings.User, This(), userId == ^userId ) )"
+      }
+    ],
+    "typeReturn": "boolean",
+    "variables": []
+  },
+  "routing": {
+    "method": "GET",
+    "parameters": [
+      {
+        "bind": "userId",
+        "in": "Query",
+        "name": "userId"
+      }
+    ],
+    "path": "/isValidUserId"
+  }
+}

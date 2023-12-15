@@ -455,5 +455,9 @@
       }
     ]
   },
-  "routing": null
+  "routing": {
+    "method": "GET",
+    "path": "/initRds",
+    "remarks": "starts the rds"
+  }
 }

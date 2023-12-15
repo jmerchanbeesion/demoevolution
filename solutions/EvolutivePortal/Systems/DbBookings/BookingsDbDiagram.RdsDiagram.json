@@ -1,0 +1,14 @@
+{
+  "items": [
+    {
+      "rdsTableName": "Booking",
+      "x": 196,
+      "y": 128
+    },
+    {
+      "rdsTableName": "User",
+      "x": 197,
+      "y": 287
+    }
+  ]
+}

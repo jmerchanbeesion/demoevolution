@@ -1,0 +1,40 @@
+{
+  "autoincrementalPrimaryKey": true,
+  "columns": [
+    {
+      "alias": "bookingId",
+      "name": "BOOKING_ID",
+      "primaryKey": true,
+      "type": "integer"
+    },
+    {
+      "alias": "userId",
+      "name": "USER_ID",
+      "type": "string"
+    },
+    {
+      "alias": "ticketId",
+      "name": "TICKET_ID",
+      "type": "string"
+    }
+  ],
+  "foreignKeys": [
+    {
+      "alias": "UserId",
+      "details": [
+        {
+          "columnName": "USER_ID",
+          "relatedColumnName": "USER_ID"
+        }
+      ],
+      "name": "UserId",
+      "rdsTableName": "User"
+    }
+  ],
+  "indexes": [],
+  "isView": false,
+  "primaryKeyName": "",
+  "sequenceName": "",
+  "tableName": "TBL_BOOKING",
+  "uniqueKeys": []
+}

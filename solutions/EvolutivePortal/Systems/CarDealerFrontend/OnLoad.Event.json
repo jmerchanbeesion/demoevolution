@@ -52,11 +52,21 @@
         "expressionCulture": "^culture",
         "expressionIcon": "\"logo.svg\"",
         "expressionMainMenu": "^menu",
+        "expressionSearch": "false",
         "expressionSubTitle": "null",
         "expressionTitle": "\"CarDealerSurvey\"",
         "expressionToolsMenu": "null",
-        "expressionSearch": "false",
         "uiComponentName": "CmpHome"
+      },
+      {
+        "children": [
+          {
+            "command": "Execute",
+            "expression": "TestBpmBookings.TestOnDemand()"
+          }
+        ],
+        "command": "If",
+        "expression": "false"
       }
     ],
     "typeReturn": "any",

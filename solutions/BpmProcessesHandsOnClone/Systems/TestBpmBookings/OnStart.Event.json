@@ -1,0 +1,89 @@
+{
+  "algorithm": {
+    "parameters": [],
+    "statements": [
+      {
+        "command": "ConsoleLog",
+        "expression": "\"========== INVALID USER: USER_99 (bookings: 0) ==========\""
+      },
+      {
+        "command": "Execute",
+        "expression": "ProcessStart( BpmBookings.BookingProcess, { userId: \"USER_99\" } )"
+      },
+      {
+        "command": "Sleep",
+        "expressionMilliseconds": "1000"
+      },
+      {
+        "command": "ConsoleLog",
+        "expression": "\"========== NORMAL BOOK: USER_1 (bookings: 0 => 1) ==========\""
+      },
+      {
+        "command": "Execute",
+        "expression": "ProcessStart( BpmBookings.BookingProcess, { userId: \"USER_1\" } )"
+      },
+      {
+        "command": "Sleep",
+        "expressionMilliseconds": "1000"
+      },
+      {
+        "command": "ConsoleLog",
+        "expression": "\"========== NORMAL BOOK: USER_2 (bookings: 1 => 2) ==========\""
+      },
+      {
+        "command": "Execute",
+        "expression": "ProcessStart( BpmBookings.BookingProcess, { userId: \"USER_2\" } )"
+      },
+      {
+        "command": "Sleep",
+        "expressionMilliseconds": "1000"
+      },
+      {
+        "command": "ConsoleLog",
+        "expression": "\"========== DUPLICATE BOOKING USER_1 (bookings: 2 => 2) ==========\""
+      },
+      {
+        "command": "Execute",
+        "expression": "ProcessStart( BpmBookings.BookingProcess, { userId: \"USER_1\" } )"
+      },
+      {
+        "command": "Sleep",
+        "expressionMilliseconds": "1000"
+      },
+      {
+        "command": "ConsoleLog",
+        "expression": "\"========== PRINTER_ERROR USER_3 >> CANCELATION (bookings: 2 => 3 , 3 => 2) ==========\""
+      },
+      {
+        "command": "Execute",
+        "expression": "ProcessStart( BpmBookings.BookingProcess, { userId: \"USER_3\", hasPrinterError: true } )"
+      },
+      {
+        "command": "Sleep",
+        "expressionMilliseconds": "1000"
+      },
+      {
+        "command": "ConsoleLog",
+        "expression": "\"========== NORMAL BOOK: USER_3 (bookings: 2 => 3) ==========\""
+      },
+      {
+        "command": "Execute",
+        "expression": "ProcessStart( BpmBookings.BookingProcess, { userId: \"USER_3\" } )"
+      },
+      {
+        "command": "Sleep",
+        "expressionMilliseconds": "1000"
+      },
+      {
+        "command": "ConsoleLog",
+        "expression": "\"========== NO AVAILABLE SLOTS: USER_4 (bookings: 3) ==========\""
+      },
+      {
+        "command": "Execute",
+        "expression": "ProcessStart( BpmBookings.BookingProcess, { userId: \"USER_4\" } )"
+      }
+    ],
+    "typeReturn": "any",
+    "variables": []
+  }
+}
